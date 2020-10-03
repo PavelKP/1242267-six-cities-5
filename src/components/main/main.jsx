@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const STYLE = {
   fourStarsStyle: {
@@ -271,6 +272,10 @@ const Main = (props) => {
       </main>
     </div>
   );
+};
+
+Main.propTypes = {
+  placesCount: PropTypes.number.isRequired
 };
 
 export default Main;
