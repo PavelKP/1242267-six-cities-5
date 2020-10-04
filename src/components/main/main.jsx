@@ -1,18 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const STYLE = {
-  fourStarsStyle: {
-    width: `80%`
-  },
-  fiveStarsStyle: {
-    width: `100%`
-  }
-};
-
-const Main = (props) => {
-  const {placesCount} = props;
-
+const Main = ({placesCount}) => {
   return (
     <div className="page page--gray page--main">
       <header className="header">
@@ -121,7 +110,7 @@ const Main = (props) => {
                     </div>
                     <div className="place-card__rating rating">
                       <div className="place-card__stars rating__stars">
-                        <span style={STYLE.fourStarsStyle}></span>
+                        <span></span>
                         <span className="visually-hidden">Rating</span>
                       </div>
                     </div>
@@ -153,7 +142,7 @@ const Main = (props) => {
                     </div>
                     <div className="place-card__rating rating">
                       <div className="place-card__stars rating__stars">
-                        <span style={STYLE.fourStarsStyle}></span>
+                        <span></span>
                         <span className="visually-hidden">Rating</span>
                       </div>
                     </div>
@@ -185,7 +174,7 @@ const Main = (props) => {
                     </div>
                     <div className="place-card__rating rating">
                       <div className="place-card__stars rating__stars">
-                        <span style={STYLE.fourStarsStyle}></span>
+                        <span></span>
                         <span className="visually-hidden">Rating</span>
                       </div>
                     </div>
@@ -220,7 +209,7 @@ const Main = (props) => {
                     </div>
                     <div className="place-card__rating rating">
                       <div className="place-card__stars rating__stars">
-                        <span style={STYLE.fiveStarsStyle}></span>
+                        <span></span>
                         <span className="visually-hidden">Rating</span>
                       </div>
                     </div>
@@ -252,7 +241,7 @@ const Main = (props) => {
                     </div>
                     <div className="place-card__rating rating">
                       <div className="place-card__stars rating__stars">
-                        <span style={STYLE.fourStarsStyle}></span>
+                        <span></span>
                         <span className="visually-hidden">Rating</span>
                       </div>
                     </div>
