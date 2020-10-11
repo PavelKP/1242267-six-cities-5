@@ -6,13 +6,12 @@ import Login from '../login/login';
 import Favorites from '../favorites/favorites';
 import Offer from '../offer/offer';
 
-const App = ({placesCount}) => {
+const App = ({placesCount, offers, reviews}) => {
   return (
-
     <BrowserRouter>
       <Switch>
         <Route exact path="/">
-          <Main placesCount={placesCount} />
+          <Main placesCount={placesCount} offers={offers}/>
         </Route>
         <Route exact path="/login">
           <Login />
