@@ -1,8 +1,8 @@
 
 import PropTypes, {arrayOf, exact} from 'prop-types';
 
-export const offersPropTypes = {
-  offers: arrayOf(PropTypes.exact({
+export const offerPropTypes = {
+  offer: PropTypes.exact({
     id: PropTypes.number.isRequired,
     images: arrayOf(PropTypes.string).isRequired,
     mark: PropTypes.string.isRequired,
@@ -24,7 +24,11 @@ export const offersPropTypes = {
     }),
     reviews: arrayOf(PropTypes.number.isRequired).isRequired,
     location: PropTypes.string.isRequired
-  }))
+  })
+};
+
+export const offersPropTypes = {
+  offers: arrayOf(offerPropTypes.offer)
 };
 
 export const reviewsPropTypes = {

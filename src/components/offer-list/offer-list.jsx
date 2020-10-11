@@ -1,5 +1,5 @@
 import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
+import {offersPropTypes} from '../../prop-types/prop-types';
 import PlaceCard from '../place-card/place-card';
 
 class OfferList extends PureComponent {
@@ -29,5 +29,9 @@ class OfferList extends PureComponent {
     );
   }
 }
+
+OfferList.propTypes = {
+  offers: offersPropTypes.offers,
+};
 
 export default OfferList;

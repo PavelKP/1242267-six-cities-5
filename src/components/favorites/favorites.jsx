@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import PropTypesObject from '../../prop-types/prop-types';
+import {offersPropTypes} from '../../prop-types/prop-types';
 
 const Favorites = (props) => {
   const locations = new Set();
@@ -107,6 +107,6 @@ const Favorites = (props) => {
   );
 };
 
-Favorites.propTypes = PropTypesObject;
+Favorites.propTypes = offersPropTypes;
 
 export default Favorites;

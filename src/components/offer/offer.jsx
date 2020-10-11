@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import {Link} from 'react-router-dom';
 import CommentForm from '../comment-form/comment-form';
-
+import {offersPropTypes, reviewsPropTypes} from '../../prop-types/prop-types';
 
 class Offer extends PureComponent {
   constructor(props) {
@@ -280,5 +280,11 @@ class Offer extends PureComponent {
     );
   }
 }
+
+Offer.propTypes = {
+  offers: offersPropTypes.offers,
+  reviews: reviewsPropTypes.reviews,
+  serviceProp: PropTypes.object.isRequired,
+};
 
 export default Offer;

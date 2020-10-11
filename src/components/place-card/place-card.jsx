@@ -1,6 +1,8 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
+import {offerPropTypes} from '../../prop-types/prop-types';
+
 
 class PlaceCard extends PureComponent {
   constructor(props) {
@@ -59,7 +61,11 @@ class PlaceCard extends PureComponent {
       </article>
     );
   }
-
 }
+
+PlaceCard.propTypes = {
+  offer: offerPropTypes.offer,
+  onCardMouseOver: PropTypes.func.isRequired,
+};
 
 export default PlaceCard;
