@@ -10,8 +10,8 @@ export default [
     title: `Beautiful \& luxurious studio at great location`,
     rating: 4.8,
     entire: `Apartment`,
-    bedrooms: `3 Bedrooms`,
-    adults: `Max 4 adults`,
+    bedrooms: `3`,
+    adults: `4`,
     price: {
       value: `120`,
       type: `night`
@@ -32,15 +32,15 @@ export default [
     title: `Luxury flat`,
     rating: 5,
     entire: `Private room`,
-    bedrooms: `1 Bedrooms`,
-    adults: `Max 2 adults`,
+    bedrooms: `1`,
+    adults: `1`,
     price: {
       value: `87`,
       type: `night`
     },
     inside: [`Wi-Fi`, `Shower`, `Fridge`, `Doorbell`],
     host: {
-      avatar: `img/avatar-angelina.jpg`,
+      avatar: `${AVATAR_URL}/${Math.random()}`,
       name: `Peter`,
       text: [`A modern and contemporary split level one bedroom apartment decorated to the highest of standards. If the landlord agrees to you having a pet, you may be required to pay a higher weekly rent.`]
     },
@@ -54,15 +54,15 @@ export default [
     title: `Wood and stone place`,
     rating: 3,
     entire: `Private room`,
-    bedrooms: `1 Bedrooms`,
-    adults: `Max 2 adults`,
+    bedrooms: `1`,
+    adults: `2`,
     price: {
       value: `310`,
       type: `night`
     },
     inside: [`Wi-Fi`, `Shower`, `Fridge`, `Doorbell`, `Heating`, `Coffee machine`, `Baby seat`],
     host: {
-      avatar: `img/avatar-angelina.jpg`,
+      avatar: `${AVATAR_URL}/${Math.random()}`,
       name: `Vasiliy`,
       text: [`A modern and contemporary split level one bedroom apartment decorated to the highest of standards. If the landlord agrees to you having a pet, you may be required to pay a higher weekly rent.`]
     },
@@ -76,17 +76,17 @@ export default [
     title: `Nice, cozy, warm big bed apartment`,
     rating: 2,
     entire: `Apartment`,
-    bedrooms: `1 Bedrooms`,
-    adults: `Max 2 adults`,
+    bedrooms: `2`,
+    adults: `4`,
     price: {
       value: `49.50`,
       type: `night`
     },
     inside: [`Wi-Fi`, `Shower`, `Fridge`, `Doorbell`],
     host: {
-      avatar: `img/avatar-angelina.jpg`,
+      avatar: `${AVATAR_URL}/${Math.random()}`,
       name: `Anonymous`,
-      text: [`Huge bed in bedroom`]
+      text: [`Huge bed in bedroom. My new roommate will have access to the common areas of the home, living room, kitchen and bathroom.  Ideally, I’m looking for someone to stay at least six months, a non smoker, and not to noisy.`, ` It’s a quiet area with plenty of street parking, so If you have a car, you can typically find parking right in front.  If not, we have local shops nearby and public transportation as well.  The room is furnished with bed, dresser and tv.  Cable tv and wifi included in rent.`]
     },
     reviews: [3, 1]
   },
