@@ -3,12 +3,28 @@ import React, {PureComponent} from 'react';
 class CommentForm extends PureComponent {
   constructor(props) {
     super(props);
+
+    this.state = {
+      rating: null,
+      comment: null
+    };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleSubmit(evt) {
+    evt.preventDefault();
+    this.setState({
+      rating: evt.target.rating.value,
+      comment: evt.target.review.value
+    });
+
+    evt.target.reset(); // reset form
   }
 
   render() {
-
     return (
-      <form className="reviews__form form" action="#" method="post">
+      <form className="reviews__form form" action="#" method="post" onSubmit={this.handleSubmit}>
         <label className="reviews__label form__label" htmlFor="review">Your review</label>
         <div className="reviews__rating-form form__rating">
           <input className="form__rating-input visually-hidden" name="rating" value="5" id="5-stars" type="radio" />
@@ -26,7 +42,7 @@ class CommentForm extends PureComponent {
           </label>
 
           <input className="form__rating-input visually-hidden" name="rating" value="3" id="3-stars" type="radio" />
-          <label htmlor="3-stars" className="reviews__rating-label form__rating-label" title="not bad">
+          <label htmlFor="3-stars" className="reviews__rating-label form__rating-label" title="not bad">
             <svg className="form__star-image" width="37" height="33">
               <use xlinkHref="#icon-star"></use>
             </svg>

@@ -10,10 +10,10 @@ class OfferList extends PureComponent {
       id: null,
     };
 
-    this.onCardMouseOver = this.onCardMouseOver.bind(this);
+    this.handleCardMouseOver = this.handleCardMouseOver.bind(this);
   }
 
-  onCardMouseOver(id) {
+  handleCardMouseOver(id) {
     this.setState({
       id
     });
@@ -24,7 +24,7 @@ class OfferList extends PureComponent {
 
     return (
       offers.map((offer)=> {
-        return <PlaceCard key={offer.id} offer={offer} onCardMouseOver={this.onCardMouseOver} />;
+        return <PlaceCard key={offer.id} offer={offer} onCardMouseOver={this.handleCardMouseOver} />;
       })
     );
   }

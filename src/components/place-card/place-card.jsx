@@ -27,7 +27,7 @@ class PlaceCard extends PureComponent {
       }
       }>
         <div className="cities__image-wrapper place-card__image-wrapper">
-          {mark}8
+          {mark}
           <Link to={`/offer/${offer.id}`}>
             <img className="place-card__image" src={`img/${offer.images[0]}`} width="260" height="200" alt="Place image" />
           </Link>
