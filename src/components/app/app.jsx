@@ -16,9 +16,11 @@ const App = ({placesCount, offers, reviews}) => {
         <Route exact path="/login">
           <Login />
         </Route>
-        <Route exact path="/favorites">
-          <Favorites />
-        </Route>
+        <Route exact path="/favorites"
+          render={()=> (
+            <Favorites offers={offers}/>
+          )}
+        />
         <Route exact path="/offer/:id"
           render={(serviceProp) => (
             <Offer offers={offers} reviews={reviews} serviceProp={serviceProp} />
