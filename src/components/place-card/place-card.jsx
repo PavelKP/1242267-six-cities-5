@@ -7,8 +7,7 @@ class PlaceCard extends PureComponent {
   }
 
   render() {
-    console.log(this.props);
-    const {offer} = this.props;
+    const {offer, onCardMouseOver} = this.props;
 
     const mark = offer.mark
       ?
@@ -21,7 +20,11 @@ class PlaceCard extends PureComponent {
       : ``;
 
     return (
-      <article className="cities__place-card place-card">
+      <article className="cities__place-card place-card" onMouseOver={(evt) => {
+        evt.preventDefault();
+        onCardMouseOver(offer.id);
+      }
+      }>
         <div className="cities__image-wrapper place-card__image-wrapper">
           {mark}
           <a href="#">

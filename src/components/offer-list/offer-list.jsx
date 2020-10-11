@@ -5,6 +5,18 @@ import PlaceCard from '../place-card/place-card';
 class OfferList extends PureComponent {
   constructor(props) {
     super(props);
+
+    this.state = {
+      id: null,
+    };
+
+    this.onCardMouseOver = this.onCardMouseOver.bind(this);
+  }
+
+  onCardMouseOver(id) {
+    this.setState({
+      id
+    });
   }
 
   render() {
@@ -12,7 +24,7 @@ class OfferList extends PureComponent {
 
     return (
       offers.map((offer)=> {
-        return <PlaceCard key={offer.id} offer={offer} />;
+        return <PlaceCard key={offer.id} offer={offer} onCardMouseOver={this.onCardMouseOver} />;
       })
     );
   }

@@ -19,9 +19,11 @@ const App = ({placesCount, offers, reviews}) => {
         <Route exact path="/favorites">
           <Favorites />
         </Route>
-        <Route exact path="/offer/:id">
-          <Offer />
-        </Route>
+        <Route exact path="/offer/:id"
+          render={(serviceProp) => (
+            <Offer offers={offers} reviews={reviews} serviceProp={serviceProp} />
+          )}
+        />
       </Switch>
     </BrowserRouter>
   );
