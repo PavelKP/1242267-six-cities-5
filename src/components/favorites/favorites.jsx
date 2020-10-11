@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import PropTypesObject from '../../prop-types/prop-types';
 
 const Favorites = (props) => {
   const locations = new Set();
@@ -50,13 +51,13 @@ const Favorites = (props) => {
                     </div>
                   </div>
                   <div className="favorites__places">
-                    {bookmarked.map((offer) => {
+                    {bookmarked.map((offer, j) => {
                       if (offer.location === city) {
                         return (
-                          <article className="favorites__card place-card">
+                          <article className="favorites__card place-card" key={`favorite-card-${j}`}>
                             <div className="favorites__image-wrapper place-card__image-wrapper">
                               <a href="#">
-                                <img className="place-card__image" src={offer.images[0]} width="150" height="110" alt="Place image" />
+                                <img className="place-card__image" src={`img/${offer.images[0]}`} width="150" height="110" alt="Place image" />
                               </a>
                             </div>
                             <div className="favorites__card-info place-card__info">
@@ -98,12 +99,14 @@ const Favorites = (props) => {
         </div>
       </main>
       <footer className="footer container">
-        <a className="footer__logo-link" href="main.html">
+        <Link to="/" className="footer__logo-link" href="main.html">
           <img className="footer__logo" src="img/logo.svg" alt="6 cities logo" width="64" height="33" />
-        </a>
+        </Link>
       </footer>
     </div>
   );
 };
+
+Favorites.propTypes = PropTypesObject;
 
 export default Favorites;

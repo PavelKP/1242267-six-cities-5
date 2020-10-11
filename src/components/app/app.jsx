@@ -1,6 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import {offersPropTypes, reviewsPropTypes, placesCountPropTypes} from '../../prop-types/prop-types';
+
 import Main from '../main/main';
 import Login from '../login/login';
 import Favorites from '../favorites/favorites';
@@ -32,7 +33,9 @@ const App = ({placesCount, offers, reviews}) => {
 };
 
 App.propTypes = {
-  placesCount: PropTypes.number.isRequired
+  placesCount: placesCountPropTypes.placesCount,
+  offers: offersPropTypes.offers,
+  reviews: reviewsPropTypes.reviews,
 };
 
 export default App;
