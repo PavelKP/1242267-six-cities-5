@@ -4,7 +4,7 @@ const AVATAR_URL = `https://api.adorable.io/avatars/74`;
 export default [
   {
     id: 0,
-    images: [`img/room.jpg`, `img/apartment-01.jpg`, `img/apartment-02.jpg`, `img/apartment-03.jpg`, `img/studio-01.jpg`, `img/apartment-01.jpg`],
+    images: [`room.jpg`, `apartment-01.jpg`, `apartment-02.jpg`, `apartment-03.jpg`, `studio-01.jpg`, `apartment-01.jpg`],
     mark: ``,
     isBookmarked: true,
     title: `Beautiful \& luxurious studio at great location`,
@@ -27,7 +27,7 @@ export default [
   },
   {
     id: 1,
-    images: [`img/apartment-01.jpg`, `img/room.jpg`, `img/apartment-02.jpg`, `img/apartment-03.jpg`, `img/studio-01.jpg`, `img/apartment-01.jpg`],
+    images: [`apartment-01.jpg`, `room.jpg`, `apartment-02.jpg`, `apartment-03.jpg`, `studio-01.jpg`, `apartment-01.jpg`],
     mark: `Luxury`,
     isBookmarked: false,
     title: `Luxury flat`,
@@ -50,7 +50,7 @@ export default [
   },
   {
     id: 2,
-    images: [`img/apartment-02.jpg`, `img/room.jpg`, `img/apartment-01.jpg`, `img/apartment-03.jpg`, `img/studio-01.jpg`, `img/apartment-01.jpg`],
+    images: [`apartment-02.jpg`, `room.jpg`, `apartment-01.jpg`, `apartment-03.jpg`, `studio-01.jpg`, `apartment-01.jpg`],
     mark: ``,
     isBookmarked: true,
     title: `Wood and stone place`,
@@ -73,7 +73,7 @@ export default [
   },
   {
     id: 3,
-    images: [`img/room.jpg`, `img/apartment-01.jpg`, `img/apartment-02.jpg`, `img/apartment-03.jpg`, `img/studio-01.jpg`, `img/apartment-01.jpg`],
+    images: [`room.jpg`, `apartment-01.jpg`, `apartment-02.jpg`, `apartment-03.jpg`, `studio-01.jpg`, `apartment-01.jpg`],
     mark: `Premium`,
     isBookmarked: true,
     title: `Nice, cozy, warm big bed apartment`,

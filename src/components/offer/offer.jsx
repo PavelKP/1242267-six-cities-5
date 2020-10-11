@@ -66,7 +66,7 @@ class Offer extends PureComponent {
               <div className="property__gallery">
                 {offer.images.map((image, i)=> (
                   <div className="property__image-wrapper" key={`property-image-${i}`}>
-                    <img className="property__image" src={image} alt="Photo studio" />
+                    <img className="property__image" src={`img/${image}`} alt="Photo studio" />
                   </div>
                 ))}
               </div>
