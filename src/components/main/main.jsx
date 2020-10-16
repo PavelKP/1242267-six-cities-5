@@ -90,7 +90,7 @@ const Main = ({placesCount, offers}) => {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                <OfferList offers={offers}/>
+                <OfferList type={`main`} offers={offers}/>
               </div>
             </section>
             <div className="cities__right-section">

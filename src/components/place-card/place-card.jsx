@@ -3,8 +3,10 @@ import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import {offerPropTypes} from '../../prop-types/prop-types';
 
+const PlaceCard = (
+    {offer, onCardMouseOver, classArticle,
+      classImageWrapper, imageWidth, imageHeight}) => {
 
-const PlaceCard = ({offer, onCardMouseOver}) => {
   const mark = offer.mark &&
     (<div className="place-card__mark">
       <span>{offer.mark}</span>
@@ -13,14 +15,14 @@ const PlaceCard = ({offer, onCardMouseOver}) => {
   const bookmarked = offer.isBookmarked ? `place-card__bookmark-button--active` : ``;
 
   return (
-    <article className="cities__place-card place-card" onMouseOver={(evt) => {
+    <article className={`${classArticle} place-card`} onMouseOver={(evt) => {
       evt.preventDefault();
       onCardMouseOver(offer.id);
     }}>
-      <div className="cities__image-wrapper place-card__image-wrapper">
+      <div className={`${classImageWrapper} place-card__image-wrapper`}>
         {mark}
         <Link to={`/offer/${offer.id}`}>
-          <img className="place-card__image" src={`img/${offer.images[0]}`} width="260" height="200" alt="Place image" />
+          <img className="place-card__image" src={`img/${offer.images[0]}`} width={imageWidth} height={imageHeight} alt="Place image" />
         </Link>
       </div>
       <div className="place-card__info">
@@ -49,6 +51,11 @@ const PlaceCard = ({offer, onCardMouseOver}) => {
       </div>
     </article>
   );
+};
+
+PlaceCard.defaultProps = {
+  imageWidth: 260,
+  imageHeight: 200
 };
 
 PlaceCard.propTypes = {

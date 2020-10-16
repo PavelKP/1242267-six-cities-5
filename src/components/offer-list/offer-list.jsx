@@ -1,6 +1,27 @@
 import React, {PureComponent} from 'react';
 import {offersPropTypes} from '../../prop-types/prop-types';
-import PlaceCard from '../place-card/place-card';
+import PlaceCardMain from '../place-card/place-card-main';
+import PlaceCardNearby from '../place-card/place-card-nearby';
+import PlaceCardFavorites from '../place-card/place-card-favorites';
+
+const getComponentByType = (type, offer, handler) => {
+  switch (type) {
+    case `main`:
+      return <PlaceCardMain
+        key={offer.id} offer={offer}
+        onCardMouseOver={handler}/>;
+    case `nearby`:
+      return <PlaceCardNearby
+        key={offer.id} offer={offer}
+        onCardMouseOver={handler}/>;
+    case `favorites`:
+      return <PlaceCardFavorites
+        key={offer.id} offer={offer}
+        onCardMouseOver={handler}/>;
+    default:
+      return ``;
+  }
+};
 
 class OfferList extends PureComponent {
   constructor(props) {
@@ -20,11 +41,11 @@ class OfferList extends PureComponent {
   }
 
   render() {
-    const {offers} = this.props;
+    const {offers, type} = this.props;
 
     return (
       offers.map((offer)=> {
-        return <PlaceCard key={offer.id} offer={offer} onCardMouseOver={this.handleCardMouseOver} />;
+        return getComponentByType(type, offer, this.handleCardMouseOver);
       })
     );
   }
