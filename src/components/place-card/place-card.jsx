@@ -61,6 +61,10 @@ PlaceCard.defaultProps = {
 PlaceCard.propTypes = {
   offer: offerPropTypes.offer,
   onCardMouseOver: PropTypes.func.isRequired,
+  classArticle: PropTypes.string.isRequired,
+  classImageWrapper: PropTypes.string.isRequired,
+  imageWidth: PropTypes.number.isRequired,
+  imageHeight: PropTypes.number.isRequired
 };
 
 export default PlaceCard;

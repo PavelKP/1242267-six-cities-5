@@ -1,4 +1,5 @@
 import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
 import {offersPropTypes} from '../../prop-types/prop-types';
 import PlaceCardMain from '../place-card/place-card-main';
 import PlaceCardNearby from '../place-card/place-card-nearby';
@@ -52,6 +53,7 @@ class OfferList extends PureComponent {
 }
 
 OfferList.propTypes = {
+  type: PropTypes.string.isRequired,
   offers: offersPropTypes.offers,
 };
 
