@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Redirect} from 'react-router-dom';
+import {Redirect, Link} from 'react-router-dom';
 import moment from 'moment';
-import {Link} from 'react-router-dom';
 import CommentForm from '../comment-form/comment-form';
 import OfferList from '../offer-list/offer-list';
 import {offersPropTypes, reviewsPropTypes} from '../../prop-types/prop-types';

@@ -24,10 +24,7 @@ export const offerPropTypes = {
     }),
     reviews: arrayOf(PropTypes.number.isRequired).isRequired,
     location: PropTypes.string.isRequired,
-    coordinates: PropTypes.shape({
-      x: PropTypes.string.isRequired,
-      y: PropTypes.string.isRequired
-    })
+    coordinates: arrayOf(PropTypes.string.isRequired).isRequired
   })
 };
 

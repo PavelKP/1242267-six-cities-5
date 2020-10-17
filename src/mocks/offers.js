@@ -25,7 +25,7 @@ export default [
     },
     reviews: [0],
     location: `Amsterdam`,
-    coordinates: {x: `52.3909553943508`, y: `4.85309666406198`}
+    coordinates: [`52.3909553943508`, `4.85309666406198`]
   },
   {
     id: 1,
@@ -49,7 +49,7 @@ export default [
     },
     reviews: [0, 1],
     location: `Amsterdam`,
-    coordinates: {x: `52.369553943508`, y: `4.85309666406198`}
+    coordinates: [`52.369553943508`, `4.85309666406198`]
   },
   {
     id: 2,
@@ -73,7 +73,7 @@ export default [
     },
     reviews: [2, 3],
     location: `Amsterdam`,
-    coordinates: {x: `52.3909553943508`, y: `4.929309666406198`}
+    coordinates: [`52.3909553943508`, `4.929309666406198`]
   },
   {
     id: 3,
@@ -97,6 +97,6 @@ export default [
     },
     reviews: [3, 1],
     location: `Amsterdam`,
-    coordinates: {x: `52.3809553943508`, y: `4.939309666406198`}
+    coordinates: [`52.3809553943508`, `4.939309666406198`]
   },
 ];
