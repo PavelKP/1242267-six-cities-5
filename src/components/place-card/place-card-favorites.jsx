@@ -8,8 +8,8 @@ const PlaceCardFavorites = (props) => {
     <PlaceCard
       classArticle={`favorites__card`}
       classImageWrapper={`favorites__image-wrapper`}
-      imageWidth = {150}
-      imageHeight = {110}
+      imageWidth={150}
+      imageHeight={110}
       {...props} />
   );
 };

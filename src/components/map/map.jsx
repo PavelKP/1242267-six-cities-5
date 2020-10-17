@@ -14,13 +14,11 @@ const icon = Leaflet.icon({
 class Map extends React.PureComponent {
   constructor(props) {
     super(props);
-
-    this.props = props;
   }
 
-  renderMarker(map, marker) {
+  renderMarker(map, coordinates) {
     Leaflet
-    .marker(marker, {icon})
+    .marker(coordinates, {icon})
     .addTo(map);
   }
 
