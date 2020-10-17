@@ -21,6 +21,18 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                 },
+            },
+            {
+                test: /\.css$/i,
+                use: [
+                    'style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            url: false
+                        }
+                    }
+                ]
             }
         ],
     },
@@ -30,6 +42,6 @@ module.exports = {
     devtool: 'source-map',
     plugins: [
       // To strip all locales except “en”
-      new MomentLocalesPlugin()
+        new MomentLocalesPlugin()
     ]
 };

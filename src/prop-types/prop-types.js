@@ -23,7 +23,8 @@ export const offerPropTypes = {
       text: arrayOf(PropTypes.string.isRequired).isRequired
     }),
     reviews: arrayOf(PropTypes.number.isRequired).isRequired,
-    location: PropTypes.string.isRequired
+    location: PropTypes.string.isRequired,
+    coordinates: arrayOf(PropTypes.string.isRequired).isRequired
   })
 };
 

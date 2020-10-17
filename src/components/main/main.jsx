@@ -1,6 +1,7 @@
 import React from 'react';
-import OfferList from '../offer-list/offer-list';
 import {Link} from 'react-router-dom';
+import OfferList from '../offer-list/offer-list';
+import Map from '../map/map';
 import {offersPropTypes, placesCountPropTypes} from '../../prop-types/prop-types';
 
 
@@ -90,11 +91,11 @@ const Main = ({placesCount, offers}) => {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                <OfferList offers={offers}/>
+                <OfferList type={`main`} offers={offers}/>
               </div>
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"></section>
+              <Map className="cities__map" offers={offers}/>
             </div>
           </div>
         </div>

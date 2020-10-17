@@ -24,7 +24,8 @@ export default [
       text: [`A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`, `An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.`]
     },
     reviews: [0],
-    location: `Amsterdam`
+    location: `Amsterdam`,
+    coordinates: [`52.3909553943508`, `4.85309666406198`]
   },
   {
     id: 1,
@@ -47,7 +48,8 @@ export default [
       text: [`A modern and contemporary split level one bedroom apartment decorated to the highest of standards. If the landlord agrees to you having a pet, you may be required to pay a higher weekly rent.`]
     },
     reviews: [0, 1],
-    location: `Brussels`
+    location: `Amsterdam`,
+    coordinates: [`52.369553943508`, `4.85309666406198`]
   },
   {
     id: 2,
@@ -70,7 +72,8 @@ export default [
       text: [`A modern and contemporary split level one bedroom apartment decorated to the highest of standards. If the landlord agrees to you having a pet, you may be required to pay a higher weekly rent.`]
     },
     reviews: [2, 3],
-    location: `Hamburg`
+    location: `Amsterdam`,
+    coordinates: [`52.3909553943508`, `4.929309666406198`]
   },
   {
     id: 3,
@@ -93,6 +96,7 @@ export default [
       text: [`Huge bed in bedroom. My new roommate will have access to the common areas of the home, living room, kitchen and bathroom.  Ideally, I’m looking for someone to stay at least six months, a non smoker, and not to noisy.`, ` It’s a quiet area with plenty of street parking, so If you have a car, you can typically find parking right in front.  If not, we have local shops nearby and public transportation as well.  The room is furnished with bed, dresser and tv.  Cable tv and wifi included in rent.`]
     },
     reviews: [3, 1],
-    location: `Hamburg`
+    location: `Amsterdam`,
+    coordinates: [`52.3809553943508`, `4.939309666406198`]
   },
 ];
