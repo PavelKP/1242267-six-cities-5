@@ -4,8 +4,11 @@ import {Redirect, Link} from 'react-router-dom';
 import CommentForm from '../comment-form/comment-form';
 import OfferList from '../offer-list/offer-list';
 import Header from '../header/header';
+import Map from '../map/map';
 import {offersPropTypes, reviewsPropTypes} from '../../prop-types/prop-types';
 import ReviewList from '../review-list/review-list';
+
+const NEARBY_AMOUNT = 3;
 
 const Offer = ({offers, reviews, serviceProp}) => {
   const offerId = serviceProp.match.params.id;
@@ -124,14 +127,14 @@ const Offer = ({offers, reviews, serviceProp}) => {
               </section>
             </div>
           </div>
-          <section className="property__map map"></section>
+          <Map className="property__map map" offers={offers.slice(0, NEARBY_AMOUNT)}/>
         </section>
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
             <div className="near-places__list places__list">
               {/* TEMPORARY SLICE OF THE ARRAY */}
-              <OfferList type={`nearby`} offers={offers.slice(0, 3)}/>
+              <OfferList type={`nearby`} offers={offers.slice(0, NEARBY_AMOUNT)}/>
             </div>
           </section>
         </div>
