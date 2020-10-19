@@ -22,7 +22,7 @@ export const offerPropTypes = {
       name: PropTypes.string.isRequired,
       text: arrayOf(PropTypes.string.isRequired).isRequired
     }),
-    reviews: arrayOf(PropTypes.number.isRequired).isRequired,
+    reviewsId: arrayOf(PropTypes.number.isRequired).isRequired,
     location: PropTypes.string.isRequired,
     coordinates: arrayOf(PropTypes.string.isRequired).isRequired
   })
@@ -32,15 +32,19 @@ export const offersPropTypes = {
   offers: arrayOf(offerPropTypes.offer)
 };
 
-export const reviewsPropTypes = {
-  reviews: arrayOf(exact({
+export const oneReviewPropTypes = {
+  review: exact({
     id: PropTypes.number.isRequired,
     avatar: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     rating: PropTypes.number.isRequired,
     text: PropTypes.string.isRequired,
     date: PropTypes.object.isRequired,
-  })).isRequired
+  }).isRequired
+};
+
+export const reviewsPropTypes = {
+  reviews: arrayOf(oneReviewPropTypes.review)
 };
 
 export const placesCountPropTypes = {

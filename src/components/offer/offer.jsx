@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Redirect, Link} from 'react-router-dom';
-import moment from 'moment';
 import CommentForm from '../comment-form/comment-form';
 import OfferList from '../offer-list/offer-list';
 import Header from '../header/header';
 import {offersPropTypes, reviewsPropTypes} from '../../prop-types/prop-types';
+import ReviewList from '../review-list/review-list';
 
 const Offer = ({offers, reviews, serviceProp}) => {
   const offerId = serviceProp.match.params.id;
@@ -115,34 +115,11 @@ const Offer = ({offers, reviews, serviceProp}) => {
                 </div>
               </div>
               <section className="property__reviews reviews">
-                <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{offer.reviews.length}</span></h2>
-                <ul className="reviews__list">
-                  {offer.reviews.map((reviewId) => (
-                    <li className="reviews__item" key={`review-${reviewId}`}>
-                      <div className="reviews__user user">
-                        <div className="reviews__avatar-wrapper user__avatar-wrapper">
-                          <img className="reviews__avatar user__avatar" src={reviews[reviewId].avatar} width="54" height="54" alt="Reviews avatar" />
-                        </div>
-                        <span className="reviews__user-name">
-                          {reviews[reviewId].name}
-                        </span>
-                      </div>
-                      <div className="reviews__info">
-                        <div className="reviews__rating rating">
-                          <div className="reviews__stars rating__stars">
-                            <span></span>
-                            <span className="visually-hidden">Rating</span>
-                          </div>
-                        </div>
-                        <p className="reviews__text">
-                          {reviews[reviewId].text}
-                        </p>
-                        <time className="reviews__time" dateTime="2019-04-24">{moment(reviews[reviewId].date).format(`MMMM YYYY`)}</time>
-                      </div>
-                    </li>
-                  ))
-                  }
-                </ul>
+                <ReviewList reviewsId={offer.reviewsId} reviews={reviews}>
+                  <h2 className="reviews__title">Reviews &middot;
+                    <span className="reviews__amount">{offer.reviewsId.length}</span>
+                  </h2>
+                </ReviewList>
                 <CommentForm />
               </section>
             </div>
