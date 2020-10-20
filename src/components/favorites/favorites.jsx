@@ -1,7 +1,10 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import OfferList from '../offer-list/offer-list';
+import Header from '../header/header';
 import {offersPropTypes} from '../../prop-types/prop-types';
+import {CardType} from '../../const';
+
 
 const Favorites = (props) => {
   const locations = new Set();
@@ -14,28 +17,11 @@ const Favorites = (props) => {
 
   return (
     <div className="page">
-      <header className="header">
-        <div className="container">
-          <div className="header__wrapper">
-            <div className="header__left">
-              <Link to={`/`} className="header__logo-link" href="main.html">
-                <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width="81" height="41" />
-              </Link>
-            </div>
-            <nav className="header__nav">
-              <ul className="header__nav-list">
-                <li className="header__nav-item user">
-                  <a className="header__nav-link header__nav-link--profile" href="#">
-                    <div className="header__avatar-wrapper user__avatar-wrapper">
-                    </div>
-                    <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
-                  </a>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-      </header>
+      <Header>
+        <Link to={`/`} className="header__logo-link" href="main.html">
+          <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width="81" height="41" />
+        </Link>
+      </Header>
 
       <main className="page__main page__main--favorites">
         <div className="page__favorites-container container">
@@ -52,7 +38,7 @@ const Favorites = (props) => {
                     </div>
                   </div>
                   <div className="favorites__places">
-                    <OfferList type={`favorites`} offers={bookmarked.filter((offer) => offer.location === city)}/>
+                    <OfferList type={CardType.FAVORITES} offers={bookmarked.filter((offer) => offer.location === city)}/>
                   </div>
                 </li>
               ))}
