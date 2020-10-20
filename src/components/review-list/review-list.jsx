@@ -18,7 +18,7 @@ const ReviewList = ({children, reviewsId, reviews}) => {
 };
 
 ReviewList.propTypes = {
-  children: PropTypes.object,
+  children: PropTypes.element,
   reviews: reviewsPropTypes.reviews,
   reviewsId: arrayOf(PropTypes.number),
 };

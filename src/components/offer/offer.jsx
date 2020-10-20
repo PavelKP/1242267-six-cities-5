@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Redirect, Link} from 'react-router-dom';
 import CommentForm from '../comment-form/comment-form';
+import withStateCommentForm from '../comment-form/withState';
 import OfferList from '../offer-list/offer-list';
 import Header from '../header/header';
 import Map from '../map/map';
@@ -9,6 +10,8 @@ import {offersPropTypes, reviewsPropTypes} from '../../prop-types/prop-types';
 import ReviewList from '../review-list/review-list';
 
 const NEARBY_AMOUNT = 3;
+
+const CommentFormWrapped = withStateCommentForm(CommentForm);
 
 const Offer = ({offers, reviews, serviceProp}) => {
   const offerId = serviceProp.match.params.id;
@@ -123,7 +126,7 @@ const Offer = ({offers, reviews, serviceProp}) => {
                     <span className="reviews__amount">{offer.reviewsId.length}</span>
                   </h2>
                 </ReviewList>
-                <CommentForm />
+                <CommentFormWrapped />
               </section>
             </div>
           </div>
