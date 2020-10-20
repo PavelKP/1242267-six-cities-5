@@ -4,7 +4,7 @@ import OfferList from '../offer-list/offer-list';
 import Map from '../map/map';
 import Header from '../header/header';
 import {offersPropTypes, placesCountPropTypes} from '../../prop-types/prop-types';
-
+import {CardType} from '../../const';
 
 const Main = ({placesCount, offers}) => {
 
@@ -75,7 +75,7 @@ const Main = ({placesCount, offers}) => {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                <OfferList type={`main`} offers={offers}/>
+                <OfferList type={CardType.MAIN} offers={offers}/>
               </div>
             </section>
             <div className="cities__right-section">

@@ -4,18 +4,19 @@ import {offersPropTypes} from '../../prop-types/prop-types';
 import PlaceCardMain from '../place-card/place-card-main';
 import PlaceCardNearby from '../place-card/place-card-nearby';
 import PlaceCardFavorites from '../place-card/place-card-favorites';
+import {CardType} from '../../const';
 
 const getComponentByType = (type, offer, handler) => {
   switch (type) {
-    case `main`:
+    case CardType.MAIN:
       return <PlaceCardMain
         key={offer.id} offer={offer}
         onCardMouseOver={handler}/>;
-    case `nearby`:
+    case CardType.NEARBY:
       return <PlaceCardNearby
         key={offer.id} offer={offer}
         onCardMouseOver={handler}/>;
-    case `favorites`:
+    case CardType.FAVORITES:
       return <PlaceCardFavorites
         key={offer.id} offer={offer}
         onCardMouseOver={handler}/>;

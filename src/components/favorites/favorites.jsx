@@ -3,6 +3,8 @@ import {Link} from 'react-router-dom';
 import OfferList from '../offer-list/offer-list';
 import Header from '../header/header';
 import {offersPropTypes} from '../../prop-types/prop-types';
+import {CardType} from '../../const';
+
 
 const Favorites = (props) => {
   const locations = new Set();
@@ -36,7 +38,7 @@ const Favorites = (props) => {
                     </div>
                   </div>
                   <div className="favorites__places">
-                    <OfferList type={`favorites`} offers={bookmarked.filter((offer) => offer.location === city)}/>
+                    <OfferList type={CardType.FAVORITES} offers={bookmarked.filter((offer) => offer.location === city)}/>
                   </div>
                 </li>
               ))}

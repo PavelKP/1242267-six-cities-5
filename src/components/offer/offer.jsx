@@ -8,6 +8,7 @@ import Header from '../header/header';
 import Map from '../map/map';
 import {offersPropTypes, reviewsPropTypes} from '../../prop-types/prop-types';
 import ReviewList from '../review-list/review-list';
+import {CardType} from '../../const';
 
 const NEARBY_AMOUNT = 3;
 
@@ -137,7 +138,7 @@ const Offer = ({offers, reviews, serviceProp}) => {
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
             <div className="near-places__list places__list">
               {/* TEMPORARY SLICE OF THE ARRAY */}
-              <OfferList type={`nearby`} offers={offers.slice(0, NEARBY_AMOUNT)}/>
+              <OfferList type={CardType.NEARBY} offers={offers.slice(0, NEARBY_AMOUNT)}/>
             </div>
           </section>
         </div>
