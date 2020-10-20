@@ -13,11 +13,13 @@ const withState = (Component) => {
       this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleSubmit(evt) {
+    handleSubmit(evt, form) {
       evt.preventDefault();
+      const formData = new FormData(form);
+
       this.setState({
-        rating: evt.target.rating.value,
-        comment: evt.target.review.value
+        rating: formData.get(`rating`),
+        comment: formData.get(`review`),
       });
 
       evt.target.reset(); // reset form
