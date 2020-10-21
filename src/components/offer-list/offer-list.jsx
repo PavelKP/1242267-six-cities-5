@@ -5,6 +5,8 @@ import PlaceCardMain from '../place-card/place-card-main';
 import PlaceCardNearby from '../place-card/place-card-nearby';
 import PlaceCardFavorites from '../place-card/place-card-favorites';
 import {CardType} from '../../const';
+import {connect} from 'react-redux';
+import {ActionCreator} from '../store/action';
 
 const getComponentByType = (type, offer, handler) => {
   switch (type) {
@@ -43,19 +45,33 @@ class OfferList extends PureComponent {
   }
 
   render() {
-    const {offers, type} = this.props;
+    const {type, city} = this.props;
+    const offersFiltered = this.props.offers.filter((offer) => offer.location === city);
 
     return (
-      offers.map((offer)=> {
+      offersFiltered.map((offer)=> {
         return getComponentByType(type, offer, this.handleCardMouseOver);
       })
     );
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    offers: state.offers,
+    city: state.city
+  };
+};
+
+const mapDispatchToProps = () => {
+
+};
+
 OfferList.propTypes = {
   type: PropTypes.string.isRequired,
   offers: offersPropTypes.offers,
 };
 
-export default OfferList;
+export {OfferList};
+export default connect(mapStateToProps, mapDispatchToProps)(OfferList);
+
