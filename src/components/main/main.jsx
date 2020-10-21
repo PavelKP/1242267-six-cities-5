@@ -4,11 +4,12 @@ import OfferList from '../offer-list/offer-list';
 import Map from '../map/map';
 import Header from '../header/header';
 import CityList from '../city-list/city-list';
+import PlacesCount from '../places-count/places-count';
 import {offersPropTypes, placesCountPropTypes} from '../../prop-types/prop-types';
 import {CardType} from '../../const';
 import {cities} from '../../mocks/cities';
 
-const Main = ({placesCount, offers}) => {
+const Main = ({offers}) => {
 
   return (
     <div className="page page--gray page--main">
@@ -27,7 +28,7 @@ const Main = ({placesCount, offers}) => {
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{placesCount} places to stay in Amsterdam</b>
+              <PlacesCount />
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex="0">

@@ -1,4 +1,5 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import {offersPropTypes, reviewsPropTypes, placesCountPropTypes} from '../../prop-types/prop-types';
 
@@ -32,10 +33,17 @@ const App = ({placesCount, offers, reviews}) => {
   );
 };
 
+const mapStateToProps = (state) => ({
+  placesCount: state.placesCount,
+  offers: state.offers,
+  reviews: state.reviews
+});
+
 App.propTypes = {
   placesCount: placesCountPropTypes.placesCount,
   offers: offersPropTypes.offers,
   reviews: reviewsPropTypes.reviews,
 };
 
-export default App;
+export {App};
+export default connect(mapStateToProps)(App);
