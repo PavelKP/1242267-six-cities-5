@@ -99,4 +99,28 @@ export default [
     location: `Amsterdam`,
     coordinates: [`52.3809553943508`, `4.939309666406198`]
   },
+  {
+    id: 4,
+    images: [`apartment-03.jpg`, `room.jpg`, `apartment-01.jpg`, `apartment-02.jpg`, `studio-01.jpg`, `apartment-01.jpg`],
+    mark: ``,
+    isBookmarked: false,
+    title: `Apartment in Paris`,
+    rating: 4,
+    entire: `Apartment`,
+    bedrooms: `1`,
+    adults: `2`,
+    price: {
+      value: `999`,
+      type: `night`
+    },
+    inside: [`Bed`, `Window`, `Light`, `Chair`],
+    host: {
+      avatar: getAvatar(Math.random()),
+      name: `Nazir`,
+      text: [`Only bed and chair. Only bed and chair. Only bed and chair. Only bed and chair. Only bed and chair. Only bed and chair.`]
+    },
+    reviewsId: [3, 1],
+    location: `Paris`,
+    coordinates: [`48.8534`, `2.3488`]
+  },
 ];

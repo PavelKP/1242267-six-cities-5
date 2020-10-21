@@ -63,15 +63,11 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = () => {
-
-};
-
 OfferList.propTypes = {
   type: PropTypes.string.isRequired,
   offers: offersPropTypes.offers,
 };
 
 export {OfferList};
-export default connect(mapStateToProps, mapDispatchToProps)(OfferList);
+export default connect(mapStateToProps)(OfferList);
 

@@ -6,7 +6,6 @@ import Header from '../header/header';
 import CityList from '../city-list/city-list';
 import {offersPropTypes, placesCountPropTypes} from '../../prop-types/prop-types';
 import {CardType} from '../../const';
-
 import {cities} from '../../mocks/cities';
 
 const Main = ({placesCount, offers}) => {
