@@ -1,9 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {ActionCreator} from '../store/action';
+import {cityPropTypes} from '../../prop-types/prop-types';
 
 const CityItem = ({city, setCity, activeClass}) => {
-
   const handleCityClick = (evt) => {
     evt.preventDefault();
     setCity(city);
@@ -18,6 +19,12 @@ const CityItem = ({city, setCity, activeClass}) => {
       </a>
     </li>
   );
+};
+
+CityItem.propTypes = {
+  city: cityPropTypes.isRequired,
+  setCity: PropTypes.func.isRequired,
+  activeClass: PropTypes.string
 };
 
 const mapDispatchToProps = (dispatch) => ({

@@ -5,10 +5,9 @@ import Map from '../map/map';
 import Header from '../header/header';
 import CityList from '../city-list/city-list';
 import PlacesCount from '../places-count/places-count';
-import {offersPropTypes, placesCountPropTypes} from '../../prop-types/prop-types';
 import {CardType} from '../../const';
 
-const Main = ({offers}) => {
+const Main = () => {
 
   return (
     <div className="page page--gray page--main">
@@ -55,11 +54,6 @@ const Main = ({offers}) => {
       </main>
     </div>
   );
-};
-
-Main.propTypes = {
-  placesCount: placesCountPropTypes.placesCount,
-  offers: offersPropTypes.offers,
 };
 
 export default Main;
