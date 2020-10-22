@@ -1,14 +1,14 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-const PlacesCount = ({placesCount, city}) => {
+const PlacesCount = ({filteredOffers, city}) => {
   return (
-    <b className="places__found">{placesCount} places to stay in {city}</b>
+    <b className="places__found">{filteredOffers.length} places to stay in {city.name}</b>
   );
 };
 
 const mapStateToProps = (state) => ({
-  placesCount: state.placesCount,
+  filteredOffers: state.filteredOffers,
   city: state.city
 });
 

@@ -1,6 +1,6 @@
 export const ActionType = {
   SET_CITY: `SET_CITY`,
-  SET_PLACES_COUNT: `SET_PLACES_COUNT`
+  SET_FILTERED_OFFERS: `SET_FILTERED_OFFERS`
 };
 
 export const ActionCreator = {
@@ -10,10 +10,10 @@ export const ActionCreator = {
       payload: city
     };
   },
-  setPlacesCount(count) {
+  setFilteredOffers(offers) {
     return {
-      type: ActionType.SET_PLACES_COUNT,
-      payload: count
+      type: ActionType.SET_FILTERED_OFFERS,
+      payload: offers
     };
   }
 };

@@ -5,14 +5,14 @@ import reviews from '../../mocks/reviews';
 import cities from '../../mocks/cities';
 
 const DEFAULT_CITY = cities[0];
-const placesCount = offers.filter((offer) => offer.location === DEFAULT_CITY).length;
+const filteredOffers = offers.filter((offer) => offer.location === DEFAULT_CITY.name);
 
 const initialState = {
   city: DEFAULT_CITY,
   cities,
   offers,
   reviews,
-  placesCount
+  filteredOffers
 };
 
 const reducer = (state = initialState, action) => {
@@ -21,9 +21,9 @@ const reducer = (state = initialState, action) => {
       return extend(state, {
         city: action.payload
       });
-    case ActionType.SET_PLACES_COUNT:
+    case ActionType.SET_FILTERED_OFFERS:
       return extend(state, {
-        placesCount: action.payload
+        filteredOffers: action.payload
       });
   }
 

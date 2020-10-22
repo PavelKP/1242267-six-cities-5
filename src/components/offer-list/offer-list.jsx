@@ -45,10 +45,10 @@ class OfferList extends PureComponent {
   }
 
   render() {
-    const {type, city, setPlacesCount} = this.props;
-    const offersFiltered = this.props.offers.filter((offer) => offer.location === city);
+    const {type, city, setFilteredOffers} = this.props;
+    const offersFiltered = this.props.offers.filter((offer) => offer.location === city.name);
 
-    setPlacesCount(offersFiltered.length);
+    setFilteredOffers(offersFiltered);
 
     return (
       offersFiltered.map((offer)=> {
@@ -66,8 +66,8 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  setPlacesCount(count) {
-    dispatch(ActionCreator.setPlacesCount(count));
+  setFilteredOffers(offers) {
+    dispatch(ActionCreator.setFilteredOffers(offers));
   }
 });
 

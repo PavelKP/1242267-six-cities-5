@@ -14,7 +14,7 @@ const CityItem = ({city, setCity, activeClass}) => {
       <a className={`locations__item-link tabs__item ${activeClass}`}
         href="#"
         onClick={handleCityClick}>
-        <span>{city}</span>
+        <span>{city.name}</span>
       </a>
     </li>
   );

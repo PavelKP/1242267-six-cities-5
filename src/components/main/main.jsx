@@ -48,7 +48,7 @@ const Main = ({offers}) => {
               </div>
             </section>
             <div className="cities__right-section">
-              <Map className="cities__map" offers={offers}/>
+              <Map className="cities__map" />
             </div>
           </div>
         </div>

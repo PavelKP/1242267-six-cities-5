@@ -8,7 +8,7 @@ const CityList = ({cities, activeCity}) => {
     <section className="locations container">
       <ul className="locations__list tabs__list">
         {cities.map((city, i) => <CityItem
-          activeClass={city === activeCity && `tabs__item--active`}
+          activeClass={city.name === activeCity && `tabs__item--active`}
           city={city}
           key={`city-${i}`}/>)}
       </ul>
