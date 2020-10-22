@@ -3,8 +3,10 @@ import {connect} from 'react-redux';
 import {offersPropTypes, cityPropTypes} from '../../prop-types/prop-types';
 
 const PlacesCount = ({filteredOffers, city}) => {
+  const measure = filteredOffers.length === 1 ? `place` : `places`;
+
   return (
-    <b className="places__found">{filteredOffers.length} places to stay in {city.name}</b>
+    <b className="places__found">{filteredOffers.length} {measure} to stay in {city.name}</b>
   );
 };
 

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Redirect, Link} from 'react-router-dom';
 import CommentForm from '../comment-form/comment-form';
-import withStateCommentForm from '../comment-form/withState';
+import withStateCommentForm from '../../hocs/withState';
 import OfferList from '../offer-list/offer-list';
 import Header from '../header/header';
 import Map from '../map/map';

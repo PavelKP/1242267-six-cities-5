@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {offersPropTypes, cityPropTypes} from '../../prop-types/prop-types';
+import {offersPropTypes} from '../../prop-types/prop-types';
 import PlaceCardMain from '../place-card/place-card-main';
 import PlaceCardNearby from '../place-card/place-card-nearby';
 import PlaceCardFavorites from '../place-card/place-card-favorites';
@@ -44,7 +44,6 @@ class OfferList extends PureComponent {
 
   render() {
     const {type, offers} = this.props;
-    console.log(offers);
 
     return (
       offers.map((offer)=> {
@@ -56,8 +55,6 @@ class OfferList extends PureComponent {
 
 OfferList.propTypes = {
   type: PropTypes.string.isRequired,
-  city: cityPropTypes.isRequired,
-  setFilteredOffers: PropTypes.func.isRequired,
   offers: offersPropTypes.offers,
 };
 
