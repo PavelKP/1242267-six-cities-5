@@ -7,7 +7,6 @@ import CityList from '../city-list/city-list';
 import PlacesCount from '../places-count/places-count';
 import {offersPropTypes, placesCountPropTypes} from '../../prop-types/prop-types';
 import {CardType} from '../../const';
-import {cities} from '../../mocks/cities';
 
 const Main = ({offers}) => {
 
@@ -22,7 +21,7 @@ const Main = ({offers}) => {
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
-          <CityList cities={cities}/>
+          <CityList />
         </div>
         <div className="cities">
           <div className="cities__places-container container">

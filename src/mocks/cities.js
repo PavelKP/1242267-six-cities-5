@@ -1,3 +1,3 @@
 const cities = [`Paris`, `Cologne`, `Brussels`, `Amsterdam`, `Hamburg`, `Dusseldorf`];
 
-export {cities};
+export default cities;

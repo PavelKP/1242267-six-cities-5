@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {actionCreator} from '../store/action';
+import {ActionCreator} from '../store/action';
 
 const CityItem = ({city, setCity, activeClass}) => {
 
@@ -22,7 +22,7 @@ const CityItem = ({city, setCity, activeClass}) => {
 
 const mapDispatchToProps = (dispatch) => ({
   setCity(city) {
-    dispatch(actionCreator.setCity(city));
+    dispatch(ActionCreator.setCity(city));
   }
 });
 

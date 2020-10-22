@@ -3,7 +3,7 @@ export const ActionType = {
   SET_PLACES_COUNT: `SET_PLACES_COUNT`
 };
 
-export const actionCreator = {
+export const ActionCreator = {
   setCity(city) {
     return {
       type: ActionType.SET_CITY,

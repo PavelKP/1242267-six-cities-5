@@ -8,7 +8,7 @@ import Login from '../login/login';
 import Favorites from '../favorites/favorites';
 import Offer from '../offer/offer';
 
-const App = ({placesCount, offers, reviews}) => {
+const App = ({placesCount, offers, reviews, cities}) => {
   return (
     <BrowserRouter>
       <Switch>
@@ -36,7 +36,8 @@ const App = ({placesCount, offers, reviews}) => {
 const mapStateToProps = (state) => ({
   placesCount: state.placesCount,
   offers: state.offers,
-  reviews: state.reviews
+  reviews: state.reviews,
+  cities: state.cities
 });
 
 App.propTypes = {

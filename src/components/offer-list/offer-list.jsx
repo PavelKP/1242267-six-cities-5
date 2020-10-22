@@ -6,7 +6,7 @@ import PlaceCardNearby from '../place-card/place-card-nearby';
 import PlaceCardFavorites from '../place-card/place-card-favorites';
 import {CardType} from '../../const';
 import {connect} from 'react-redux';
-import {actionCreator} from '../store/action';
+import {ActionCreator} from '../store/action';
 
 const getComponentByType = (type, offer, handler) => {
   switch (type) {
@@ -67,7 +67,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
   setPlacesCount(count) {
-    dispatch(actionCreator.setPlacesCount(count));
+    dispatch(ActionCreator.setPlacesCount(count));
   }
 });
 
