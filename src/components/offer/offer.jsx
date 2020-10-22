@@ -131,14 +131,14 @@ const Offer = ({offers, reviews, serviceProp}) => {
               </section>
             </div>
           </div>
-          <Map className="property__map map" offers={offers.slice(0, NEARBY_AMOUNT - 1)}/>
+          <Map className="property__map map" offers={offers.slice(0, NEARBY_AMOUNT)}/>
         </section>
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
             <div className="near-places__list places__list">
               {/* TEMPORARY SLICE OF THE ARRAY */}
-              <OfferList type={CardType.NEARBY} offers={offers.slice(0, NEARBY_AMOUNT - 1)}/>
+              <OfferList type={CardType.NEARBY} offers={offers.slice(0, NEARBY_AMOUNT)}/>
             </div>
           </section>
         </div>

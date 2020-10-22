@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import OfferList from '../offer-list/offer-list';
 import Map from '../map/map';
@@ -6,8 +7,14 @@ import Header from '../header/header';
 import CityList from '../city-list/city-list';
 import PlacesCount from '../places-count/places-count';
 import {CardType} from '../../const';
+import {connect} from 'react-redux';
+import {ActionCreator} from '../store/action';
+import {offersPropTypes, cityPropTypes} from '../../prop-types/prop-types';
 
-const Main = () => {
+const Main = ({offers, city, setFilteredOffers}) => {
+
+  const offersFiltered = offers.filter((offer) => offer.location === city.name);
+  setFilteredOffers(offersFiltered);
 
   return (
     <div className="page page--gray page--main">
@@ -43,7 +50,7 @@ const Main = () => {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                <OfferList type={CardType.MAIN}/>
+                <OfferList type={CardType.MAIN} offers={offersFiltered}/>
               </div>
             </section>
             <div className="cities__right-section">
@@ -56,4 +63,24 @@ const Main = () => {
   );
 };
 
-export default Main;
+const mapStateToProps = (state) => {
+  return {
+    offers: state.offers,
+    city: state.city
+  };
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  setFilteredOffers(offers) {
+    dispatch(ActionCreator.setFilteredOffers(offers));
+  }
+});
+
+Main.propTypes = {
+  city: cityPropTypes.isRequired,
+  setFilteredOffers: PropTypes.func.isRequired,
+  offers: offersPropTypes.offers,
+};
+
+export {Main};
+export default connect(mapStateToProps, mapDispatchToProps)(Main);
