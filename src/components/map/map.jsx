@@ -1,7 +1,7 @@
 import React from 'react';
 import 'leaflet/dist/leaflet.css';
 import Leaflet from 'leaflet';
-import {offersPropTypes, cityPropTypes} from '../../prop-types/prop-types';
+import {offersPropTypes, offerPropTypes, cityPropTypes} from '../../prop-types/prop-types';
 import {connect} from 'react-redux';
 import propTypes from 'prop-types';
 
@@ -21,14 +21,16 @@ class Map extends React.PureComponent {
   }
 
   _init() {
+    const coordinates = this._getCoordinates();
+
     this._map = Leaflet.map(`map`, {
-      center: this.props.city.coordinates,
+      center: coordinates,
       zoom,
       zoomControl: false,
       marker: true
     });
 
-    this._map.setView(this.props.city.coordinates, zoom);
+    this._map.setView(coordinates, zoom);
 
     Leaflet
     .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
@@ -42,7 +44,7 @@ class Map extends React.PureComponent {
 
   _addPins() {
     this._markersGroup.clearLayers();
-    this.props.filteredOffers.forEach(this._renderMarker);
+    this._getOffers().forEach(this._renderMarker);
   }
 
   _renderMarker({coordinates}) {
@@ -52,13 +54,27 @@ class Map extends React.PureComponent {
 
   }
 
+  _getCoordinates() {
+    return this.props.currentOffer
+      ? this.props.currentOffer.coordinates
+      : this.props.city.coordinates;
+  }
+
+  _getOffers() {
+    const city = this.props.currentOffer
+      ? this.props.currentOffer.location
+      : this.props.city.name;
+
+    return this.props.offers.filter(({location}) => location === city);
+  }
+
   componentDidMount() {
     this._init();
   }
 
   componentDidUpdate() {
     this._addPins();
-    this._map.setView(this.props.city.coordinates, zoom);
+    this._map.setView(this._getCoordinates(), zoom);
   }
 
   render() {
@@ -67,12 +83,13 @@ class Map extends React.PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-  filteredOffers: state.filteredOffers,
+  offers: state.offers,
   city: state.city
 });
 
 Map.propTypes = {
-  filteredOffers: offersPropTypes.offers,
+  offers: offersPropTypes.offers,
+  currentOffer: offerPropTypes.offer,
   city: cityPropTypes.isRequired,
   className: propTypes.string.isRequired
 };

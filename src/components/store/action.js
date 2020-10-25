@@ -9,11 +9,5 @@ export const ActionCreator = {
       type: ActionType.SET_CITY,
       payload: city
     };
-  },
-  setFilteredOffers(offers) {
-    return {
-      type: ActionType.SET_FILTERED_OFFERS,
-      payload: offers
-    };
   }
 };

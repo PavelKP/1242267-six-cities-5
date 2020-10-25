@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import OfferList from '../offer-list/offer-list';
 import Map from '../map/map';
@@ -8,13 +7,11 @@ import CityList from '../city-list/city-list';
 import PlacesCount from '../places-count/places-count';
 import {CardType} from '../../const';
 import {connect} from 'react-redux';
-import {ActionCreator} from '../store/action';
 import {offersPropTypes, cityPropTypes} from '../../prop-types/prop-types';
 
-const Main = ({offers, city, setFilteredOffers}) => {
+const Main = ({offers, city}) => {
 
   const offersFiltered = offers.filter((offer) => offer.location === city.name);
-  setFilteredOffers(offersFiltered);
 
   return (
     <div className="page page--gray page--main">
@@ -33,7 +30,7 @@ const Main = ({offers, city, setFilteredOffers}) => {
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <PlacesCount />
+              <PlacesCount offersFiltered={offersFiltered}/>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex="0">
@@ -54,7 +51,7 @@ const Main = ({offers, city, setFilteredOffers}) => {
               </div>
             </section>
             <div className="cities__right-section">
-              <Map className="cities__map" />
+              <Map className="cities__map"/>
             </div>
           </div>
         </div>
@@ -70,17 +67,10 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  setFilteredOffers(offers) {
-    dispatch(ActionCreator.setFilteredOffers(offers));
-  }
-});
-
 Main.propTypes = {
   city: cityPropTypes.isRequired,
-  setFilteredOffers: PropTypes.func.isRequired,
   offers: offersPropTypes.offers,
 };
 
 export {Main};
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default connect(mapStateToProps)(Main);
