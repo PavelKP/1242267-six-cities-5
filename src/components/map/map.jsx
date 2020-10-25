@@ -5,7 +5,6 @@ import {offersPropTypes, cityPropTypes} from '../../prop-types/prop-types';
 import {connect} from 'react-redux';
 import propTypes from 'prop-types';
 
-
 const zoom = 12;
 const icon = Leaflet.icon({
   iconUrl: `img/pin.svg`,
@@ -17,45 +16,49 @@ class Map extends React.PureComponent {
     super(props);
 
     this._map = null;
+    this._markersGroup = null;
+    this._renderMarker = this._renderMarker.bind(this);
   }
 
-  _renderMarker(map, coordinates) {
-    Leaflet
-    .marker(coordinates, {icon})
-    .addTo(map);
-  }
-
-  _renderMap() {
-    const {filteredOffers, city} = this.props;
-    const coordinates = city.coordinates;
-
+  _init() {
     this._map = Leaflet.map(`map`, {
-      center: coordinates,
+      center: this.props.city.coordinates,
       zoom,
       zoomControl: false,
       marker: true
     });
 
-    this._map.setView(coordinates, zoom);
+    this._map.setView(this.props.city.coordinates, zoom);
 
     Leaflet
-      .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
-        attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
-      })
-      .addTo(this._map);
+    .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
+      attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
+    })
+    .addTo(this._map);
 
-    filteredOffers.forEach((offer) => {
-      this._renderMarker(this._map, offer.coordinates);
-    });
+    this._markersGroup = Leaflet.layerGroup().addTo(this._map);
+    this._addPins();
   }
 
-  componentDidUpdate() {
-    this._map.remove();
-    this._renderMap();
+  _addPins() {
+    this._markersGroup.clearLayers();
+    this.props.filteredOffers.forEach(this._renderMarker);
+  }
+
+  _renderMarker({coordinates}) {
+    Leaflet
+    .marker(coordinates, {icon})
+    .addTo(this._markersGroup);
+
   }
 
   componentDidMount() {
-    this._renderMap();
+    this._init();
+  }
+
+  componentDidUpdate() {
+    this._addPins();
+    this._map.setView(this.props.city.coordinates, zoom);
   }
 
   render() {
