@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Redirect, Link} from 'react-router-dom';
 import CommentForm from '../comment-form/comment-form';
-import withStateCommentForm from '../comment-form/withState';
+import withStateCommentForm from '../../hocs/withState';
 import OfferList from '../offer-list/offer-list';
 import Header from '../header/header';
 import Map from '../map/map';
@@ -16,27 +16,28 @@ const CommentFormWrapped = withStateCommentForm(CommentForm);
 
 const Offer = ({offers, reviews, serviceProp}) => {
   const offerId = serviceProp.match.params.id;
-  const offer = offers.find((offerCurrent) => offerCurrent.id === +offerId);
+  const currentOffer = offers.find((offerCurrent) => offerCurrent.id === +offerId);
+  const offersFiltered = offers.filter((offer) => offer.location === currentOffer.location);
 
-  if (!offer) {
+  if (!currentOffer) {
     return <Redirect to={`/`} />;
   }
 
-  const mark = offer.mark &&
+  const mark = currentOffer.mark &&
     <div className="property__mark">
-      <span>{offer.mark}</span>
+      <span>{currentOffer.mark}</span>
     </div>;
 
   /* Стиль есть только для вложенного элемента place-card__bookmark-icon*/
-  const bookmarked = offer.isBookmarked
+  const bookmarked = currentOffer.isBookmarked
     ? `property__bookmark-button--active`
     : ``;
-  const bedrooms = +offer.bedrooms <= 1
-    ? `${offer.bedrooms} Bedroom`
-    : `${offer.bedrooms} Bedrooms`;
-  const adults = +offer.adults <= 1
-    ? `Max ${offer.adults} adult`
-    : `Max ${offer.adults} adults`;
+  const bedrooms = +currentOffer.bedrooms <= 1
+    ? `${currentOffer.bedrooms} Bedroom`
+    : `${currentOffer.bedrooms} Bedrooms`;
+  const adults = +currentOffer.adults <= 1
+    ? `Max ${currentOffer.adults} adult`
+    : `Max ${currentOffer.adults} adults`;
 
   return (
     <div className="page">
@@ -50,7 +51,7 @@ const Offer = ({offers, reviews, serviceProp}) => {
         <section className="property">
           <div className="property__gallery-container container">
             <div className="property__gallery">
-              {offer.images.map((image, i)=> (
+              {currentOffer.images.map((image, i)=> (
                 <div className="property__image-wrapper" key={`property-image-${i}`}>
                   <img className="property__image" src={`img/${image}`} alt="Photo studio" />
                 </div>
@@ -62,7 +63,7 @@ const Offer = ({offers, reviews, serviceProp}) => {
               {mark}
               <div className="property__name-wrapper">
                 <h1 className="property__name">
-                  {offer.title}
+                  {currentOffer.title}
                 </h1>
                 <button className={`property__bookmark-button button ${bookmarked}`} type="button">
                   <svg className="place-card__bookmark-icon" width="31" height="33">
@@ -76,11 +77,11 @@ const Offer = ({offers, reviews, serviceProp}) => {
                   <span></span>
                   <span className="visually-hidden">Rating</span>
                 </div>
-                <span className="property__rating-value rating__value">{offer.rating}</span>
+                <span className="property__rating-value rating__value">{currentOffer.rating}</span>
               </div>
               <ul className="property__features">
                 <li className="property__feature property__feature--entire">
-                  {offer.entire}
+                  {currentOffer.entire}
                 </li>
                 <li className="property__feature property__feature--bedrooms">
                   {bedrooms}
@@ -90,13 +91,13 @@ const Offer = ({offers, reviews, serviceProp}) => {
                 </li>
               </ul>
               <div className="property__price">
-                <b className="property__price-value">&euro;{offer.price.value}</b>
-                <span className="property__price-text">&nbsp;{offer.price.type}</span>
+                <b className="property__price-value">&euro;{currentOffer.price.value}</b>
+                <span className="property__price-text">&nbsp;{currentOffer.price.type}</span>
               </div>
               <div className="property__inside">
                 <h2 className="property__inside-title">What&apos;s inside</h2>
                 <ul className="property__inside-list">
-                  {offer.inside.map((feature, i)=> (
+                  {currentOffer.inside.map((feature, i)=> (
                     <li className="property__inside-item" key={`property-inside-${i}`}>
                       {feature}
                     </li>
@@ -107,14 +108,14 @@ const Offer = ({offers, reviews, serviceProp}) => {
                 <h2 className="property__host-title">Meet the host</h2>
                 <div className="property__host-user user">
                   <div className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper">
-                    <img className="property__avatar user__avatar" src={offer.host.avatar} width="74" height="74" alt="Host avatar" />
+                    <img className="property__avatar user__avatar" src={currentOffer.host.avatar} width="74" height="74" alt="Host avatar" />
                   </div>
                   <span className="property__user-name">
-                    {offer.host.name}
+                    {currentOffer.host.name}
                   </span>
                 </div>
                 <div className="property__description">
-                  {offer.host.text.map((paragraph, i) =>(
+                  {currentOffer.host.text.map((paragraph, i) =>(
                     <p className="property__text" key={`property-paragraph-${i}`}>
                       {paragraph}
                     </p>
@@ -122,23 +123,25 @@ const Offer = ({offers, reviews, serviceProp}) => {
                 </div>
               </div>
               <section className="property__reviews reviews">
-                <ReviewList reviewsId={offer.reviewsId} reviews={reviews}>
+                <ReviewList reviewsId={currentOffer.reviewsId} reviews={reviews}>
                   <h2 className="reviews__title">Reviews &middot;
-                    <span className="reviews__amount">{offer.reviewsId.length}</span>
+                    <span className="reviews__amount">{currentOffer.reviewsId.length}</span>
                   </h2>
                 </ReviewList>
                 <CommentFormWrapped />
               </section>
             </div>
           </div>
-          <Map className="property__map map" offers={offers.slice(0, NEARBY_AMOUNT)}/>
+          <Map className="property__map map" currentOffer={currentOffer}/>
         </section>
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
             <div className="near-places__list places__list">
               {/* TEMPORARY SLICE OF THE ARRAY */}
-              <OfferList type={CardType.NEARBY} offers={offers.slice(0, NEARBY_AMOUNT)}/>
+              <OfferList
+                type={CardType.NEARBY}
+                offers={offersFiltered.slice(0, NEARBY_AMOUNT)}/>
             </div>
           </section>
         </div>

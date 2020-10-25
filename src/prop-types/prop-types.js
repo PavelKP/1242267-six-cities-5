@@ -47,7 +47,7 @@ export const reviewsPropTypes = {
   reviews: arrayOf(oneReviewPropTypes.review)
 };
 
-export const placesCountPropTypes = {
-  placesCount: PropTypes.number.isRequired,
-};
-
+export const cityPropTypes = exact({
+  name: PropTypes.string.isRequired,
+  coordinates: arrayOf(PropTypes.number.isRequired).isRequired
+});
