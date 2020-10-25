@@ -28,4 +28,4 @@ CityList.propTypes = {
 };
 
 export {CityList};
-export default connect(mapStateToProps, null)(CityList);
+export default connect(mapStateToProps)(CityList);
