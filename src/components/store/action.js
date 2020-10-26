@@ -1,6 +1,5 @@
 export const ActionType = {
-  SET_CITY: `SET_CITY`,
-  SET_FILTERED_OFFERS: `SET_FILTERED_OFFERS`
+  SET_CITY: `SET_CITY`
 };
 
 export const ActionCreator = {
