@@ -5,12 +5,14 @@ import reviews from '../../mocks/reviews';
 import cities from '../../mocks/cities';
 
 const DEFAULT_CITY = cities[0];
+const DEFAULT_FILTER = `popular`;
 
 const initialState = {
   city: DEFAULT_CITY,
   cities,
   offers,
   reviews,
+  activeFilter: DEFAULT_FILTER,
 };
 
 const reducer = (state = initialState, action) => {

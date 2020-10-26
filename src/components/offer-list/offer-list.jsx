@@ -6,7 +6,7 @@ import PlaceCardNearby from '../place-card/place-card-nearby';
 import PlaceCardFavorites from '../place-card/place-card-favorites';
 import {CardType} from '../../const';
 
-const getComponentByType = (type, offer, handler, offers) => {
+const getComponentByType = (type, offer, handler) => {
   switch (type) {
     case CardType.MAIN:
       return <PlaceCardMain
@@ -15,8 +15,7 @@ const getComponentByType = (type, offer, handler, offers) => {
     case CardType.NEARBY:
       return <PlaceCardNearby
         key={offer.id} offer={offer}
-        onCardMouseOver={handler}
-        filteredOffers = {offers}/>;
+        onCardMouseOver={handler}/>;
     case CardType.FAVORITES:
       return <PlaceCardFavorites
         key={offer.id} offer={offer}
@@ -48,7 +47,7 @@ class OfferList extends PureComponent {
 
     return (
       offers.map((offer)=> {
-        return getComponentByType(type, offer, this.handleCardMouseOver, offers);
+        return getComponentByType(type, offer, this.handleCardMouseOver);
       })
     );
   }
