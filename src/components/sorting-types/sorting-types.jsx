@@ -1,5 +1,6 @@
 import React, {PureComponent} from 'react';
 import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 import {ActionCreator} from '../store/action';
 
 const filterTypeToName = new Map([
@@ -79,6 +80,11 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(ActionCreator.setActiveFilter(filterName));
   }
 });
+
+SortingTypes.propTypes = {
+  setActiveFilter: PropTypes.func.isRequired,
+  activeFilter: PropTypes.string.isRequired,
+};
 
 export {SortingTypes};
 export default connect(mapStateToProps, mapDispatchToProps)(SortingTypes);

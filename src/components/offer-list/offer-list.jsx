@@ -1,10 +1,18 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 import {offersPropTypes} from '../../prop-types/prop-types';
 import PlaceCardMain from '../place-card/place-card-main';
 import PlaceCardNearby from '../place-card/place-card-nearby';
 import PlaceCardFavorites from '../place-card/place-card-favorites';
 import {CardType} from '../../const';
+
+const filterTypeToFunction = {
+  'popular': (offers) => offers,
+  'price-to-high': (offers) => offers.sort((a, b) => a.price.value - b.price.value),
+  'price-to-low': (offers) => offers.sort((a, b) => b.price.value - a.price.value),
+  'top-rated-first': (offers) => offers.sort((a, b) => b.rating - a.rating),
+};
 
 const getComponentByType = (type, offer, handler) => {
   switch (type) {
@@ -43,10 +51,11 @@ class OfferList extends PureComponent {
   }
 
   render() {
-    const {type, offers} = this.props;
+    const {type, offers, activeFilter} = this.props;
+    const sortedOffers = filterTypeToFunction[activeFilter](offers.slice());
 
     return (
-      offers.map((offer)=> {
+      sortedOffers.map((offer)=> {
         return getComponentByType(type, offer, this.handleCardMouseOver);
       })
     );
@@ -56,8 +65,13 @@ class OfferList extends PureComponent {
 OfferList.propTypes = {
   type: PropTypes.string.isRequired,
   offers: offersPropTypes.offers,
+  activeFilter: PropTypes.string.isRequired,
 };
 
-export default OfferList;
+const mapStatetoProps = (state) => ({
+  activeFilter: state.activeFilter
+});
 
+export {OfferList};
+export default connect(mapStatetoProps)(OfferList);
 
