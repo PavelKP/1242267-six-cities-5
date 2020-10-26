@@ -15,10 +15,15 @@ const PlaceCard = (
   const bookmarked = offer.isBookmarked ? `place-card__bookmark-button--active` : ``;
 
   return (
-    <article className={`${classArticle} place-card`} onMouseOver={(evt) => {
-      evt.preventDefault();
-      onCardMouseOver(offer.id);
-    }}>
+    <article className={`${classArticle} place-card`}
+      onMouseOver={(evt) => {
+        evt.preventDefault();
+        onCardMouseOver(offer.id);
+      }}
+      onMouseOut={(evt) => {
+        evt.preventDefault();
+        onCardMouseOver(null);
+      }}>
       <div className={`${classImageWrapper} place-card__image-wrapper`}>
         {mark}
         <Link to={`/offer/${offer.id}`}>

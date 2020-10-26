@@ -6,6 +6,7 @@ import cities from '../../mocks/cities';
 
 const DEFAULT_CITY = cities[0];
 const DEFAULT_SORTING = `popular`;
+const DEFAULT_HOVERED_CARD = null;
 
 const initialState = {
   city: DEFAULT_CITY,
@@ -13,6 +14,7 @@ const initialState = {
   offers,
   reviews,
   activeSorting: DEFAULT_SORTING,
+  hoveredCard: DEFAULT_HOVERED_CARD,
 };
 
 const reducer = (state = initialState, action) => {
@@ -24,6 +26,10 @@ const reducer = (state = initialState, action) => {
     case ActionType.SET_ACTIVE_SORTING:
       return extend(state, {
         activeSorting: action.payload
+      });
+    case ActionType.SET_HOVERED_CARD:
+      return extend(state, {
+        hoveredCard: action.payload
       });
     default:
       return state;

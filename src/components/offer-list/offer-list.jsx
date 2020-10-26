@@ -6,6 +6,7 @@ import PlaceCardMain from '../place-card/place-card-main';
 import PlaceCardNearby from '../place-card/place-card-nearby';
 import PlaceCardFavorites from '../place-card/place-card-favorites';
 import {CardType} from '../../const';
+import { ActionCreator } from '../store/action';
 
 const sortingTypeToFunction = {
   'popular': (offers) => offers,
@@ -37,17 +38,11 @@ class OfferList extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.state = {
-      id: null,
-    };
-
     this.handleCardMouseOver = this.handleCardMouseOver.bind(this);
   }
 
   handleCardMouseOver(id) {
-    this.setState({
-      id
-    });
+    this.props.setHoveredCard(id);
   }
 
   render() {
@@ -62,16 +57,23 @@ class OfferList extends PureComponent {
   }
 }
 
-OfferList.propTypes = {
-  type: PropTypes.string.isRequired,
-  offers: offersPropTypes.offers,
-  activeSorting: PropTypes.string.isRequired,
-};
-
 const mapStateToProps = (state) => ({
   activeSorting: state.activeSorting
 });
 
+const mapDispatchToProps = (dispatch) => ({
+  setHoveredCard(id) {
+    dispatch(ActionCreator.setHoveredCard(id));
+  }
+});
+
+OfferList.propTypes = {
+  type: PropTypes.string.isRequired,
+  offers: offersPropTypes.offers,
+  activeSorting: PropTypes.string.isRequired,
+  setHoveredCard: PropTypes.func.isRequired,
+};
+
 export {OfferList};
-export default connect(mapStateToProps)(OfferList);
+export default connect(mapStateToProps, mapDispatchToProps)(OfferList);
 
