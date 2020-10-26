@@ -5,21 +5,31 @@ class SortingTypes extends PureComponent {
     super();
 
     this.state = {
-      toggler: true
+      opened: false
     };
+
+    this._openMenuHandler = this._openMenuHandler.bind(this);
+  }
+
+  _openMenuHandler(evt) {
+    evt.preventDefault();
+    this.setState((state) => ({
+      opened: !state.opened
+    }));
   }
 
   render() {
     return (
       <form className="places__sorting" action="#" method="get">
         <span className="places__sorting-caption">Sort by</span>
-        <span className="places__sorting-type" tabIndex="0">
+        <span className="places__sorting-type" tabIndex="0" onClick={this._openMenuHandler}>
           Popular
           <svg className="places__sorting-arrow" width="7" height="4">
             <use xlinkHref="#icon-arrow-select"></use>
           </svg>
         </span>
-        <ul className="places__options places__options--custom places__options--opened">
+        <ul className={`places__options places__options--custom
+          ${this.state.opened && `places__options--opened`}`}>
           <li className="places__option places__option--active" tabIndex="0">Popular</li>
           <li className="places__option" tabIndex="0">Price: low to high</li>
           <li className="places__option" tabIndex="0">Price: high to low</li>
