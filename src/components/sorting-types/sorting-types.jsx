@@ -32,6 +32,9 @@ class SortingTypes extends PureComponent {
     evt.preventDefault();
     const filter = evt.target.dataset.filterType;
     this.props.setActiveFilter(filter);
+    this.setState((state) => ({
+      opened: !state.opened
+    }));
   }
 
   render() {
