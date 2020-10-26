@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {ActionCreator} from '../store/action';
 
-const filterTypeToName = new Map([
+const sortingTypeToName = new Map([
   [`popular`, `Popular`],
   [`price-to-high`, `Price: low to high`],
   [`price-to-low`, `Price: high to low`],
@@ -31,21 +31,21 @@ class SortingTypes extends PureComponent {
 
   _menuItemHandler(evt) {
     evt.preventDefault();
-    const filter = evt.target.dataset.filterType;
-    this.props.setActiveFilter(filter);
+    const sorting = evt.target.dataset.sortingType;
+    this.props.setActiveSorting(sorting);
     this.setState((state) => ({
       opened: !state.opened
     }));
   }
 
   render() {
-    const activeFilter = this.props.activeFilter;
+    const activeSorting = this.props.activeSorting;
 
     return (
       <form className="places__sorting" action="#" method="get">
         <span className="places__sorting-caption">Sort by </span>
         <span className="places__sorting-type" tabIndex="0" onClick={this._openMenuHandler}>
-          {filterTypeToName.get(activeFilter)}
+          {sortingTypeToName.get(activeSorting)}
           <svg className="places__sorting-arrow" width="7" height="4">
             <use xlinkHref="#icon-arrow-select"></use>
           </svg>
@@ -53,15 +53,15 @@ class SortingTypes extends PureComponent {
         <ul className={`places__options places__options--custom
         ${this.state.opened && `places__options--opened`}`}
         onClick={this._menuItemHandler}>
-          {[...filterTypeToName].map(([type, title], i) => {
+          {[...sortingTypeToName].map(([type, title], i) => {
             return (
               <li className={`places__option
-                ${activeFilter === type
+                ${activeSorting === type
                 ? `places__option--active`
                 : ``}`}
               tabIndex="0"
               key={`menu-item-${i}`}
-              data-filter-type={type}>
+              data-sorting-type={type}>
                 {title}
               </li>);
           })}
@@ -72,18 +72,18 @@ class SortingTypes extends PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-  activeFilter: state.activeFilter
+  activeSorting: state.activeSorting
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  setActiveFilter(filterName) {
-    dispatch(ActionCreator.setActiveFilter(filterName));
+  setActiveSorting(sortingName) {
+    dispatch(ActionCreator.setActiveSorting(sortingName));
   }
 });
 
 SortingTypes.propTypes = {
-  setActiveFilter: PropTypes.func.isRequired,
-  activeFilter: PropTypes.string.isRequired,
+  setActiveSorting: PropTypes.func.isRequired,
+  activeSorting: PropTypes.string.isRequired,
 };
 
 export {SortingTypes};

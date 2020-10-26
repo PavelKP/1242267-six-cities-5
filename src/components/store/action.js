@@ -1,6 +1,6 @@
 export const ActionType = {
   SET_CITY: `SET_CITY`,
-  SET_ACTIVE_FILTER: `SET_ACTIVE_FILTER`,
+  SET_ACTIVE_SORTING: `SET_ACTIVE_SORTING`,
 };
 
 export const ActionCreator = {
@@ -10,10 +10,10 @@ export const ActionCreator = {
       payload: city
     };
   },
-  setActiveFilter(filter) {
+  setActiveSorting(sorting) {
     return {
-      type: ActionType.SET_ACTIVE_FILTER,
-      payload: filter
+      type: ActionType.SET_ACTIVE_SORTING,
+      payload: sorting
     };
   }
 };

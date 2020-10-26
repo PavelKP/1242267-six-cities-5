@@ -7,7 +7,7 @@ import PlaceCardNearby from '../place-card/place-card-nearby';
 import PlaceCardFavorites from '../place-card/place-card-favorites';
 import {CardType} from '../../const';
 
-const filterTypeToFunction = {
+const sortingTypeToFunction = {
   'popular': (offers) => offers,
   'price-to-high': (offers) => offers.sort((a, b) => a.price.value - b.price.value),
   'price-to-low': (offers) => offers.sort((a, b) => b.price.value - a.price.value),
@@ -51,8 +51,8 @@ class OfferList extends PureComponent {
   }
 
   render() {
-    const {type, offers, activeFilter} = this.props;
-    const sortedOffers = filterTypeToFunction[activeFilter](offers.slice());
+    const {type, offers, activeSorting} = this.props;
+    const sortedOffers = sortingTypeToFunction[activeSorting](offers.slice());
 
     return (
       sortedOffers.map((offer)=> {
@@ -65,13 +65,13 @@ class OfferList extends PureComponent {
 OfferList.propTypes = {
   type: PropTypes.string.isRequired,
   offers: offersPropTypes.offers,
-  activeFilter: PropTypes.string.isRequired,
+  activeSorting: PropTypes.string.isRequired,
 };
 
-const mapStatetoProps = (state) => ({
-  activeFilter: state.activeFilter
+const mapStateToProps = (state) => ({
+  activeSorting: state.activeSorting
 });
 
 export {OfferList};
-export default connect(mapStatetoProps)(OfferList);
+export default connect(mapStateToProps)(OfferList);
 
