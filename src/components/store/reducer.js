@@ -21,9 +21,13 @@ const reducer = (state = initialState, action) => {
       return extend(state, {
         city: action.payload
       });
+    case ActionType.SET_ACTIVE_FILTER:
+      return extend(state, {
+        activeFilter: action.payload
+      });
+    default:
+      return state;
   }
-
-  return state;
 };
 
 export {reducer};

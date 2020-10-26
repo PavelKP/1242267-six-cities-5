@@ -1,5 +1,6 @@
 import React, {PureComponent} from 'react';
 import {connect} from 'react-redux';
+import {ActionCreator} from '../store/action';
 
 const filterTypeToName = new Map([
   [`popular`, `Popular`],
@@ -30,6 +31,7 @@ class SortingTypes extends PureComponent {
   _menuItemHandler(evt) {
     evt.preventDefault();
     const filter = evt.target.dataset.filterType;
+    this.props.setActiveFilter(filter);
   }
 
   render() {
@@ -37,9 +39,9 @@ class SortingTypes extends PureComponent {
 
     return (
       <form className="places__sorting" action="#" method="get">
-        <span className="places__sorting-caption">Sort by</span>
+        <span className="places__sorting-caption">Sort by </span>
         <span className="places__sorting-type" tabIndex="0" onClick={this._openMenuHandler}>
-          {activeFilter}
+          {filterTypeToName.get(activeFilter)}
           <svg className="places__sorting-arrow" width="7" height="4">
             <use xlinkHref="#icon-arrow-select"></use>
           </svg>
@@ -69,9 +71,11 @@ const mapStateToProps = (state) => ({
   activeFilter: state.activeFilter
 });
 
-const mapDispatchToProps = (dispatch) => {
-
-};
+const mapDispatchToProps = (dispatch) => ({
+  setActiveFilter(filterName) {
+    dispatch(ActionCreator.setActiveFilter(filterName));
+  }
+});
 
 export {SortingTypes};
 export default connect(mapStateToProps, mapDispatchToProps)(SortingTypes);
