@@ -3,13 +3,16 @@ import 'leaflet/dist/leaflet.css';
 import Leaflet from 'leaflet';
 import {offersPropTypes, offerPropTypes, cityPropTypes} from '../../prop-types/prop-types';
 import {connect} from 'react-redux';
-import propTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 const zoom = 12;
-const icon = Leaflet.icon({
-  iconUrl: `img/pin.svg`,
-  iconSize: [30, 30]
-});
+
+const getIcon = (path) => {
+  return (Leaflet.icon({
+    iconUrl: path,
+    iconSize: [30, 30]
+  }));
+};
 
 class Map extends React.PureComponent {
   constructor(props) {
@@ -18,6 +21,8 @@ class Map extends React.PureComponent {
     this._map = null;
     this._markersGroup = null;
     this._renderMarker = this._renderMarker.bind(this);
+    this._iconDefault = getIcon(`img/pin.svg`);
+    this._iconActive = getIcon(`img/pin-active.svg`);
   }
 
   _init() {
@@ -47,7 +52,10 @@ class Map extends React.PureComponent {
     this._getOffers().forEach(this._renderMarker);
   }
 
-  _renderMarker({coordinates}) {
+  _renderMarker(offer) {
+    const {coordinates, id} = offer;
+    const icon = (id === this.props.hoveredCard) ? this._iconActive : this._iconDefault;
+
     Leaflet
     .marker(coordinates, {icon})
     .addTo(this._markersGroup);
@@ -84,14 +92,16 @@ class Map extends React.PureComponent {
 
 const mapStateToProps = (state) => ({
   offers: state.offers,
-  city: state.city
+  city: state.city,
+  hoveredCard: state.hoveredCard,
 });
 
 Map.propTypes = {
   offers: offersPropTypes.offers,
   currentOffer: offerPropTypes.offer,
   city: cityPropTypes.isRequired,
-  className: propTypes.string.isRequired
+  className: PropTypes.string.isRequired,
+  hoveredCard: PropTypes.number.isRequired,
 };
 
 export {Map};
