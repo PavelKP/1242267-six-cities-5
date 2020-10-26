@@ -22,7 +22,7 @@ const PlaceCard = (
       }}
       onMouseOut={(evt) => {
         evt.preventDefault();
-        onCardMouseOver(null);
+        onCardMouseOver(-1);
       }}>
       <div className={`${classImageWrapper} place-card__image-wrapper`}>
         {mark}

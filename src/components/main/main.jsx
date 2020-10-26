@@ -6,6 +6,7 @@ import Header from '../header/header';
 import CityList from '../city-list/city-list';
 import PlacesCount from '../places-count/places-count';
 import SortingTypes from '../sorting-types/sorting-types';
+import MainEmpty from '../main-empty/main-empty';
 import {CardType} from '../../const';
 import {connect} from 'react-redux';
 import {offersPropTypes, cityPropTypes} from '../../prop-types/prop-types';
@@ -29,17 +30,21 @@ const Main = ({offers, city}) => {
         </div>
         <div className="cities">
           <div className="cities__places-container container">
-            <section className="cities__places places">
-              <h2 className="visually-hidden">Places</h2>
-              <PlacesCount offersFiltered={offersFiltered}/>
-              <SortingTypes />
-              <div className="cities__places-list places__list tabs__content">
-                <OfferList type={CardType.MAIN} offers={offersFiltered}/>
-              </div>
-            </section>
-            <div className="cities__right-section">
-              <Map className="cities__map"/>
-            </div>
+            {offersFiltered.length > 0
+              ? <React.Fragment>
+                <section className="cities__places places">
+                  <h2 className="visually-hidden">Places</h2>
+                  <PlacesCount offersFiltered={offersFiltered} />
+                  <SortingTypes />
+                  <div className="cities__places-list places__list tabs__content">
+                    <OfferList type={CardType.MAIN} offers={offersFiltered} />
+                  </div>
+                </section>
+                <div className="cities__right-section">
+                  <Map className="cities__map" />
+                </div>
+              </React.Fragment>
+              : <MainEmpty city={city.name}/>}
           </div>
         </div>
       </main>

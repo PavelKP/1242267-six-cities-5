@@ -6,7 +6,7 @@ import cities from '../../mocks/cities';
 
 const DEFAULT_CITY = cities[0];
 const DEFAULT_SORTING = `popular`;
-const DEFAULT_HOVERED_CARD = null;
+const DEFAULT_HOVERED_CARD = -1;
 
 const initialState = {
   city: DEFAULT_CITY,

@@ -6,7 +6,7 @@ import PlaceCardMain from '../place-card/place-card-main';
 import PlaceCardNearby from '../place-card/place-card-nearby';
 import PlaceCardFavorites from '../place-card/place-card-favorites';
 import {CardType} from '../../const';
-import { ActionCreator } from '../store/action';
+import {ActionCreator} from '../store/action';
 
 const sortingTypeToFunction = {
   'popular': (offers) => offers,
