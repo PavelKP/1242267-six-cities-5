@@ -6,10 +6,13 @@ import Header from '../header/header';
 import CityList from '../city-list/city-list';
 import PlacesCount from '../places-count/places-count';
 import SortingTypes from '../sorting-types/sorting-types';
+import withToggler from '../../hocs/with-toggler/with-toggler';
 import MainEmpty from '../main-empty/main-empty';
 import {CardType} from '../../const';
 import {connect} from 'react-redux';
 import {offersPropTypes, cityPropTypes} from '../../prop-types/prop-types';
+
+const SortingTypesWrapped = withToggler(SortingTypes);
 
 const Main = ({offers, city}) => {
 
@@ -40,7 +43,7 @@ const Main = ({offers, city}) => {
                 <section className="cities__places places">
                   <h2 className="visually-hidden">Places</h2>
                   <PlacesCount offersFiltered={offersFiltered} />
-                  <SortingTypes />
+                  <SortingTypesWrapped />
                   <div className="cities__places-list places__list tabs__content">
                     <OfferList type={CardType.MAIN} offers={offersFiltered} />
                   </div>

@@ -16,11 +16,11 @@ const PlaceCard = (
 
   return (
     <article className={`${classArticle} place-card`}
-      onMouseOver={(evt) => {
+      onMouseEnter={(evt) => {
         evt.preventDefault();
         onCardMouseOver(offer.id);
       }}
-      onMouseOut={(evt) => {
+      onMouseLeave={(evt) => {
         evt.preventDefault();
         onCardMouseOver(-1);
       }}>
