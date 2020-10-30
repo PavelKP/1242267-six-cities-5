@@ -5,13 +5,19 @@ import Map from '../map/map';
 import Header from '../header/header';
 import CityList from '../city-list/city-list';
 import PlacesCount from '../places-count/places-count';
+import SortingTypes from '../sorting-types/sorting-types';
+import withToggler from '../../hocs/with-toggler/with-toggler';
+import MainEmpty from '../main-empty/main-empty';
 import {CardType} from '../../const';
 import {connect} from 'react-redux';
 import {offersPropTypes, cityPropTypes} from '../../prop-types/prop-types';
 
+const SortingTypesWrapped = withToggler(SortingTypes);
+
 const Main = ({offers, city}) => {
 
   const offersFiltered = offers.filter((offer) => offer.location === city.name);
+  const isEmpty = offersFiltered.length === 0;
 
   return (
     <div className="page page--gray page--main">
@@ -21,38 +27,31 @@ const Main = ({offers, city}) => {
         </Link>
       </Header>
 
-      <main className="page__main page__main--index">
+      <main className={`page__main page__main--index ${isEmpty ? `page__main--index-empty` : ``}`}>
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
           <CityList />
         </div>
         <div className="cities">
-          <div className="cities__places-container container">
-            <section className="cities__places places">
-              <h2 className="visually-hidden">Places</h2>
-              <PlacesCount offersFiltered={offersFiltered}/>
-              <form className="places__sorting" action="#" method="get">
-                <span className="places__sorting-caption">Sort by</span>
-                <span className="places__sorting-type" tabIndex="0">
-                  Popular
-                  <svg className="places__sorting-arrow" width="7" height="4">
-                    <use xlinkHref="#icon-arrow-select"></use>
-                  </svg>
-                </span>
-                <ul className="places__options places__options--custom places__options--opened">
-                  <li className="places__option places__option--active" tabIndex="0">Popular</li>
-                  <li className="places__option" tabIndex="0">Price: low to high</li>
-                  <li className="places__option" tabIndex="0">Price: high to low</li>
-                  <li className="places__option" tabIndex="0">Top rated first</li>
-                </ul>
-              </form>
-              <div className="cities__places-list places__list tabs__content">
-                <OfferList type={CardType.MAIN} offers={offersFiltered}/>
-              </div>
-            </section>
-            <div className="cities__right-section">
-              <Map className="cities__map"/>
-            </div>
+          <div className={`cities__places-container container ${isEmpty
+            ? `cities__places-container--empty`
+            : ``}`}>
+
+            {isEmpty
+              ? <MainEmpty city={city.name} />
+              : <React.Fragment>
+                <section className="cities__places places">
+                  <h2 className="visually-hidden">Places</h2>
+                  <PlacesCount offersFiltered={offersFiltered} />
+                  <SortingTypesWrapped />
+                  <div className="cities__places-list places__list tabs__content">
+                    <OfferList type={CardType.MAIN} offers={offersFiltered} />
+                  </div>
+                </section>
+                <div className="cities__right-section">
+                  <Map className="cities__map" />
+                </div>
+              </React.Fragment>}
           </div>
         </div>
       </main>
