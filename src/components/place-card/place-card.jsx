@@ -14,16 +14,20 @@ const PlaceCard = (
 
   const bookmarked = offer.isBookmarked ? `place-card__bookmark-button--active` : ``;
 
+  const onMouseEnterWrapped = (evt) => {
+    evt.preventDefault();
+    onCardMouseOver(offer.id);
+  };
+
+  const onMouseLeaveWrapped = (evt) => {
+    evt.preventDefault();
+    onCardMouseOver(-1);
+  };
+
   return (
     <article className={`${classArticle} place-card`}
-      onMouseEnter={(evt) => {
-        evt.preventDefault();
-        onCardMouseOver(offer.id);
-      }}
-      onMouseLeave={(evt) => {
-        evt.preventDefault();
-        onCardMouseOver(-1);
-      }}>
+      onMouseEnter={onMouseEnterWrapped}
+      onMouseLeave={onMouseLeaveWrapped}>
       <div className={`${classImageWrapper} place-card__image-wrapper`}>
         {mark}
         <Link to={`/offer/${offer.id}`}>
