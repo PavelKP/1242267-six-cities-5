@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {offersPropTypes} from '../../prop-types/prop-types';
@@ -34,28 +34,16 @@ const getComponentByType = (type, offer, handler) => {
   }
 };
 
-class OfferList extends PureComponent {
-  constructor(props) {
-    super(props);
+const OfferList = (props) => {
+  const {type, offers, activeSorting, setHoveredCard} = props;
+  const sortedOffers = sortingTypeToFunction[activeSorting](offers.slice());
 
-    this.handleCardMouseOver = this.handleCardMouseOver.bind(this);
-  }
-
-  handleCardMouseOver(id) {
-    this.props.setHoveredCard(id);
-  }
-
-  render() {
-    const {type, offers, activeSorting} = this.props;
-    const sortedOffers = sortingTypeToFunction[activeSorting](offers.slice());
-
-    return (
-      sortedOffers.map((offer)=> {
-        return getComponentByType(type, offer, this.handleCardMouseOver);
-      })
-    );
-  }
-}
+  return (
+    sortedOffers.map((offer)=> {
+      return getComponentByType(type, offer, setHoveredCard);
+    })
+  );
+};
 
 const mapStateToProps = (state) => ({
   activeSorting: state.activeSorting
