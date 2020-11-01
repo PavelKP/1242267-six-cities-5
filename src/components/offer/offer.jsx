@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Redirect, Link} from 'react-router-dom';
 import CommentForm from '../comment-form/comment-form';
-import withStateCommentForm from '../../hocs/with-state/with-state';
+import withReviewCommentForm from '../../hocs/with-review/with-review';
 import OfferList from '../offer-list/offer-list';
 import Header from '../header/header';
 import Map from '../map/map';
@@ -12,7 +12,7 @@ import {CardType} from '../../const';
 
 const NEARBY_AMOUNT = 3;
 
-const CommentFormWrapped = withStateCommentForm(CommentForm);
+const CommentFormWrapped = withReviewCommentForm(CommentForm);
 
 const Offer = ({offers, reviews, serviceProp}) => {
   const offerId = serviceProp.match.params.id;

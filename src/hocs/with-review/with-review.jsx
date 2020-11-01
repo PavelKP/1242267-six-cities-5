@@ -1,7 +1,7 @@
 import React from 'react';
 
-const withState = (Component) => {
-  return class WithState extends React.PureComponent {
+const withReview = (Component) => {
+  return class WithReview extends React.PureComponent {
     constructor() {
       super();
 
@@ -31,4 +31,4 @@ const withState = (Component) => {
   };
 };
 
-export default withState;
+export default withReview;
