@@ -1,5 +1,4 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
 import OfferList from '../offer-list/offer-list';
 import Map from '../map/map';
 import Header from '../header/header';
@@ -21,12 +20,7 @@ const Main = ({offers, city}) => {
 
   return (
     <div className="page page--gray page--main">
-      <Header>
-        <Link to={`/`} className="header__logo-link header__logo-link--active">
-          <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width="81" height="41" />
-        </Link>
-      </Header>
-
+      <Header />
       <main className={`page__main page__main--index ${isEmpty ? `page__main--index-empty` : ``}`}>
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">

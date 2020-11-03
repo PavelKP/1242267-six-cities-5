@@ -1,13 +1,15 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom';
 
-const Header = (props) => {
+const Header = () => {
   return (
     <header className="header">
       <div className="container">
         <div className="header__wrapper">
           <div className="header__left">
-            {props.children}
+            <Link to={`/`} className="header__logo-link header__logo-link--active">
+              <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width="81" height="41" />
+            </Link>
           </div>
           <nav className="header__nav">
             <ul className="header__nav-list">
@@ -26,8 +28,4 @@ const Header = (props) => {
   );
 };
 
-Header.propTypes = {
-  children: PropTypes.element.isRequired
-};
-
-export default Header;
+export default React.memo(Header);
