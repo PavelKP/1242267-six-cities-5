@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const MainEmpty = ({city}) => {
+
   return (
     <React.Fragment>
       <section className="cities__no-places">
