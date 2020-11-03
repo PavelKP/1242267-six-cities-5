@@ -1,7 +1,7 @@
 import React from 'react';
 import OfferList from '../offer-list/offer-list';
 import Map from '../map/map';
-import MemoHeader from '../header/header';
+import Header from '../header/header';
 import CityList from '../city-list/city-list';
 import PlacesCount from '../places-count/places-count';
 import SortingTypes from '../sorting-types/sorting-types';
@@ -20,7 +20,7 @@ const Main = ({offers, city}) => {
 
   return (
     <div className="page page--gray page--main">
-      <MemoHeader />
+      <Header />
       <main className={`page__main page__main--index ${isEmpty ? `page__main--index-empty` : ``}`}>
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">

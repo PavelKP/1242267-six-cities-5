@@ -28,5 +28,4 @@ const Header = () => {
   );
 };
 
-const MemoHeader = React.memo(Header);
-export default MemoHeader;
+export default React.memo(Header);
