@@ -33,10 +33,9 @@ const App = ({offers, reviews}) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  placesCount: state.placesCount,
-  offers: state.offers,
-  reviews: state.reviews,
+const mapStateToProps = ({DATA}) => ({
+  offers: DATA.offers,
+  reviews: DATA.reviews,
 });
 
 App.propTypes = {

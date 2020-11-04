@@ -90,10 +90,10 @@ class Map extends React.PureComponent {
   }
 }
 
-const mapStateToProps = (state) => ({
-  offers: state.offers,
-  city: state.city,
-  hoveredCard: state.hoveredCard,
+const mapStateToProps = ({DATA, INTERFACE}) => ({
+  offers: DATA.offers,
+  city: DATA.city,
+  hoveredCard: INTERFACE.hoveredCard,
 });
 
 Map.propTypes = {
