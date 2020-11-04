@@ -53,10 +53,10 @@ const Main = ({offers, city}) => {
   );
 };
 
-const mapStateToProps = ({DATA}) => {
+const mapStateToProps = ({DATA, INTERFACE}) => {
   return {
     offers: DATA.offers,
-    city: DATA.city
+    city: INTERFACE.city
   };
 };
 

@@ -92,7 +92,7 @@ class Map extends React.PureComponent {
 
 const mapStateToProps = ({DATA, INTERFACE}) => ({
   offers: DATA.offers,
-  city: DATA.city,
+  city: INTERFACE.city,
   hoveredCard: INTERFACE.hoveredCard,
 });
 
