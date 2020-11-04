@@ -1,9 +1,11 @@
 import React from 'react';
 import 'leaflet/dist/leaflet.css';
 import Leaflet from 'leaflet';
-import {offersPropTypes, offerPropTypes, cityPropTypes} from '../../prop-types/prop-types';
+import {offersPropTypes, offerPropTypes} from '../../prop-types/prop-types';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
+import {getActiveCityName, getActiveCityCoords, getHoveredCard} from '../../store/reducers/user-interface/selectors';
+
 
 const zoom = 12;
 
@@ -65,13 +67,13 @@ class Map extends React.PureComponent {
   _getCoordinates() {
     return this.props.currentOffer
       ? this.props.currentOffer.coordinates
-      : this.props.city.coordinates;
+      : this.props.activeCityCoords;
   }
 
   _getOffers() {
     const city = this.props.currentOffer
       ? this.props.currentOffer.location
-      : this.props.city.name;
+      : this.props.activeCityName;
 
     return this.props.offers.filter(({location}) => location === city);
   }
@@ -90,16 +92,18 @@ class Map extends React.PureComponent {
   }
 }
 
-const mapStateToProps = ({DATA, INTERFACE}) => ({
-  offers: DATA.offers,
-  city: INTERFACE.city,
-  hoveredCard: INTERFACE.hoveredCard,
+const mapStateToProps = (state) => ({
+  offers: state.DATA.offers,
+  hoveredCard: getHoveredCard(state),
+  activeCityName: getActiveCityName(state),
+  activeCityCoords: getActiveCityCoords(state),
 });
 
 Map.propTypes = {
   offers: offersPropTypes.offers,
   currentOffer: offerPropTypes.offer,
-  city: cityPropTypes.isRequired,
+  activeCityName: PropTypes.string.isRequired,
+  activeCityCoords: PropTypes.array.isRequired,
   className: PropTypes.string.isRequired,
   hoveredCard: PropTypes.number.isRequired,
 };
