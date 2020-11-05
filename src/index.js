@@ -21,12 +21,17 @@ const store = createStore(rootReducer,
     )
 );
 
-store.dispatch(fetchOfferList());
-
-ReactDOM.render(
-    <Provider store={store}>
-      <App />
-    </Provider>,
-    document.querySelector(`#root`)
-);
+Promise.all([store.dispatch(fetchOfferList())])
+.then((res) => {
+  console.log(res);
+  ReactDOM.render(
+      <Provider store={store}>
+        <App />
+      </Provider>,
+      document.querySelector(`#root`)
+  );
+})
+.catch((err) => {
+  throw new Error(err);
+});
 
