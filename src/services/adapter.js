@@ -1,5 +1,5 @@
 const Adapter = {
-  offerToClient(offers) {
+  offersToClient(offers) {
     return offers.map((offer) => {
       const adaptedOffer = Object.assign({}, offer, {
         isBookmarked: offer.is_favorite,
@@ -33,6 +33,13 @@ const Adapter = {
       delete adaptedOffer.preview_image;
 
       return adaptedOffer;
+    });
+  },
+  cityToClient(city) {
+    return Object.assign({}, {
+      name: city.name,
+      coordinates: [city.location.latitude, city.location.longitude],
+      zoom: city.location.zoom,
     });
   }
 };

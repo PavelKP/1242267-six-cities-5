@@ -4,6 +4,8 @@ export const ActionType = {
   SET_HOVERED_CARD: `SET_HOVERED_CARD`,
   REQUIRE_AUTHORIZATION: `REQUIRE_AUTHORIZATION`,
   LOAD_OFFERS: `LOAD_OFFERS`,
+  LOAD_CITIES: `LOAD_CITIES`,
+  SET_DEFAULT_CITY: `SET_DEFAULT_CITY`,
 };
 
 export const ActionCreator = {
@@ -35,6 +37,18 @@ export const ActionCreator = {
     return {
       type: ActionType.LOAD_OFFERS,
       payload: offers,
+    };
+  },
+  loadCities(offers) {
+    return {
+      type: ActionType.LOAD_CITIES,
+      payload: offers,
+    };
+  },
+  setDefaultCity(city) {
+    return {
+      type: ActionType.SET_DEFAULT_CITY,
+      payload: city,
     };
   }
 };

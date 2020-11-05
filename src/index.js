@@ -22,8 +22,7 @@ const store = createStore(rootReducer,
 );
 
 Promise.all([store.dispatch(fetchOfferList())])
-.then((res) => {
-  console.log(res);
+.then(() => {
   ReactDOM.render(
       <Provider store={store}>
         <App />
