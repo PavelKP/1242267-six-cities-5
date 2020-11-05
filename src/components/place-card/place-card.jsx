@@ -7,9 +7,9 @@ const PlaceCard = (
     {offer, onCardMouseOver, classArticle,
       classImageWrapper, imageWidth, imageHeight}) => {
 
-  const mark = offer.mark &&
+  const premium = offer.isPremium &&
     (<div className="place-card__mark">
-      <span>{offer.mark}</span>
+      <span>Premium</span>
     </div>);
 
   const bookmarked = offer.isBookmarked ? `place-card__bookmark-button--active` : ``;
@@ -29,16 +29,16 @@ const PlaceCard = (
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}>
       <div className={`${classImageWrapper} place-card__image-wrapper`}>
-        {mark}
+        {premium}
         <Link to={`/offer/${offer.id}`}>
-          <img className="place-card__image" src={`img/${offer.images[0]}`} width={imageWidth} height={imageHeight} alt="Place image" />
+          <img className="place-card__image" src={offer.preview} width={imageWidth} height={imageHeight} alt={offer.preview} />
         </Link>
       </div>
       <div className="place-card__info">
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
-            <b className="place-card__price-value">&euro;{offer.price.value}</b>
-            <span className="place-card__price-text">&#47;&nbsp;{offer.price.type}</span>
+            <b className="place-card__price-value">&euro;{offer.price}</b>
+            <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
           <button className={`place-card__bookmark-button button ${bookmarked}`} type="button">
             <svg className="place-card__bookmark-icon" width="18" height="19">

@@ -4,6 +4,7 @@ import reviews from '../../../mocks/reviews';*/
 import cities from '../../../mocks/cities';
 import {ActionType} from '../../action';
 import {extend} from '../../../utils';
+import Adapter from '../../../services/adapter';
 
 const DEFAULT_CITY = cities[0];
 
@@ -18,7 +19,7 @@ const applicationData = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.LOAD_OFFERS:
       return extend(state, {
-        offers: action.payload,
+        offers: Adapter.offerToClient(action.payload),
       });
     default:
       return state;

@@ -15,7 +15,7 @@ const SortingTypesWrapped = withToggler(SortingTypes);
 
 const Main = ({offers, city}) => {
 
-  const offersFiltered = offers.filter((offer) => offer.location === city.name);
+  const offersFiltered = offers.filter((offer) => offer.city.name === city.name);
   const isEmpty = offersFiltered.length === 0;
 
   return (
