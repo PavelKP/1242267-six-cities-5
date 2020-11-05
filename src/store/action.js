@@ -3,6 +3,7 @@ export const ActionType = {
   SET_ACTIVE_SORTING: `SET_ACTIVE_SORTING`,
   SET_HOVERED_CARD: `SET_HOVERED_CARD`,
   REQUIRE_AUTHORIZATION: `REQUIRE_AUTHORIZATION`,
+  LOAD_OFFERS: `LOAD_OFFERS`,
 };
 
 export const ActionCreator = {
@@ -28,6 +29,12 @@ export const ActionCreator = {
     return {
       type: ActionType.REQUIRE_AUTHORIZATION,
       payload: status,
+    };
+  },
+  loadOffers(offers) {
+    return {
+      type: ActionType.LOAD_OFFERS,
+      payload: offers,
     };
   }
 };

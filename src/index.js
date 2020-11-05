@@ -1,13 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {createStore} from 'redux';
+import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
+import thunk from "redux-thunk";
 import App from './components/app/app';
 import rootReducer from './store/reducers/root-reducer';
+import {composeWithDevTools} from 'redux-devtools-extension';
+import {createAPI} from './services/api';
+import {ActionCreator} from '../src/store/action';
+import {fetchOfferList} from '../src/store/api-actions';
+import {AuthorizationStatus} from './const';
+
+const api = createAPI(
+    () => store.dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.NO_AUTH))
+);
 
 const store = createStore(rootReducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f
+    composeWithDevTools(
+        applyMiddleware(thunk.withExtraArgument(api))
+    )
 );
+
+store.dispatch(fetchOfferList());
 
 ReactDOM.render(
     <Provider store={store}>
@@ -15,3 +29,4 @@ ReactDOM.render(
     </Provider>,
     document.querySelector(`#root`)
 );
+
