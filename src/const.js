@@ -3,3 +3,8 @@ export const CardType = {
   NEARBY: `nearby`,
   FAVORITES: `favorites`
 };
+
+export const AuthorizationStatus = {
+  NO_AUTH: `NO_AUTH`,
+  AUTH: `AUTH`,
+};
