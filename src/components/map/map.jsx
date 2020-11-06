@@ -71,11 +71,11 @@ class Map extends React.PureComponent {
   }
 
   _getOffers() {
-    const city = this.props.currentOffer
-      ? this.props.currentOffer.location
+    const currentCity = this.props.currentOffer
+      ? this.props.currentOffer.city.name
       : this.props.activeCityName;
 
-    return this.props.offers.filter(({location}) => location === city);
+    return this.props.offers.filter(({city}) => city.name === currentCity);
   }
 
   componentDidMount() {
