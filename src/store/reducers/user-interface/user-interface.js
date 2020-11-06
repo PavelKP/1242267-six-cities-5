@@ -34,4 +34,4 @@ const userInterface = (state = initialState, action) => {
   }
 };
 
-export {userInterface};
+export {userInterface, DEFAULT_SORTING};

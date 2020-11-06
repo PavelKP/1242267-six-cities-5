@@ -10,8 +10,8 @@ import {ActionCreator} from '../../store/action';
 
 const sortingTypeToFunction = {
   'popular': (offers) => offers,
-  'price-to-high': (offers) => offers.sort((a, b) => a.price.value - b.price.value),
-  'price-to-low': (offers) => offers.sort((a, b) => b.price.value - a.price.value),
+  'price-to-high': (offers) => offers.sort((a, b) => a.price - b.price),
+  'price-to-low': (offers) => offers.sort((a, b) => b.price - a.price),
   'top-rated-first': (offers) => offers.sort((a, b) => b.rating - a.rating),
 };
 

@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {ActionCreator} from '../../store/action';
 import {cityPropTypes} from '../../prop-types/prop-types';
+import {DEFAULT_SORTING} from '../../store/reducers/user-interface/user-interface';
 
-const CityItem = ({city, setCity, activeClass}) => {
+const CityItem = ({city, setCity, activeClass, setActiveSorting}) => {
   const handleCityClick = (evt) => {
     evt.preventDefault();
     setCity(city);
+    setActiveSorting(DEFAULT_SORTING);
   };
 
   return (
@@ -24,12 +26,16 @@ const CityItem = ({city, setCity, activeClass}) => {
 CityItem.propTypes = {
   city: cityPropTypes.isRequired,
   setCity: PropTypes.func.isRequired,
+  setActiveSorting: PropTypes.func.isRequired,
   activeClass: PropTypes.string
 };
 
 const mapDispatchToProps = (dispatch) => ({
   setCity(city) {
     dispatch(ActionCreator.setCity(city));
+  },
+  setActiveSorting(sortingName) {
+    dispatch(ActionCreator.setActiveSorting(sortingName));
   }
 });
 
