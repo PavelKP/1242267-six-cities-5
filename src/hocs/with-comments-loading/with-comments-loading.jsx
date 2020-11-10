@@ -23,7 +23,12 @@ const withCommentsLoading = (Component) => {
     }
 
     render() {
-      return <Component loading={this.state.loading} {...this.props} />;
+      // rest is the best, but eslint config doesn't allow this
+      // const {loadReview, offerId, ...rest} = this.props;
+      // Remove unnecessary props
+      const {reviews} = this.props;
+
+      return <Component loading={this.state.loading} reviews={reviews} />;
     }
   } // End of class
 
