@@ -14,7 +14,7 @@ const NEARBY_AMOUNT = 3;
 
 const CommentFormWrapped = withReviewCommentForm(CommentForm);
 
-const Offer = ({offers, serviceProp, loadReview}) => {
+const Offer = ({offers, serviceProp}) => {
   const offerId = +serviceProp.match.params.id;
   const currentOffer = offers.find((offerCurrent) => offerCurrent.id === +offerId);
   const offersFiltered = offers.filter((offer) => offer.city.name === currentOffer.city.name);
