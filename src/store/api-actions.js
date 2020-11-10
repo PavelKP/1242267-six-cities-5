@@ -8,3 +8,11 @@ export const fetchOfferList = () => (dispatch, _getState, api) => (
       dispatch(ActionCreator.setDefaultCity(data[0].city));
     })
 );
+
+export const fetchCurrentReview = (id) => (dispatch, _getState, api) => (
+  api.get(`/comments/${id}`)
+    .then(({data}) => {
+      dispatch(ActionCreator.loadReviews(data));
+    })
+);
+

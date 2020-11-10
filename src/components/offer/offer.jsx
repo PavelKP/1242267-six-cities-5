@@ -6,7 +6,7 @@ import withReviewCommentForm from '../../hocs/with-review/with-review';
 import OfferList from '../offer-list/offer-list';
 import Header from '../header/header';
 import Map from '../map/map';
-import {offersPropTypes, reviewsPropTypes} from '../../prop-types/prop-types';
+import {offersPropTypes} from '../../prop-types/prop-types';
 import ReviewList from '../review-list/review-list';
 import {CardType} from '../../const';
 
@@ -14,8 +14,8 @@ const NEARBY_AMOUNT = 3;
 
 const CommentFormWrapped = withReviewCommentForm(CommentForm);
 
-const Offer = ({offers, reviews, serviceProp}) => {
-  const offerId = serviceProp.match.params.id;
+const Offer = ({offers, serviceProp, loadReview}) => {
+  const offerId = +serviceProp.match.params.id;
   const currentOffer = offers.find((offerCurrent) => offerCurrent.id === +offerId);
   const offersFiltered = offers.filter((offer) => offer.city.name === currentOffer.city.name);
 
@@ -127,13 +127,7 @@ const Offer = ({offers, reviews, serviceProp}) => {
                 </div>
               </div>
               <section className="property__reviews reviews">
-                {/*
-                <ReviewList reviewsId={currentOffer.reviewsId} reviews={reviews}>
-                  <h2 className="reviews__title">Reviews &middot;
-                    <span className="reviews__amount">{currentOffer.reviewsId.length}</span>
-                  </h2>
-                </ReviewList>
-                */}
+                <ReviewList offerId={offerId} />
                 <CommentFormWrapped />
               </section>
             </div>
@@ -158,7 +152,6 @@ const Offer = ({offers, reviews, serviceProp}) => {
 
 Offer.propTypes = {
   offers: offersPropTypes.offers,
-  reviews: reviewsPropTypes.reviews,
   serviceProp: PropTypes.object.isRequired,
 };
 

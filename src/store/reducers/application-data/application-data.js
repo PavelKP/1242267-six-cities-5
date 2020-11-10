@@ -30,7 +30,10 @@ const applicationData = (state = initialState, action) => {
       return extend(state, {
         cities: uniqueCities
       });
-
+    case ActionType.LOAD_REVIEWS:
+      return extend(state, {
+        reviews: Adapter.reviewsToClient(action.payload),
+      });
     default:
       return state;
   }

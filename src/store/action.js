@@ -6,6 +6,7 @@ export const ActionType = {
   LOAD_OFFERS: `LOAD_OFFERS`,
   LOAD_CITIES: `LOAD_CITIES`,
   SET_DEFAULT_CITY: `SET_DEFAULT_CITY`,
+  LOAD_REVIEWS: `LOAD_REVIEWS`,
 };
 
 export const ActionCreator = {
@@ -50,5 +51,11 @@ export const ActionCreator = {
       type: ActionType.SET_DEFAULT_CITY,
       payload: city,
     };
-  }
+  },
+  loadReviews(reviews) {
+    return {
+      type: ActionType.LOAD_REVIEWS,
+      payload: reviews,
+    };
+  },
 };

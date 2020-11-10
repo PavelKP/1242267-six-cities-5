@@ -41,6 +41,18 @@ const Adapter = {
       coordinates: [city.location.latitude, city.location.longitude],
       zoom: city.location.zoom,
     });
+  },
+  reviewsToClient(reviews) {
+    return reviews.map((review) => {
+      return Object.assign({}, review, {
+        user: {
+          avatar: review.user.avatar_url,
+          id: review.user.id,
+          isPro: review.user.is_pro,
+          name: review.user.name,
+        }
+      });
+    });
   }
 };
 
