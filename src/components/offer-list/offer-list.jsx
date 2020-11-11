@@ -7,13 +7,7 @@ import PlaceCardNearby from '../place-card/place-card-nearby';
 import PlaceCardFavorites from '../place-card/place-card-favorites';
 import {CardType} from '../../const';
 import {ActionCreator} from '../../store/action';
-
-const sortingTypeToFunction = {
-  'popular': (offers) => offers,
-  'price-to-high': (offers) => offers.sort((a, b) => a.price - b.price),
-  'price-to-low': (offers) => offers.sort((a, b) => b.price - a.price),
-  'top-rated-first': (offers) => offers.sort((a, b) => b.rating - a.rating),
-};
+import {getSortedOffers} from '../../store/combined-selectors';
 
 const getComponentByType = (type, offer, handler) => {
   switch (type) {
@@ -35,8 +29,7 @@ const getComponentByType = (type, offer, handler) => {
 };
 
 const OfferList = (props) => {
-  const {type, offers, activeSorting, setHoveredCard} = props;
-  const sortedOffers = sortingTypeToFunction[activeSorting](offers.slice());
+  const {type, sortedOffers, setHoveredCard} = props;
 
   return (
     sortedOffers.map((offer)=> {
@@ -45,8 +38,8 @@ const OfferList = (props) => {
   );
 };
 
-const mapStateToProps = ({INTERFACE}) => ({
-  activeSorting: INTERFACE.activeSorting
+const mapStateToProps = (state) => ({
+  sortedOffers: getSortedOffers(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -57,8 +50,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 OfferList.propTypes = {
   type: PropTypes.string.isRequired,
-  offers: offersPropTypes.offers,
-  activeSorting: PropTypes.string.isRequired,
+  sortedOffers: offersPropTypes.offers,
   setHoveredCard: PropTypes.func.isRequired,
 };
 
