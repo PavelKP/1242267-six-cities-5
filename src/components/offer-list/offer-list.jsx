@@ -9,6 +9,8 @@ import {CardType} from '../../const';
 import {ActionCreator} from '../../store/action';
 import {getSortedOffers} from '../../store/combined-selectors';
 
+const NEARBY_AMOUNT = 3;
+
 const getComponentByType = (type, offer, handler) => {
   switch (type) {
     case CardType.MAIN:
@@ -29,7 +31,12 @@ const getComponentByType = (type, offer, handler) => {
 };
 
 const OfferList = (props) => {
-  const {type, sortedOffers, setHoveredCard} = props;
+  const {type, setHoveredCard} = props;
+  let {sortedOffers} = props;
+
+  if (type === CardType.NEARBY) {
+    sortedOffers = sortedOffers.slice(0, NEARBY_AMOUNT);
+  }
 
   return (
     sortedOffers.map((offer)=> {

@@ -10,14 +10,11 @@ import {offersPropTypes} from '../../prop-types/prop-types';
 import ReviewList from '../review-list/review-list';
 import {CardType} from '../../const';
 
-const NEARBY_AMOUNT = 3;
-
 const CommentFormWrapped = withReviewCommentForm(CommentForm);
 
 const Offer = ({offers, serviceProp}) => {
   const offerId = +serviceProp.match.params.id;
   const currentOffer = offers.find((offerCurrent) => offerCurrent.id === +offerId);
-  const offersFiltered = offers.filter((offer) => offer.city.name === currentOffer.city.name);
 
   if (!currentOffer) {
     return <Redirect to={`/`} />;
@@ -138,10 +135,8 @@ const Offer = ({offers, serviceProp}) => {
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
             <div className="near-places__list places__list">
-              {/* TEMPORARY SLICE OF THE ARRAY */}
               <OfferList
-                type={CardType.NEARBY}
-                offers={offersFiltered.slice(0, NEARBY_AMOUNT)}/>
+                type={CardType.NEARBY}/>
             </div>
           </section>
         </div>
