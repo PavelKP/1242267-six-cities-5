@@ -7,7 +7,7 @@ const initialState = {
 
 const user = (state = initialState, action) => {
   switch (action.type) {
-    case ActionType.AuthorizationStatus:
+    case ActionType.REQUIRE_AUTHORIZATION:
       return Object.assign({}, state, {
         authorizationStatus: action.payload
       });

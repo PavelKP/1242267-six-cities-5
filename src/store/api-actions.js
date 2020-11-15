@@ -24,3 +24,11 @@ export const login = () => (dispatch, _getState, api) => (
     console.log(err);
   })
 );
+
+export const authorize = ({email, password}) => (dispatch, _getState, api) => (
+  api.post(`/login`, {email, password})
+  .then(() => dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH)))
+  .catch((err) => {
+    throw err.response.data.error;
+  })
+);
