@@ -13,7 +13,7 @@ const App = ({offers}) => {
     <BrowserRouter>
       <Switch>
         <Route exact path="/">
-          <Main offers={offers}/>
+          <Main />
         </Route>
         <Route exact path="/login">
           <Login />
