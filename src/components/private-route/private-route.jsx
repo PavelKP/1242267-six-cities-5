@@ -3,8 +3,7 @@ import {connect} from 'react-redux';
 import {AuthorizationStatus} from '../../const';
 import {Redirect, Route} from 'react-router-dom';
 
-const PrivateRoute = (props) => {
-  const {exact, path, renderFavorites, authorizationStatus} = props;
+const PrivateRoute = ({exact, path, renderFavorites, authorizationStatus}) => {
 
   return (
     <Route
