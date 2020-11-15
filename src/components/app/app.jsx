@@ -7,6 +7,7 @@ import Main from '../main/main';
 import Login from '../login/login';
 import Favorites from '../favorites/favorites';
 import Offer from '../offer/offer';
+import PrivateRoute from '../private-route/private-route';
 
 const App = ({offers}) => {
   return (
@@ -18,9 +19,9 @@ const App = ({offers}) => {
         <Route exact path="/login">
           <Login />
         </Route>
-        <Route exact path="/favorites"
-          render={()=> (
-            <Favorites offers={offers}/>
+        <PrivateRoute exact path="/favorites"
+          renderFavorites={(serviceProp)=> (
+            <Favorites offers={offers} serviceProp={serviceProp}/>
           )}
         />
         <Route exact path="/offer/:id"

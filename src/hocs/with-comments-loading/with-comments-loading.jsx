@@ -17,7 +17,8 @@ const withCommentsLoading = (Component) => {
     }
 
     componentDidMount() {
-      this.props.loadReview(this._offerId).then(() => {
+      this.props.loadReview(this._offerId)
+      .then(() => {
         this.setState((state) => ({loading: !state.loading}));
       });
     }

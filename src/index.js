@@ -8,7 +8,7 @@ import rootReducer from './store/reducers/root-reducer';
 import {composeWithDevTools} from 'redux-devtools-extension';
 import {createAPI} from './services/api';
 import {ActionCreator} from '../src/store/action';
-import {fetchOfferList} from '../src/store/api-actions';
+import {fetchOfferList, login} from '../src/store/api-actions';
 import {AuthorizationStatus} from './const';
 
 const api = createAPI(
@@ -21,7 +21,10 @@ const store = createStore(rootReducer,
     )
 );
 
-Promise.all([store.dispatch(fetchOfferList())])
+Promise.all([
+  store.dispatch(fetchOfferList()),
+  store.dispatch(login()),
+])
 .then(() => {
   ReactDOM.render(
       <Provider store={store}>
