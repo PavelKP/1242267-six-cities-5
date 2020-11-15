@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import {CardType} from '../../const';
 import {connect} from 'react-redux';
 import {offersPropTypes} from '../../prop-types/prop-types';
-import {getOffersByCity} from '../../store/combined-selectors';
+import {getCurrentOffers} from '../../store/combined-selectors';
 import {getActiveCityName} from '../../store/reducers/user-interface/selectors';
 
 const SortingTypesWrapped = withToggler(SortingTypes);
@@ -56,7 +56,7 @@ const Main = ({offers, city}) => {
 
 const mapStateToProps = (state) => {
   return {
-    offers: getOffersByCity(state),
+    offers: getCurrentOffers(state),
     city: getActiveCityName(state),
   };
 };

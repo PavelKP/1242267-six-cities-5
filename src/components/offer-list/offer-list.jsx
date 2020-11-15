@@ -7,7 +7,7 @@ import PlaceCardNearby from '../place-card/place-card-nearby';
 import PlaceCardFavorites from '../place-card/place-card-favorites';
 import {CardType} from '../../const';
 import {ActionCreator} from '../../store/action';
-import {getSortedOffers} from '../../store/combined-selectors';
+import {getCurrentOffers} from '../../store/combined-selectors';
 
 const NEARBY_AMOUNT = 3;
 
@@ -46,7 +46,7 @@ const OfferList = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  sortedOffers: getSortedOffers(state),
+  sortedOffers: getCurrentOffers(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

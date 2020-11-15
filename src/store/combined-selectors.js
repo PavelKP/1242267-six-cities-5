@@ -10,23 +10,13 @@ const sortingTypeToFunction = {
   'top-rated-first': (offers) => offers.sort((a, b) => b.rating - a.rating),
 };
 
-export const getOffersByCity = createSelector(
-    getOffers,
-    getActiveCityName,
-    (offers, city) => offers.filter((offer) => offer.city.name === city)
-);
-
-export const getSortedOffers = createSelector(
-    // эти офферы сортированные по городу можно было бы получить и сверху из компонента main, а не фильтровать второй раз
-    // Но тогда непонятно, как передать их в селектор (???)
+export const getCurrentOffers = createSelector(
     getOffers,
     getActiveCityName,
     getActiveSorting,
-    (offers, city, sorting) => {
-      return (
-        sortingTypeToFunction[sorting](
-            offers.filter((offer) => offer.city.name === city)
-        )
-      );
-    }
+    (offers, city, sorting) => (
+      sortingTypeToFunction[sorting](
+          offers.filter((offer) => offer.city.name === city)
+      )
+    )
 );
