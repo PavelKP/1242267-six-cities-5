@@ -10,8 +10,8 @@ const PlacesCount = ({offersFiltered, city}) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  city: state.city
+const mapStateToProps = ({INTERFACE}) => ({
+  city: INTERFACE.city
 });
 
 PlacesCount.propTypes = {

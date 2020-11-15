@@ -1,19 +1,19 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
-import {offersPropTypes, reviewsPropTypes} from '../../prop-types/prop-types';
+import {offersPropTypes} from '../../prop-types/prop-types';
 
 import Main from '../main/main';
 import Login from '../login/login';
 import Favorites from '../favorites/favorites';
 import Offer from '../offer/offer';
 
-const App = ({offers, reviews}) => {
+const App = ({offers}) => {
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path="/">
-          <Main offers={offers}/>
+          <Main />
         </Route>
         <Route exact path="/login">
           <Login />
@@ -25,7 +25,7 @@ const App = ({offers, reviews}) => {
         />
         <Route exact path="/offer/:id"
           render={(serviceProp) => (
-            <Offer offers={offers} reviews={reviews} serviceProp={serviceProp} />
+            <Offer offers={offers} serviceProp={serviceProp} />
           )}
         />
       </Switch>
@@ -33,15 +33,12 @@ const App = ({offers, reviews}) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  placesCount: state.placesCount,
-  offers: state.offers,
-  reviews: state.reviews,
+const mapStateToProps = ({DATA}) => ({
+  offers: DATA.offers,
 });
 
 App.propTypes = {
   offers: offersPropTypes.offers,
-  reviews: reviewsPropTypes.reviews,
 };
 
 export {App};

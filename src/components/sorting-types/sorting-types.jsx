@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import {ActionCreator} from '../store/action';
+import {ActionCreator} from '../../store/action';
 
 const sortingTypeToName = new Map([
   [`popular`, `Popular`],
@@ -46,8 +46,8 @@ const SortingTypes = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  activeSorting: state.activeSorting
+const mapStateToProps = ({INTERFACE}) => ({
+  activeSorting: INTERFACE.activeSorting
 });
 
 const mapDispatchToProps = (dispatch) => ({

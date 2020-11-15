@@ -6,27 +6,28 @@ import withReviewCommentForm from '../../hocs/with-review/with-review';
 import OfferList from '../offer-list/offer-list';
 import Header from '../header/header';
 import Map from '../map/map';
-import {offersPropTypes, reviewsPropTypes} from '../../prop-types/prop-types';
+import {offersPropTypes} from '../../prop-types/prop-types';
 import ReviewList from '../review-list/review-list';
 import {CardType} from '../../const';
 
-const NEARBY_AMOUNT = 3;
-
 const CommentFormWrapped = withReviewCommentForm(CommentForm);
 
-const Offer = ({offers, reviews, serviceProp}) => {
-  const offerId = serviceProp.match.params.id;
+const Offer = ({offers, serviceProp}) => {
+  const offerId = +serviceProp.match.params.id;
   const currentOffer = offers.find((offerCurrent) => offerCurrent.id === +offerId);
-  const offersFiltered = offers.filter((offer) => offer.location === currentOffer.location);
 
   if (!currentOffer) {
     return <Redirect to={`/`} />;
   }
 
-  const mark = currentOffer.mark &&
+  const premium = currentOffer.isPremium &&
     <div className="property__mark">
-      <span>{currentOffer.mark}</span>
+      <span>Premium</span>
     </div>;
+
+  const proUserClass = currentOffer.host.isPro
+    ? `property__avatar-wrapper--pro`
+    : ``;
 
   /* Стиль есть только для вложенного элемента place-card__bookmark-icon*/
   const bookmarked = currentOffer.isBookmarked
@@ -53,14 +54,14 @@ const Offer = ({offers, reviews, serviceProp}) => {
             <div className="property__gallery">
               {currentOffer.images.map((image, i)=> (
                 <div className="property__image-wrapper" key={`property-image-${i}`}>
-                  <img className="property__image" src={`img/${image}`} alt="Photo studio" />
+                  <img className="property__image" src={image} alt="Photo studio" />
                 </div>
               ))}
             </div>
           </div>
           <div className="property__container container">
             <div className="property__wrapper">
-              {mark}
+              {premium}
               <div className="property__name-wrapper">
                 <h1 className="property__name">
                   {currentOffer.title}
@@ -91,8 +92,8 @@ const Offer = ({offers, reviews, serviceProp}) => {
                 </li>
               </ul>
               <div className="property__price">
-                <b className="property__price-value">&euro;{currentOffer.price.value}</b>
-                <span className="property__price-text">&nbsp;{currentOffer.price.type}</span>
+                <b className="property__price-value">&euro;{currentOffer.price}</b>
+                <span className="property__price-text">&nbsp;night</span>
               </div>
               <div className="property__inside">
                 <h2 className="property__inside-title">What&apos;s inside</h2>
@@ -107,7 +108,7 @@ const Offer = ({offers, reviews, serviceProp}) => {
               <div className="property__host">
                 <h2 className="property__host-title">Meet the host</h2>
                 <div className="property__host-user user">
-                  <div className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper">
+                  <div className={`property__avatar-wrapper ${proUserClass} user__avatar-wrapper`}>
                     <img className="property__avatar user__avatar" src={currentOffer.host.avatar} width="74" height="74" alt="Host avatar" />
                   </div>
                   <span className="property__user-name">
@@ -115,7 +116,7 @@ const Offer = ({offers, reviews, serviceProp}) => {
                   </span>
                 </div>
                 <div className="property__description">
-                  {currentOffer.host.text.map((paragraph, i) =>(
+                  {currentOffer.description.map((paragraph, i) =>(
                     <p className="property__text" key={`property-paragraph-${i}`}>
                       {paragraph}
                     </p>
@@ -123,11 +124,7 @@ const Offer = ({offers, reviews, serviceProp}) => {
                 </div>
               </div>
               <section className="property__reviews reviews">
-                <ReviewList reviewsId={currentOffer.reviewsId} reviews={reviews}>
-                  <h2 className="reviews__title">Reviews &middot;
-                    <span className="reviews__amount">{currentOffer.reviewsId.length}</span>
-                  </h2>
-                </ReviewList>
+                <ReviewList offerId={offerId} />
                 <CommentFormWrapped />
               </section>
             </div>
@@ -138,10 +135,8 @@ const Offer = ({offers, reviews, serviceProp}) => {
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
             <div className="near-places__list places__list">
-              {/* TEMPORARY SLICE OF THE ARRAY */}
               <OfferList
-                type={CardType.NEARBY}
-                offers={offersFiltered.slice(0, NEARBY_AMOUNT)}/>
+                type={CardType.NEARBY}/>
             </div>
           </section>
         </div>
@@ -152,7 +147,6 @@ const Offer = ({offers, reviews, serviceProp}) => {
 
 Offer.propTypes = {
   offers: offersPropTypes.offers,
-  reviews: reviewsPropTypes.reviews,
   serviceProp: PropTypes.object.isRequired,
 };
 

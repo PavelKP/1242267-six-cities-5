@@ -7,16 +7,17 @@ import PlacesCount from '../places-count/places-count';
 import SortingTypes from '../sorting-types/sorting-types';
 import withToggler from '../../hocs/with-toggler/with-toggler';
 import MainEmpty from '../main-empty/main-empty';
+import PropTypes from 'prop-types';
 import {CardType} from '../../const';
 import {connect} from 'react-redux';
-import {offersPropTypes, cityPropTypes} from '../../prop-types/prop-types';
+import {offersPropTypes} from '../../prop-types/prop-types';
+import {getCurrentOffers} from '../../store/combined-selectors';
+import {getActiveCityName} from '../../store/reducers/user-interface/selectors';
 
 const SortingTypesWrapped = withToggler(SortingTypes);
 
 const Main = ({offers, city}) => {
-
-  const offersFiltered = offers.filter((offer) => offer.location === city.name);
-  const isEmpty = offersFiltered.length === 0;
+  const isEmpty = offers.length === 0;
 
   return (
     <div className="page page--gray page--main">
@@ -36,10 +37,10 @@ const Main = ({offers, city}) => {
               : <React.Fragment>
                 <section className="cities__places places">
                   <h2 className="visually-hidden">Places</h2>
-                  <PlacesCount offersFiltered={offersFiltered} />
+                  <PlacesCount offersFiltered={offers} />
                   <SortingTypesWrapped />
                   <div className="cities__places-list places__list tabs__content">
-                    <OfferList type={CardType.MAIN} offers={offersFiltered} />
+                    <OfferList type={CardType.MAIN} />
                   </div>
                 </section>
                 <div className="cities__right-section">
@@ -55,14 +56,14 @@ const Main = ({offers, city}) => {
 
 const mapStateToProps = (state) => {
   return {
-    offers: state.offers,
-    city: state.city
+    offers: getCurrentOffers(state),
+    city: getActiveCityName(state),
   };
 };
 
 Main.propTypes = {
-  city: cityPropTypes.isRequired,
   offers: offersPropTypes.offers,
+  city: PropTypes.string.isRequired,
 };
 
 export {Main};

@@ -1,17 +1,36 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {createStore} from 'redux';
+import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
+import thunk from "redux-thunk";
 import App from './components/app/app';
-import {reducer} from './components/store/reducer';
+import rootReducer from './store/reducers/root-reducer';
+import {composeWithDevTools} from 'redux-devtools-extension';
+import {createAPI} from './services/api';
+import {ActionCreator} from '../src/store/action';
+import {fetchOfferList} from '../src/store/api-actions';
+import {AuthorizationStatus} from './const';
 
-const store = createStore(reducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f
+const api = createAPI(
+    () => store.dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.NO_AUTH))
 );
 
-ReactDOM.render(
-    <Provider store={store}>
-      <App />
-    </Provider>,
-    document.querySelector(`#root`)
+const store = createStore(rootReducer,
+    composeWithDevTools(
+        applyMiddleware(thunk.withExtraArgument(api))
+    )
 );
+
+Promise.all([store.dispatch(fetchOfferList())])
+.then(() => {
+  ReactDOM.render(
+      <Provider store={store}>
+        <App />
+      </Provider>,
+      document.querySelector(`#root`)
+  );
+})
+.catch((err) => {
+  throw new Error(err);
+});
+

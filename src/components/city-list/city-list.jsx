@@ -17,9 +17,9 @@ const CityList = ({cities, activeCity}) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  activeCity: state.city,
-  cities: state.cities
+const mapStateToProps = ({DATA, INTERFACE}) => ({
+  activeCity: INTERFACE.city,
+  cities: DATA.cities
 });
 
 CityList.propTypes = {

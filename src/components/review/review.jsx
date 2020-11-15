@@ -4,11 +4,14 @@ import {oneReviewPropTypes} from '../../prop-types/prop-types';
 
 
 const ReviewList = ({review}) => {
+  const dateShort = moment(review.date).format(`MMMM YYYY`);
+  const dateFull = moment(review.date).format(`YYYY-MM-DD`);
+
   return (
     <li className="reviews__item">
       <div className="reviews__user user">
         <div className="reviews__avatar-wrapper user__avatar-wrapper">
-          <img className="reviews__avatar user__avatar" src={review.avatar} width="54" height="54" alt="Reviews avatar" />
+          <img className="reviews__avatar user__avatar" src={review.user.avatar} width="54" height="54" alt="Reviews avatar" />
         </div>
         <span className="reviews__user-name">
           {review.name}
@@ -22,9 +25,9 @@ const ReviewList = ({review}) => {
           </div>
         </div>
         <p className="reviews__text">
-          {review.text}
+          {review.comment}
         </p>
-        <time className="reviews__time" dateTime="2019-04-24">{moment(review.date).format(`MMMM YYYY`)}</time>
+        <time className="reviews__time" dateTime={dateFull}>{dateShort}</time>
       </div>
     </li>
   );
