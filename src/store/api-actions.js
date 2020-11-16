@@ -20,14 +20,13 @@ export const fetchCurrentReview = (id) => (dispatch, _getState, api) => (
 export const login = () => (dispatch, _getState, api) => (
   api.get(`/login`)
   .then(() => dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH)))
-  .catch((err) =>{
-    console.log(err);
-  })
+  .catch(() => {})
 );
 
 export const authorize = ({email, password}) => (dispatch, _getState, api) => (
   api.post(`/login`, {email, password})
   .then(() => dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH)))
+  .then(() => dispatch(ActionCreator.redirectToRoute(`/`)))
   .catch((err) => {
     throw err.response.data.error;
   })

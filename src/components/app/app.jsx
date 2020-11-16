@@ -1,8 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
+import {Router as BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {offersPropTypes} from '../../prop-types/prop-types';
+import browserHistory from '../../browser-history';
 
 import Main from '../main/main';
 import Login from '../login/login';
@@ -14,7 +15,7 @@ import {AuthorizationStatus} from '../../const';
 
 const App = ({offers, authorizationStatus}) => {
   return (
-    <BrowserRouter>
+    <BrowserRouter history={browserHistory}>
       <Switch>
         <Route exact path="/">
           <Main />
