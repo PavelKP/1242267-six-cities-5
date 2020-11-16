@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {AuthorizationStatus} from '../../const';
 import {Redirect, Route} from 'react-router-dom';
 import PropTypes from 'prop-types';
+import {AppRoute} from '../../const';
 
 const PrivateRoute = ({exact, path, renderFavorites, authorizationStatus}) => {
 
@@ -14,7 +15,7 @@ const PrivateRoute = ({exact, path, renderFavorites, authorizationStatus}) => {
         return (
           authorizationStatus === AuthorizationStatus.AUTH
             ? renderFavorites(serviceProp)
-            : <Redirect to={`/login`}/>
+            : <Redirect to={AppRoute.LOGIN}/>
         );
       }}
     />
