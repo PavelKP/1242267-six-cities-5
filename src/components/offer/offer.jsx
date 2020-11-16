@@ -8,7 +8,7 @@ import Header from '../header/header';
 import Map from '../map/map';
 import {offersPropTypes} from '../../prop-types/prop-types';
 import ReviewList from '../review-list/review-list';
-import {CardType} from '../../const';
+import {CardType, AppRoute} from '../../const';
 
 const CommentFormWrapped = withReviewCommentForm(CommentForm);
 
@@ -17,7 +17,7 @@ const Offer = ({offers, serviceProp}) => {
   const currentOffer = offers.find((offerCurrent) => offerCurrent.id === +offerId);
 
   if (!currentOffer) {
-    return <Redirect to={`/`} />;
+    return <Redirect to={AppRoute.ROOT} />;
   }
 
   const premium = currentOffer.isPremium &&

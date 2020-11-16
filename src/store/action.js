@@ -7,6 +7,7 @@ export const ActionType = {
   LOAD_CITIES: `LOAD_CITIES`,
   SET_DEFAULT_CITY: `SET_DEFAULT_CITY`,
   LOAD_REVIEWS: `LOAD_REVIEWS`,
+  REDIRECT_TO_ROUTE: `REDIRECT_TO_ROUTE`,
 };
 
 export const ActionCreator = {
@@ -56,6 +57,12 @@ export const ActionCreator = {
     return {
       type: ActionType.LOAD_REVIEWS,
       payload: reviews,
+    };
+  },
+  redirectToRoute(url) {
+    return {
+      type: ActionType.REDIRECT_TO_ROUTE,
+      payload: url,
     };
   },
 };
