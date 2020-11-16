@@ -11,29 +11,30 @@ import Favorites from '../favorites/favorites';
 import Offer from '../offer/offer';
 import PrivateRoute from '../private-route/private-route';
 import {AuthorizationStatus} from '../../const';
+import {AppRoute} from '../../const';
 
 
 const App = ({offers, authorizationStatus}) => {
   return (
     <BrowserRouter history={browserHistory}>
       <Switch>
-        <Route exact path="/">
+        <Route exact path={AppRoute.ROOT}>
           <Main />
         </Route>
-        <Route exact path="/login" render={
+        <Route exact path={AppRoute.LOGIN} render={
           ()=> (
             authorizationStatus === AuthorizationStatus.NO_AUTH
               ? <Login />
-              : <Redirect to="/" />
+              : <Redirect to={AppRoute.ROOT} />
           )
         }>
         </Route>
-        <PrivateRoute exact path="/favorites"
+        <PrivateRoute exact path={AppRoute.FAVORITES}
           renderFavorites={(serviceProp)=> (
             <Favorites offers={offers} serviceProp={serviceProp}/>
           )}
         />
-        <Route exact path="/offer/:id"
+        <Route exact path={`${AppRoute.OFFER}/:id`}
           render={(serviceProp) => (
             <Offer offers={offers} serviceProp={serviceProp} />
           )}
