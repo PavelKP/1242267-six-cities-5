@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {AuthorizationStatus} from '../../const';
 import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 
 const Header = (props) => {
   const {authorizationStatus} = props;
@@ -35,6 +36,8 @@ const Header = (props) => {
     </header>
   );
 };
+
+Header.propTypes = PropTypes.string.isRequired;
 
 const mapStateTopProps = ({USER}) => ({
   authorizationStatus: USER.authorizationStatus,

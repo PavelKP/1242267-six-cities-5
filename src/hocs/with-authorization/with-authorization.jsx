@@ -2,9 +2,10 @@ import React from 'react';
 import {compose} from 'redux';
 import {connect} from 'react-redux';
 import {authorize} from '../../store/api-actions';
+import PropTypes from 'prop-types';
 
 const withAuthorization = (Component) => {
-  return class WithAuthorization extends React.PureComponent {
+  class WithAuthorization extends React.PureComponent {
     constructor(props) {
       super(props);
 
@@ -24,7 +25,11 @@ const withAuthorization = (Component) => {
     render() {
       return <Component onFormSubmit={this._handleFromSubmit} formRef={this._formRef}/>;
     }
-  };
+  }
+
+  WithAuthorization.propTypes = PropTypes.func.isRequired;
+  return WithAuthorization;
+
 };
 
 const mapDispatchToProps = (dispatch) => ({

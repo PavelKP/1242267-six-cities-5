@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../../components/header/header';
 import withAuthorization from '../../hocs/with-authorization/with-authorization';
+import PropTypes from 'prop-types';
 
 
 const Login = ({onFormSubmit, formRef}) => {
@@ -37,6 +38,11 @@ const Login = ({onFormSubmit, formRef}) => {
       </main>
     </div>
   );
+};
+
+Login.propTypes = {
+  onFormSubmit: PropTypes.func.isRequired,
+  formRef: PropTypes.object.isRequired,
 };
 
 export default withAuthorization(Login);
