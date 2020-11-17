@@ -9,6 +9,7 @@ const initialState = {
   city: null,
   activeSorting: DEFAULT_SORTING,
   hoveredCard: DEFAULT_HOVERED_CARD,
+  activeOffer: null,
 };
 
 const userInterface = (state = initialState, action) => {
@@ -28,6 +29,10 @@ const userInterface = (state = initialState, action) => {
     case ActionType.SET_DEFAULT_CITY:
       return extend(state, {
         city: Adapter.cityToClient(action.payload)
+      });
+    case ActionType.LOAD_SINGLE_OFFER:
+      return extend(state, {
+        activeOffer: Adapter.offerSingleToClient(action.payload)
       });
     default:
       return state;

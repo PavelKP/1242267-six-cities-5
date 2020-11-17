@@ -31,3 +31,11 @@ export const authorize = ({email, password}) => (dispatch, _getState, api) => (
     throw err.response.data.error;
   })
 );
+
+export const fetchOfferById = (id) => (dispatch, _getState, api) => (
+  api.get(`${APIRoute.HOTELS}/${id}`)
+    .then(({data}) => {
+      dispatch(ActionCreator.loadSingleOffer(data));
+    })
+    .catch(() => dispatch(ActionCreator.redirectToRoute(`/`)))
+);

@@ -8,6 +8,7 @@ export const ActionType = {
   SET_DEFAULT_CITY: `SET_DEFAULT_CITY`,
   LOAD_REVIEWS: `LOAD_REVIEWS`,
   REDIRECT_TO_ROUTE: `REDIRECT_TO_ROUTE`,
+  LOAD_SINGLE_OFFER: `LOAD_SINGLE_OFFER`,
 };
 
 export const ActionCreator = {
@@ -65,4 +66,10 @@ export const ActionCreator = {
       payload: url,
     };
   },
+  loadSingleOffer(id) {
+    return {
+      type: ActionType.LOAD_SINGLE_OFFER,
+      payload: id,
+    };
+  }
 };

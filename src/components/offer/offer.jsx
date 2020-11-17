@@ -1,45 +1,44 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Redirect, Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import CommentForm from '../comment-form/comment-form';
 import withReviewCommentForm from '../../hocs/with-review/with-review';
+import withOfferLoading from '../../hocs/with-offer-loading/with-offer-loading';
 import OfferList from '../offer-list/offer-list';
 import Header from '../header/header';
 import Map from '../map/map';
-import {offersPropTypes} from '../../prop-types/prop-types';
+import {offerPropTypes} from '../../prop-types/prop-types';
 import ReviewList from '../review-list/review-list';
-import {CardType, AppRoute} from '../../const';
+import {CardType} from '../../const';
 import {getStarsStyle} from '../../utils';
 
 const CommentFormWrapped = withReviewCommentForm(CommentForm);
 
-const Offer = ({offers, serviceProp}) => {
-  const offerId = +serviceProp.match.params.id;
-  const currentOffer = offers.find((offerCurrent) => offerCurrent.id === +offerId);
+const Offer = ({loading, activeOffer, offerId}) => {
 
-  if (!currentOffer) {
-    return <Redirect to={AppRoute.ROOT} />;
+  if (loading) {
+    return <h3>Loading...please wait</h3>;
   }
 
-  const premium = currentOffer.isPremium &&
+  const premium = activeOffer.isPremium &&
     <div className="property__mark">
       <span>Premium</span>
     </div>;
 
-  const proUserClass = currentOffer.host.isPro
+  const proUserClass = activeOffer.host.isPro
     ? `property__avatar-wrapper--pro`
     : ``;
 
   /* Стиль есть только для вложенного элемента place-card__bookmark-icon*/
-  const bookmarked = currentOffer.isBookmarked
+  const bookmarked = activeOffer.isBookmarked
     ? `property__bookmark-button--active`
     : ``;
-  const bedrooms = +currentOffer.bedrooms <= 1
-    ? `${currentOffer.bedrooms} Bedroom`
-    : `${currentOffer.bedrooms} Bedrooms`;
-  const adults = +currentOffer.adults <= 1
-    ? `Max ${currentOffer.adults} adult`
-    : `Max ${currentOffer.adults} adults`;
+  const bedrooms = +activeOffer.bedrooms <= 1
+    ? `${activeOffer.bedrooms} Bedroom`
+    : `${activeOffer.bedrooms} Bedrooms`;
+  const adults = +activeOffer.adults <= 1
+    ? `Max ${activeOffer.adults} adult`
+    : `Max ${activeOffer.adults} adults`;
 
   return (
     <div className="page">
@@ -53,7 +52,7 @@ const Offer = ({offers, serviceProp}) => {
         <section className="property">
           <div className="property__gallery-container container">
             <div className="property__gallery">
-              {currentOffer.images.map((image, i)=> (
+              {activeOffer.images.map((image, i)=> (
                 <div className="property__image-wrapper" key={`property-image-${i}`}>
                   <img className="property__image" src={image} alt="Photo studio" />
                 </div>
@@ -65,7 +64,7 @@ const Offer = ({offers, serviceProp}) => {
               {premium}
               <div className="property__name-wrapper">
                 <h1 className="property__name">
-                  {currentOffer.title}
+                  {activeOffer.title}
                 </h1>
                 <button className={`property__bookmark-button button ${bookmarked}`} type="button">
                   <svg className="place-card__bookmark-icon" width="31" height="33">
@@ -76,14 +75,14 @@ const Offer = ({offers, serviceProp}) => {
               </div>
               <div className="property__rating rating">
                 <div className="property__stars rating__stars">
-                  <span style={getStarsStyle(currentOffer.rating)}></span>
+                  <span style={getStarsStyle(activeOffer.rating)}></span>
                   <span className="visually-hidden">Rating</span>
                 </div>
-                <span className="property__rating-value rating__value">{currentOffer.rating}</span>
+                <span className="property__rating-value rating__value">{activeOffer.rating}</span>
               </div>
               <ul className="property__features">
                 <li className="property__feature property__feature--entire">
-                  {currentOffer.entire}
+                  {activeOffer.entire}
                 </li>
                 <li className="property__feature property__feature--bedrooms">
                   {bedrooms}
@@ -93,13 +92,13 @@ const Offer = ({offers, serviceProp}) => {
                 </li>
               </ul>
               <div className="property__price">
-                <b className="property__price-value">&euro;{currentOffer.price}</b>
+                <b className="property__price-value">&euro;{activeOffer.price}</b>
                 <span className="property__price-text">&nbsp;night</span>
               </div>
               <div className="property__inside">
                 <h2 className="property__inside-title">What&apos;s inside</h2>
                 <ul className="property__inside-list">
-                  {currentOffer.inside.map((feature, i)=> (
+                  {activeOffer.inside.map((feature, i)=> (
                     <li className="property__inside-item" key={`property-inside-${i}`}>
                       {feature}
                     </li>
@@ -110,14 +109,14 @@ const Offer = ({offers, serviceProp}) => {
                 <h2 className="property__host-title">Meet the host</h2>
                 <div className="property__host-user user">
                   <div className={`property__avatar-wrapper ${proUserClass} user__avatar-wrapper`}>
-                    <img className="property__avatar user__avatar" src={currentOffer.host.avatar} width="74" height="74" alt="Host avatar" />
+                    <img className="property__avatar user__avatar" src={activeOffer.host.avatar} width="74" height="74" alt="Host avatar" />
                   </div>
                   <span className="property__user-name">
-                    {currentOffer.host.name}
+                    {activeOffer.host.name}
                   </span>
                 </div>
                 <div className="property__description">
-                  {currentOffer.description.map((paragraph, i) =>(
+                  {activeOffer.description.map((paragraph, i) =>(
                     <p className="property__text" key={`property-paragraph-${i}`}>
                       {paragraph}
                     </p>
@@ -130,7 +129,7 @@ const Offer = ({offers, serviceProp}) => {
               </section>
             </div>
           </div>
-          <Map className="property__map map" currentOffer={currentOffer}/>
+          <Map className="property__map map" activeOffer={activeOffer}/>
         </section>
         <div className="container">
           <section className="near-places places">
@@ -147,8 +146,9 @@ const Offer = ({offers, serviceProp}) => {
 };
 
 Offer.propTypes = {
-  offers: offersPropTypes.offers,
-  serviceProp: PropTypes.object.isRequired,
+  activeOffer: offerPropTypes.offer,
+  offerId: PropTypes.number.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
-export default Offer;
+export default withOfferLoading(Offer);
