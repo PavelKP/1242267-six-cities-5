@@ -9,6 +9,7 @@ import Map from '../map/map';
 import {offersPropTypes} from '../../prop-types/prop-types';
 import ReviewList from '../review-list/review-list';
 import {CardType, AppRoute} from '../../const';
+import {getStarsStyle} from '../../utils';
 
 const CommentFormWrapped = withReviewCommentForm(CommentForm);
 
@@ -75,7 +76,7 @@ const Offer = ({offers, serviceProp}) => {
               </div>
               <div className="property__rating rating">
                 <div className="property__stars rating__stars">
-                  <span></span>
+                  <span style={getStarsStyle(currentOffer.rating)}></span>
                   <span className="visually-hidden">Rating</span>
                 </div>
                 <span className="property__rating-value rating__value">{currentOffer.rating}</span>

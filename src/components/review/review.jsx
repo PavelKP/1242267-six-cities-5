@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import {oneReviewPropTypes} from '../../prop-types/prop-types';
-
+import {getStarsStyle} from '../../utils';
 
 const ReviewList = ({review}) => {
   const dateShort = moment(review.date).format(`MMMM YYYY`);
@@ -20,7 +20,7 @@ const ReviewList = ({review}) => {
       <div className="reviews__info">
         <div className="reviews__rating rating">
           <div className="reviews__stars rating__stars">
-            <span></span>
+            <span style={getStarsStyle(review.rating)}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>

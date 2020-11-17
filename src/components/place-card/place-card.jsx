@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import {offerPropTypes} from '../../prop-types/prop-types';
+import {getStarsStyle} from '../../utils';
 
 const PlaceCard = (
     {offer, onCardMouseOver, classArticle,
@@ -49,7 +50,7 @@ const PlaceCard = (
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span></span>
+            <span style={getStarsStyle(offer.rating)}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
