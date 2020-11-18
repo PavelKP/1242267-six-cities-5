@@ -39,3 +39,20 @@ export const fetchOfferById = (id) => (dispatch, _getState, api) => (
     })
     .catch(() => dispatch(ActionCreator.redirectToRoute(`/`)))
 );
+
+export const sendReview = (offerId, review) => (dispatch, _getState, api) => {
+  api.get(APIRoute.LOGIN)
+  .then(() => dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH)))
+  .catch(() => {});
+
+  return api.post(`${APIRoute.COMMENTS}/${offerId}`, {
+    comment: review.comment,
+    rating: review.rating,
+  })
+    .then(({comments}) => {
+      dispatch(ActionCreator.loadReviews(comments));
+    })
+    .catch((err) => {
+      throw err;
+    });
+};

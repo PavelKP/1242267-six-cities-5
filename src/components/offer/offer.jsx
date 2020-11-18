@@ -125,7 +125,7 @@ const Offer = ({loading, activeOffer, offerId}) => {
               </div>
               <section className="property__reviews reviews">
                 <ReviewList offerId={offerId} />
-                <CommentFormWrapped />
+                <CommentFormWrapped offerId={offerId} />
               </section>
             </div>
           </div>
