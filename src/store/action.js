@@ -10,6 +10,7 @@ export const ActionType = {
   REDIRECT_TO_ROUTE: `REDIRECT_TO_ROUTE`,
   LOAD_SINGLE_OFFER: `LOAD_SINGLE_OFFER`,
   SET_USER_DATA: `SET_USER_DATA`,
+  UPDATE_OFFER: `UPDATE_OFFER`,
 };
 
 export const ActionCreator = {
@@ -77,6 +78,12 @@ export const ActionCreator = {
     return {
       type: ActionType.SET_USER_DATA,
       payload: userData,
+    };
+  },
+  updateOffer(offer) {
+    return {
+      type: ActionType.UPDATE_OFFER,
+      payload: offer,
     };
   }
 };

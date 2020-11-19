@@ -1,6 +1,3 @@
-/*
-import offers from '../../../mocks/offers';
-import reviews from '../../../mocks/reviews';*/
 import {ActionType} from '../../action';
 import {extend} from '../../../utils';
 import Adapter from '../../../services/adapter';
@@ -33,6 +30,11 @@ const applicationData = (state = initialState, action) => {
     case ActionType.LOAD_REVIEWS:
       return extend(state, {
         reviews: Adapter.reviewsToClient(action.payload),
+      });
+    case ActionType.UPDATE_OFFER:
+      const index = state.offers.findIndex((offer) => offer.id === action.payload.id);
+      return extend(state, {
+        offers: [...state.offers.slice(0, index), Adapter.offerSingleToClient(action.payload), ...state.offers.slice(index + 1)],
       });
     default:
       return state;

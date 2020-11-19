@@ -55,3 +55,11 @@ export const sendReview = (offerId, review) => (dispatch, _getState, api) => (
       throw err;
     })
 );
+
+export const setFavoriteStatus = (offerId, status) => (dispatch, _getState, api) => (
+  api.post(`${APIRoute.FAVORITE}/${offerId}/${status}`)
+  .then(({data}) => dispatch(ActionCreator.updateOffer(data)))
+  .catch((err) => {
+    throw err.response.data.error;
+  })
+);
