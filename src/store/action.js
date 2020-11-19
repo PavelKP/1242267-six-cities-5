@@ -9,6 +9,7 @@ export const ActionType = {
   LOAD_REVIEWS: `LOAD_REVIEWS`,
   REDIRECT_TO_ROUTE: `REDIRECT_TO_ROUTE`,
   LOAD_SINGLE_OFFER: `LOAD_SINGLE_OFFER`,
+  SET_USER_DATA: `SET_USER_DATA`,
 };
 
 export const ActionCreator = {
@@ -70,6 +71,12 @@ export const ActionCreator = {
     return {
       type: ActionType.LOAD_SINGLE_OFFER,
       payload: id,
+    };
+  },
+  setUserData(userData) {
+    return {
+      type: ActionType.SET_USER_DATA,
+      payload: userData,
     };
   }
 };

@@ -54,6 +54,12 @@ const Adapter = {
         }
       });
     });
+  },
+  userDataToClient(userData) {
+    return {
+      avatarUrl: userData.avatar_url,
+      email: userData.email,
+    };
   }
 };
 
