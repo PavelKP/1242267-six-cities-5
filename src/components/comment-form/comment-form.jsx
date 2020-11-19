@@ -2,7 +2,6 @@ import React, {createRef} from 'react';
 import PropTypes from 'prop-types';
 
 const CommentForm = ({onSubmit}) => {
-  console.log(onSubmit);
   const form = createRef();
 
   const handleFormSubmit = (evt) => {

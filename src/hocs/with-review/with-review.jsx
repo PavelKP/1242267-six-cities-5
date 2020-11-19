@@ -1,6 +1,7 @@
 import React from 'react';
 import {sendReview} from '../../store/api-actions';
 import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 
 
 const withReview = (Component) => {
@@ -26,6 +27,8 @@ const withReview = (Component) => {
       return <Component onSubmit={this._handleSubmit}/>;
     }
   }
+
+  WithReview.propTypes = PropTypes.func.isRequired;
 
   const mapDispatchToProps = (dispatch) => ({
     sendReview(id, review) {
