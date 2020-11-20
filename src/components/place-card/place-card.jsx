@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import {offerPropTypes} from '../../prop-types/prop-types';
 import {getStarsStyle} from '../../utils';
-import FavoriteButton from '../../components/favorite-button/favorite-button';
+import FavoriteButtonSmall from '../../components/favorite-button/favorite-button-small';
 
 const PlaceCard = (
     {offer, onCardMouseOver, classArticle,
@@ -40,7 +40,7 @@ const PlaceCard = (
             <b className="place-card__price-value">&euro;{offer.price}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
-          <FavoriteButton offerId={offer.id}/>
+          <FavoriteButtonSmall offerId={offer.id}/>
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">

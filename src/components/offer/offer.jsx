@@ -13,10 +13,12 @@ import {CardType} from '../../const';
 import {getStarsStyle} from '../../utils';
 import {connect} from 'react-redux';
 import {AuthorizationStatus} from "../../const";
+import FavoriteButtonBig from '../../components/favorite-button/favorite-button-big';
+
 
 const CommentFormWrapped = withReviewCommentForm(CommentForm);
 
-const Offer = ({loading, activeOffer, offerId, authorizationStatus}) => {
+const Offer = ({loading, activeOffer, authorizationStatus}) => {
 
   if (loading) {
     return <h3>Loading...please wait</h3>;
@@ -31,10 +33,6 @@ const Offer = ({loading, activeOffer, offerId, authorizationStatus}) => {
     ? `property__avatar-wrapper--pro`
     : ``;
 
-  /* Стиль есть только для вложенного элемента place-card__bookmark-icon*/
-  const bookmarked = activeOffer.isBookmarked
-    ? `property__bookmark-button--active`
-    : ``;
   const bedrooms = +activeOffer.bedrooms <= 1
     ? `${activeOffer.bedrooms} Bedroom`
     : `${activeOffer.bedrooms} Bedrooms`;
@@ -68,12 +66,7 @@ const Offer = ({loading, activeOffer, offerId, authorizationStatus}) => {
                 <h1 className="property__name">
                   {activeOffer.title}
                 </h1>
-                <button className={`property__bookmark-button button ${bookmarked}`} type="button">
-                  <svg className="place-card__bookmark-icon" width="31" height="33">
-                    <use xlinkHref="#icon-bookmark"></use>
-                  </svg>
-                  <span className="visually-hidden">To bookmarks</span>
-                </button>
+                <FavoriteButtonBig offerId={activeOffer.id} />
               </div>
               <div className="property__rating rating">
                 <div className="property__stars rating__stars">
@@ -126,9 +119,9 @@ const Offer = ({loading, activeOffer, offerId, authorizationStatus}) => {
                 </div>
               </div>
               <section className="property__reviews reviews">
-                <ReviewList offerId={offerId} />
+                <ReviewList offerId={activeOffer.id} />
                 {authorizationStatus === AuthorizationStatus.AUTH
-                  && <CommentFormWrapped offerId={offerId} />}
+                  && <CommentFormWrapped offerId={activeOffer.id} />}
               </section>
             </div>
           </div>
