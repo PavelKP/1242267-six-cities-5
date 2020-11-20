@@ -2,17 +2,25 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {setFavoriteStatus} from '../../store/api-actions';
+import {ActionCreator} from '../../store/action';
+import {APIRoute, AuthorizationStatus} from '../../const';
 import PropTypes from 'prop-types';
 import {offersPropTypes} from '../../prop-types/prop-types';
 
-const FavoriteButton = ({offers, offerId, setFavoriteStatus}) => {
+const FavoriteButton = ({offers, offerId, setFavoriteStatusDispatch,
+  redirectToRoute, authorizationStatus}) => {
 
   const isBookmarked = offers.filter((offer) => offer.id === offerId)[0].isBookmarked;
   const bookmarked = isBookmarked ? `place-card__bookmark-button--active` : ``;
 
   const handleFavoriteClick = (evt) => {
     evt.preventDefault();
-    setFavoriteStatus(offerId, Number(!isBookmarked));
+
+    if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
+      redirectToRoute(APIRoute.LOGIN);
+    } else {
+      setFavoriteStatusDispatch(offerId, Number(!isBookmarked));
+    }
   };
 
   return (
@@ -29,17 +37,23 @@ const FavoriteButton = ({offers, offerId, setFavoriteStatus}) => {
 FavoriteButton.propTypes = {
   offers: offersPropTypes.offers,
   offerId: PropTypes.number.isRequired,
-  setFavoriteStatus: PropTypes.func.isRequired,
+  setFavoriteStatusDispatch: PropTypes.func.isRequired,
+  redirectToRoute: PropTypes.func.isRequired,
+  authorizationStatus: PropTypes.string.isRequired,
 };
 
 
-const mapStateToProps = (state) => ({
-  offers: state.DATA.offers,
+const mapStateToProps = ({DATA, USER}) => ({
+  offers: DATA.offers,
+  authorizationStatus: USER.authorizationStatus,
 });
 
 const dispatchStateToProps = (dispatch) => ({
-  setFavoriteStatus(offerId, status) {
+  setFavoriteStatusDispatch(offerId, status) {
     return dispatch(setFavoriteStatus(offerId, status));
+  },
+  redirectToRoute(route) {
+    return dispatch(ActionCreator.redirectToRoute(route));
   }
 });
 
