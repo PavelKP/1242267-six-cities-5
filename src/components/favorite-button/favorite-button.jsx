@@ -2,6 +2,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {setFavoriteStatus} from '../../store/api-actions';
+import PropTypes from 'prop-types';
+import {offersPropTypes} from '../../prop-types/prop-types';
 
 const FavoriteButton = ({offers, offerId, setFavoriteStatus}) => {
 
@@ -23,6 +25,13 @@ const FavoriteButton = ({offers, offerId, setFavoriteStatus}) => {
     </button>
   );
 };
+
+FavoriteButton.propTypes = {
+  offers: offersPropTypes.offers,
+  offerId: PropTypes.number.isRequired,
+  setFavoriteStatus: PropTypes.func.isRequired,
+};
+
 
 const mapStateToProps = (state) => ({
   offers: state.DATA.offers,

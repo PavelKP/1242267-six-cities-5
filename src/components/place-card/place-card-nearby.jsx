@@ -12,4 +12,4 @@ const PlaceCardNearby = (props) => {
   );
 };
 
-export default PlaceCardNearby;
+export default React.memo(PlaceCardNearby);
