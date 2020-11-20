@@ -11,10 +11,12 @@ import {offerPropTypes} from '../../prop-types/prop-types';
 import ReviewList from '../review-list/review-list';
 import {CardType} from '../../const';
 import {getStarsStyle} from '../../utils';
+import {connect} from 'react-redux';
+import {AuthorizationStatus} from "../../const";
 
 const CommentFormWrapped = withReviewCommentForm(CommentForm);
 
-const Offer = ({loading, activeOffer, offerId}) => {
+const Offer = ({loading, activeOffer, offerId, authorizationStatus}) => {
 
   if (loading) {
     return <h3>Loading...please wait</h3>;
@@ -125,7 +127,8 @@ const Offer = ({loading, activeOffer, offerId}) => {
               </div>
               <section className="property__reviews reviews">
                 <ReviewList offerId={offerId} />
-                <CommentFormWrapped offerId={offerId} />
+                {authorizationStatus === AuthorizationStatus.AUTH
+                  && <CommentFormWrapped offerId={offerId} />}
               </section>
             </div>
           </div>
@@ -149,6 +152,11 @@ Offer.propTypes = {
   activeOffer: offerPropTypes.offer,
   offerId: PropTypes.number.isRequired,
   loading: PropTypes.bool.isRequired,
+  authorizationStatus: PropTypes.string.isRequired,
 };
 
-export default withOfferLoading(Offer);
+const mapStateToProps = ({USER}) => ({
+  authorizationStatus: USER.authorizationStatus,
+});
+
+export default connect(mapStateToProps)(withOfferLoading(Offer));

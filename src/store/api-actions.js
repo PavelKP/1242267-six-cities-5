@@ -1,5 +1,5 @@
 import {ActionCreator} from "./action";
-import {AuthorizationStatus, APIRoute} from "./../const";
+import {AuthorizationStatus, APIRoute, AppRoute} from "./../const";
 
 export const fetchOfferList = () => (dispatch, _getState, api) => (
   api.get(APIRoute.HOTELS)
@@ -29,7 +29,7 @@ export const authorize = ({email, password}) => (dispatch, _getState, api) => (
     dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
     dispatch(ActionCreator.setUserData(data));
   })
-  .then(() => dispatch(ActionCreator.redirectToRoute(`/`)))
+  .then(() => dispatch(ActionCreator.redirectToRoute(AppRoute.ROOT)))
   .catch((err) => {
     throw err.response.data.error;
   })
@@ -40,7 +40,7 @@ export const fetchOfferById = (id) => (dispatch, _getState, api) => (
     .then(({data}) => {
       dispatch(ActionCreator.loadSingleOffer(data));
     })
-    .catch(() => dispatch(ActionCreator.redirectToRoute(`/`)))
+    .catch(() => dispatch(ActionCreator.redirectToRoute(AppRoute.ROOT)))
 );
 
 export const sendReview = (offerId, review) => (dispatch, _getState, api) => (
