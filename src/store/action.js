@@ -11,6 +11,7 @@ export const ActionType = {
   LOAD_SINGLE_OFFER: `LOAD_SINGLE_OFFER`,
   SET_USER_DATA: `SET_USER_DATA`,
   UPDATE_OFFER: `UPDATE_OFFER`,
+  LOAD_NEARBY: `LOAD_NEARBY`,
 };
 
 export const ActionCreator = {
@@ -84,6 +85,12 @@ export const ActionCreator = {
     return {
       type: ActionType.UPDATE_OFFER,
       payload: offer,
+    };
+  },
+  loadActiveNearby(nearbyOffers) {
+    return {
+      type: ActionType.LOAD_NEARBY,
+      payload: nearbyOffers,
     };
   }
 };

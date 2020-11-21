@@ -63,3 +63,10 @@ export const setFavoriteStatus = (offerId, status) => (dispatch, _getState, api)
     throw err.response.data.error;
   })
 );
+
+export const fetchNearbyById = (id) => (dispatch, _getState, api) => (
+  api.get(`${APIRoute.HOTELS}/${id}/nearby`)
+    .then(({data}) => {
+      dispatch(ActionCreator.loadActiveNearby(data));
+    })
+);

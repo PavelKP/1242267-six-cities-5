@@ -131,8 +131,7 @@ const Offer = ({loading, activeOffer, authorizationStatus}) => {
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
             <div className="near-places__list places__list">
-              <OfferList
-                type={CardType.NEARBY}/>
+              <OfferList type={CardType.NEARBY} offerId={activeOffer.id}/>
             </div>
           </section>
         </div>
