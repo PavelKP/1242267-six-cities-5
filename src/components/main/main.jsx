@@ -13,6 +13,9 @@ import {connect} from 'react-redux';
 import {offersPropTypes} from '../../prop-types/prop-types';
 import {getCurrentOffers} from '../../store/combined-selectors';
 import {getActiveCityName} from '../../store/reducers/user-interface/selectors';
+import withBoardLoading from '../../hocs/with-board-loading/with-board-loading';
+
+const OfferListWrapped = withBoardLoading(OfferList);
 
 const SortingTypesWrapped = withToggler(SortingTypes);
 
@@ -40,7 +43,7 @@ const Main = ({offers, city}) => {
                   <PlacesCount offersFiltered={offers} />
                   <SortingTypesWrapped />
                   <div className="cities__places-list places__list tabs__content">
-                    <OfferList type={CardType.MAIN} />
+                    <OfferListWrapped type={CardType.MAIN} />
                   </div>
                 </section>
                 <div className="cities__right-section">

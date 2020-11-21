@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 import CommentForm from '../comment-form/comment-form';
 import withReviewCommentForm from '../../hocs/with-review/with-review';
 import withOfferLoading from '../../hocs/with-offer-loading/with-offer-loading';
+import withNearbyLoading from '../../hocs/with-nearby-loading/with-nearby-loading';
 import OfferList from '../offer-list/offer-list';
 import Header from '../header/header';
 import Map from '../map/map';
@@ -17,6 +18,8 @@ import FavoriteButtonBig from '../../components/favorite-button/favorite-button-
 
 
 const CommentFormWrapped = withReviewCommentForm(CommentForm);
+const OfferListWrapped = withNearbyLoading(OfferList);
+
 
 const Offer = ({loading, activeOffer, authorizationStatus}) => {
 
@@ -125,13 +128,13 @@ const Offer = ({loading, activeOffer, authorizationStatus}) => {
               </section>
             </div>
           </div>
-          <Map className="property__map map" activeOffer={activeOffer}/>
+          <Map className="property__map map" activeOffer={activeOffer} type={CardType.NEARBY}/>
         </section>
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
             <div className="near-places__list places__list">
-              <OfferList type={CardType.NEARBY} offerId={activeOffer.id}/>
+              <OfferListWrapped type={CardType.NEARBY} offerId={activeOffer.id}/>
             </div>
           </section>
         </div>

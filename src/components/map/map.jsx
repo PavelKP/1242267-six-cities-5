@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {getActiveCityName, getActiveCityCoords, getHoveredCard} from '../../store/reducers/user-interface/selectors';
 import {getCurrentOffers} from '../../store/combined-selectors';
-
+import {CardType} from '../../const';
 
 const zoom = 12;
 
@@ -72,11 +72,14 @@ class Map extends React.PureComponent {
   }
 
   _getOffers() {
-   /* const currentCity = this.props.currentOffer
-      ? this.props.currentOffer.city.name
-      : this.props.activeCityName;*/
+    if (this.props.type === CardType.NEARBY) {
+      // Сначала рендерим пустой массив, потом асинхронно подгрузятся ближайшие офферы
+      // Компонент перерендерится и их отрисуем
+      return (this.props.activeNearby === null ? [] : this.props.activeNearby);
+    } else {
+      return this.props.offers;
+    }
 
-    return this.props.offers; /*.filter(({city}) => city.name === currentCity);*/
   }
 
   componentDidMount() {
@@ -98,6 +101,7 @@ const mapStateToProps = (state) => ({
   hoveredCard: getHoveredCard(state),
   activeCityName: getActiveCityName(state),
   activeCityCoords: getActiveCityCoords(state),
+  activeNearby: state.INTERFACE.activeNearby,
 });
 
 Map.propTypes = {
@@ -107,6 +111,8 @@ Map.propTypes = {
   activeCityCoords: PropTypes.array.isRequired,
   className: PropTypes.string.isRequired,
   hoveredCard: PropTypes.number.isRequired,
+  activeNearby: offersPropTypes.offers,
+  type: PropTypes.string.isRequired,
 };
 
 export {Map};

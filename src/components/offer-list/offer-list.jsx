@@ -5,7 +5,6 @@ import PlaceCardMain from '../place-card/place-card-main';
 import PlaceCardNearby from '../place-card/place-card-nearby';
 import PlaceCardFavorites from '../place-card/place-card-favorites';
 import {CardType} from '../../const';
-import withNearbyLoading from '../../hocs/with-nearby-loading/with-nearby-loading';
 
 const getComponentByType = (type, offer, handler) => {
   switch (type) {
@@ -46,5 +45,5 @@ OfferList.propTypes = {
   setHoveredCard: PropTypes.func.isRequired,
 };
 
-export default withNearbyLoading(OfferList);
+export default OfferList;
 

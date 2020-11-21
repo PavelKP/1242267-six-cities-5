@@ -23,6 +23,13 @@ const withOfferLoading = (Component) => {
       });
     }
 
+    componentDidUpdate(prevProps) {
+      if (+prevProps.serviceProp.match.params.id !== +this.props.serviceProp.match.params.id) {
+        this._offerId = +this.props.serviceProp.match.params.id;
+        this.props.fetchOfferById(this._offerId);
+      }
+    }
+
     render() {
       return <Component
         loading={this.state.loading}
