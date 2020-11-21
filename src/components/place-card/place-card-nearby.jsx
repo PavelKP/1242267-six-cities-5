@@ -8,7 +8,8 @@ const PlaceCardNearby = (props) => {
     <PlaceCard
       classArticle={`near-places__card`}
       classImageWrapper={`near-places__image-wrapper`}
-      {...props} />
+      {...props}
+      onCardMouseOver={{}}/> // empty handler
   );
 };
 

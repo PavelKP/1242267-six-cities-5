@@ -57,7 +57,13 @@ class Map extends React.PureComponent {
 
   _renderMarker(offer) {
     const {coordinates, id} = offer;
-    const icon = (id === this.props.hoveredCard) ? this._iconActive : this._iconDefault;
+
+    const offerIdForCompare =
+      (this.props.type === CardType.NEARBY)
+        ? this.props.activeOffer.id
+        : this.props.hoveredCard;
+
+    const icon = (id === offerIdForCompare) ? this._iconActive : this._iconDefault;
 
     Leaflet
     .marker(coordinates, {icon})
@@ -66,8 +72,8 @@ class Map extends React.PureComponent {
   }
 
   _getCoordinates() {
-    return this.props.currentOffer
-      ? this.props.currentOffer.coordinates
+    return this.props.activeOffer
+      ? this.props.activeOffer.coordinates
       : this.props.activeCityCoords;
   }
 
@@ -75,11 +81,12 @@ class Map extends React.PureComponent {
     if (this.props.type === CardType.NEARBY) {
       // Сначала рендерим пустой массив, потом асинхронно подгрузятся ближайшие офферы
       // Компонент перерендерится и их отрисуем
-      return (this.props.activeNearby === null ? [] : this.props.activeNearby);
+      return (this.props.activeNearby === null
+        ? []
+        : [...this.props.activeNearby, this.props.activeOffer]);
     } else {
       return this.props.offers;
     }
-
   }
 
   componentDidMount() {
@@ -106,7 +113,7 @@ const mapStateToProps = (state) => ({
 
 Map.propTypes = {
   offers: offersPropTypes.offers,
-  currentOffer: offerPropTypes.offer,
+  activeOffer: offerPropTypes.offer,
   activeCityName: PropTypes.string.isRequired,
   activeCityCoords: PropTypes.array.isRequired,
   className: PropTypes.string.isRequired,
