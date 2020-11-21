@@ -36,7 +36,7 @@ const App = ({offers, authorizationStatus}) => {
         />
         <Route exact path={`${AppRoute.OFFER}/:id`}
           render={(serviceProp) => (
-            <Offer offers={offers} serviceProp={serviceProp} />
+            <Offer serviceProp={serviceProp} />
           )}
         />
       </Switch>

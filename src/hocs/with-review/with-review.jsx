@@ -1,23 +1,21 @@
 import React from 'react';
+import {sendReview} from '../../store/api-actions';
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
+
 
 const withReview = (Component) => {
-  return class WithReview extends React.PureComponent {
+  class WithReview extends React.PureComponent {
     constructor() {
       super();
 
-      this.state = {
-        rating: null,
-        comment: null
-      };
-
-      this.handleSubmit = this.handleSubmit.bind(this);
+      this._handleSubmit = this._handleSubmit.bind(this);
     }
 
-    handleSubmit(evt, form) {
-      evt.preventDefault();
+    _handleSubmit(evt, form) {
       const formData = new FormData(form);
 
-      this.setState({
+      this.props.sendReview(this.props.offerId, {
         rating: formData.get(`rating`),
         comment: formData.get(`review`),
       });
@@ -26,9 +24,19 @@ const withReview = (Component) => {
     }
 
     render() {
-      return <Component onSubmit={this.handleSubmit}/>;
+      return <Component onSubmit={this._handleSubmit}/>;
     }
-  };
+  }
+
+  WithReview.propTypes = PropTypes.func.isRequired;
+
+  const mapDispatchToProps = (dispatch) => ({
+    sendReview(id, review) {
+      return dispatch(sendReview(id, review));
+    }
+  });
+
+  return connect(null, mapDispatchToProps)(WithReview);
 };
 
 export default withReview;

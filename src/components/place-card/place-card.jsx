@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import {offerPropTypes} from '../../prop-types/prop-types';
+import {getStarsStyle} from '../../utils';
+import FavoriteButtonSmall from '../../components/favorite-button/favorite-button-small';
 
 const PlaceCard = (
     {offer, onCardMouseOver, classArticle,
@@ -11,8 +13,6 @@ const PlaceCard = (
     (<div className="place-card__mark">
       <span>Premium</span>
     </div>);
-
-  const bookmarked = offer.isBookmarked ? `place-card__bookmark-button--active` : ``;
 
   const handleMouseEnter = (evt) => {
     evt.preventDefault();
@@ -40,16 +40,11 @@ const PlaceCard = (
             <b className="place-card__price-value">&euro;{offer.price}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
-          <button className={`place-card__bookmark-button button ${bookmarked}`} type="button">
-            <svg className="place-card__bookmark-icon" width="18" height="19">
-              <use xlinkHref="#icon-bookmark"></use>
-            </svg>
-            <span className="visually-hidden">In bookmarks</span>
-          </button>
+          <FavoriteButtonSmall offerId={offer.id}/>
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span></span>
+            <span style={getStarsStyle(offer.rating)}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>

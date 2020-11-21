@@ -14,4 +14,4 @@ const PlaceCardFavorites = (props) => {
   );
 };
 
-export default PlaceCardFavorites;
+export default React.memo(PlaceCardFavorites);

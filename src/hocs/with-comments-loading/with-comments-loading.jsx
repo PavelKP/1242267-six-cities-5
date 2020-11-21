@@ -23,6 +23,13 @@ const withCommentsLoading = (Component) => {
       });
     }
 
+    componentDidUpdate(prevProps) {
+      if (+prevProps.offerId !== +this.props.offerId) {
+        this._offerId = +this.props.offerId;
+        this.props.loadReview(this._offerId);
+      }
+    }
+
     render() {
       // rest is the best, but eslint config doesn't allow this
       // const {loadReview, offerId, ...rest} = this.props;

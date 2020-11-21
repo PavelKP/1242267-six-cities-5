@@ -5,7 +5,8 @@ import {offersPropTypes, offerPropTypes} from '../../prop-types/prop-types';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {getActiveCityName, getActiveCityCoords, getHoveredCard} from '../../store/reducers/user-interface/selectors';
-
+import {getCurrentOffers} from '../../store/combined-selectors';
+import {CardType} from '../../const';
 
 const zoom = 12;
 
@@ -56,7 +57,13 @@ class Map extends React.PureComponent {
 
   _renderMarker(offer) {
     const {coordinates, id} = offer;
-    const icon = (id === this.props.hoveredCard) ? this._iconActive : this._iconDefault;
+
+    const offerIdForCompare =
+      (this.props.type === CardType.NEARBY)
+        ? this.props.activeOffer.id
+        : this.props.hoveredCard;
+
+    const icon = (id === offerIdForCompare) ? this._iconActive : this._iconDefault;
 
     Leaflet
     .marker(coordinates, {icon})
@@ -65,17 +72,21 @@ class Map extends React.PureComponent {
   }
 
   _getCoordinates() {
-    return this.props.currentOffer
-      ? this.props.currentOffer.coordinates
+    return this.props.activeOffer
+      ? this.props.activeOffer.coordinates
       : this.props.activeCityCoords;
   }
 
   _getOffers() {
-    const currentCity = this.props.currentOffer
-      ? this.props.currentOffer.city.name
-      : this.props.activeCityName;
-
-    return this.props.offers.filter(({city}) => city.name === currentCity);
+    if (this.props.type === CardType.NEARBY) {
+      // Сначала рендерим пустой массив, потом асинхронно подгрузятся ближайшие офферы
+      // Компонент перерендерится и их отрисуем
+      return (this.props.activeNearby === null
+        ? []
+        : [...this.props.activeNearby, this.props.activeOffer]);
+    } else {
+      return this.props.offers;
+    }
   }
 
   componentDidMount() {
@@ -93,19 +104,22 @@ class Map extends React.PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-  offers: state.DATA.offers,
+  offers: getCurrentOffers(state),
   hoveredCard: getHoveredCard(state),
   activeCityName: getActiveCityName(state),
   activeCityCoords: getActiveCityCoords(state),
+  activeNearby: state.INTERFACE.activeNearby,
 });
 
 Map.propTypes = {
   offers: offersPropTypes.offers,
-  currentOffer: offerPropTypes.offer,
+  activeOffer: offerPropTypes.offer,
   activeCityName: PropTypes.string.isRequired,
   activeCityCoords: PropTypes.array.isRequired,
   className: PropTypes.string.isRequired,
   hoveredCard: PropTypes.number.isRequired,
+  activeNearby: offersPropTypes.offers,
+  type: PropTypes.string.isRequired,
 };
 
 export {Map};

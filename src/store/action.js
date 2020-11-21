@@ -8,6 +8,10 @@ export const ActionType = {
   SET_DEFAULT_CITY: `SET_DEFAULT_CITY`,
   LOAD_REVIEWS: `LOAD_REVIEWS`,
   REDIRECT_TO_ROUTE: `REDIRECT_TO_ROUTE`,
+  LOAD_SINGLE_OFFER: `LOAD_SINGLE_OFFER`,
+  SET_USER_DATA: `SET_USER_DATA`,
+  UPDATE_OFFER: `UPDATE_OFFER`,
+  LOAD_NEARBY: `LOAD_NEARBY`,
 };
 
 export const ActionCreator = {
@@ -65,4 +69,28 @@ export const ActionCreator = {
       payload: url,
     };
   },
+  loadSingleOffer(id) {
+    return {
+      type: ActionType.LOAD_SINGLE_OFFER,
+      payload: id,
+    };
+  },
+  setUserData(userData) {
+    return {
+      type: ActionType.SET_USER_DATA,
+      payload: userData,
+    };
+  },
+  updateOffer(offer) {
+    return {
+      type: ActionType.UPDATE_OFFER,
+      payload: offer,
+    };
+  },
+  loadActiveNearby(nearbyOffers) {
+    return {
+      type: ActionType.LOAD_NEARBY,
+      payload: nearbyOffers,
+    };
+  }
 };

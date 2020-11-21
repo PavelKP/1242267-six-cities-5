@@ -1,5 +1,5 @@
 import {ActionCreator} from "./action";
-import {AuthorizationStatus, APIRoute} from "./../const";
+import {AuthorizationStatus, APIRoute, AppRoute} from "./../const";
 
 export const fetchOfferList = () => (dispatch, _getState, api) => (
   api.get(APIRoute.HOTELS)
@@ -25,9 +25,48 @@ export const login = () => (dispatch, _getState, api) => (
 
 export const authorize = ({email, password}) => (dispatch, _getState, api) => (
   api.post(APIRoute.LOGIN, {email, password})
-  .then(() => dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH)))
-  .then(() => dispatch(ActionCreator.redirectToRoute(`/`)))
+  .then(({data}) => {
+    dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
+    dispatch(ActionCreator.setUserData(data));
+  })
+  .then(() => dispatch(ActionCreator.redirectToRoute(AppRoute.ROOT)))
   .catch((err) => {
     throw err.response.data.error;
   })
+);
+
+export const fetchOfferById = (id) => (dispatch, _getState, api) => (
+  api.get(`${APIRoute.HOTELS}/${id}`)
+    .then(({data}) => {
+      dispatch(ActionCreator.loadSingleOffer(data));
+    })
+    .catch(() => dispatch(ActionCreator.redirectToRoute(AppRoute.ROOT)))
+);
+
+export const sendReview = (offerId, review) => (dispatch, _getState, api) => (
+  api.post(`${APIRoute.COMMENTS}/${offerId}`, {
+    comment: review.comment,
+    rating: review.rating,
+  })
+    .then(({data}) => {
+      dispatch(ActionCreator.loadReviews(data));
+    })
+    .catch((err) => {
+      throw err;
+    })
+);
+
+export const setFavoriteStatus = (offerId, status) => (dispatch, _getState, api) => (
+  api.post(`${APIRoute.FAVORITE}/${offerId}/${status}`)
+  .then(({data}) => dispatch(ActionCreator.updateOffer(data)))
+  .catch((err) => {
+    throw err.response.data.error;
+  })
+);
+
+export const fetchNearbyById = (id) => (dispatch, _getState, api) => (
+  api.get(`${APIRoute.HOTELS}/${id}/nearby`)
+    .then(({data}) => {
+      dispatch(ActionCreator.loadActiveNearby(data));
+    })
 );

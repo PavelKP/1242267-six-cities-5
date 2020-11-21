@@ -12,4 +12,4 @@ const PlaceCardMain = (props) => {
   );
 };
 
-export default PlaceCardMain;
+export default React.memo(PlaceCardMain);
