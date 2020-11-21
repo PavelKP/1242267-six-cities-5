@@ -5,6 +5,7 @@ import {offersPropTypes, offerPropTypes} from '../../prop-types/prop-types';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {getActiveCityName, getActiveCityCoords, getHoveredCard} from '../../store/reducers/user-interface/selectors';
+import {getCurrentOffers} from '../../store/combined-selectors';
 
 
 const zoom = 12;
@@ -71,11 +72,11 @@ class Map extends React.PureComponent {
   }
 
   _getOffers() {
-    const currentCity = this.props.currentOffer
+   /* const currentCity = this.props.currentOffer
       ? this.props.currentOffer.city.name
-      : this.props.activeCityName;
+      : this.props.activeCityName;*/
 
-    return this.props.offers.filter(({city}) => city.name === currentCity);
+    return this.props.offers; /*.filter(({city}) => city.name === currentCity);*/
   }
 
   componentDidMount() {
@@ -93,7 +94,7 @@ class Map extends React.PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-  offers: state.DATA.offers,
+  offers: getCurrentOffers(state),
   hoveredCard: getHoveredCard(state),
   activeCityName: getActiveCityName(state),
   activeCityCoords: getActiveCityCoords(state),

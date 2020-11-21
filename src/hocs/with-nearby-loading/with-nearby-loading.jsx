@@ -39,6 +39,10 @@ const withNearbyLoading = (Component) => {
     }
 
     render() {
+      if (this.props.type === CardType.MAIN) {
+        this._offers = this.props.sortedOffers;
+      }
+
       return <Component
         offers={this._offers}
         loading={this.state.loading}
