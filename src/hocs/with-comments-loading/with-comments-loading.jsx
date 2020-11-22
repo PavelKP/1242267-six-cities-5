@@ -3,6 +3,8 @@ import {fetchCurrentReview} from '../../store/api-actions';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {reviewsPropTypes} from '../../prop-types/prop-types';
+import {getSortedReviews} from '../../store/reducers/application-data/selectors';
+
 
 const withCommentsLoading = (Component) => {
   class WithCommentsLoading extends React.PureComponent {
@@ -46,8 +48,8 @@ const withCommentsLoading = (Component) => {
     loadReview: PropTypes.func.isRequired,
   };
 
-  const mapStateToProps = ({DATA}) => ({
-    reviews: DATA.reviews,
+  const mapStateToProps = (state) => ({
+    reviews: getSortedReviews(state),
   });
 
   const mapDispatchToProps = (dispatch) => ({
