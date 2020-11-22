@@ -119,7 +119,7 @@ Map.propTypes = {
   className: PropTypes.string.isRequired,
   hoveredCard: PropTypes.number.isRequired,
   activeNearby: offersPropTypes.offers,
-  type: PropTypes.string.isRequired,
+  type: PropTypes.string,
 };
 
 export {Map};

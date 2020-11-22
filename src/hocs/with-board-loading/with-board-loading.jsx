@@ -35,8 +35,6 @@ const withBoardLoading = (Component) => {
     sortedOffers: offersPropTypes.offers,
     setHoveredCard: PropTypes.func.isRequired,
     activeNearby: offersPropTypes.offers,
-    fetchNearbyById: PropTypes.func.isRequired,
-    offerId: PropTypes.number.isRequired,
   };
 
   return connect(mapStateToProps, mapDispatchToProps)(WithBoardLoading);
