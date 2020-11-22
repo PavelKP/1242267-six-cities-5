@@ -48,11 +48,10 @@ FavoriteButton.propTypes = {
   setFavoriteStatusDispatch: PropTypes.func.isRequired,
   redirectToRoute: PropTypes.func.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
   buttonClass: PropTypes.string.isRequired,
   iconClass: PropTypes.string.isRequired,
-  imageWidth: PropTypes.string.isRequired,
-  imageHeight: PropTypes.string.isRequired,
+  imageWidth: PropTypes.number.isRequired,
+  imageHeight: PropTypes.number.isRequired,
   activeClass: PropTypes.string.isRequired,
 };
 
