@@ -15,8 +15,12 @@ const withReview = (Component) => {
 
       this.state = {
         buttonDisabled: true,
+        textAreaDisabled: false,
+        startDisabled: false,
         text: ``,
         rating: ``,
+        error: false,
+        errorText: ``,
       };
     }
 
@@ -28,24 +32,50 @@ const withReview = (Component) => {
       )});
     }
 
+    unlock() {
+      this.setState({
+        buttonDisabled: true,
+        startDisabled: false,
+        textAreaDisabled: false});
+    }
+
+    reset() {
+      this.setState({
+        text: ``,
+        rating: ``,
+        buttonDisabled: true});
+    }
+
     handleTextInput(evt) {
       this.setState({text: evt.target.value});
-      this.validate(this.state);
     }
 
     handleRatingChange(evt) {
       this.setState({rating: evt.target.value});
-      this.validate(this.state);
     }
 
     handleSubmit(evt) {
       evt.preventDefault();
+      this.setState({textAreaDisabled: true, startDisabled: true, buttonDisabled: true});
+
       this.props.sendReview(this.props.offerId, {
         rating: this.state.rating,
         comment: this.state.text,
-      });
+      })
+      .then(() => {
+        this.unlock();
+        this.reset();
+      })
+      .catch((err) => {
+        this.unlock();
+        this.validate(this.state);
 
-      this.setState({text: ``, rating: ``}); // reset form
+        this.setState({error: true, errorText: err.message});
+      });
+    }
+
+    componentDidUpdate() {
+      this.validate(this.state);
     }
 
     render() {

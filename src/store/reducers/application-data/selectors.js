@@ -8,13 +8,14 @@ export const getReviews = (state) => state.DATA.reviews;
 export const getSortedReviews = createSelector(
     getReviews,
     (reviews) => {
-      return reviews.slice(0, MAX_REVIEW_AMOUNT).sort((a, b) => {
+      return reviews.slice().sort((a, b) => {
         if (b.date < a.date) {
           return -1;
         } else if (b.date > a.date) {
           return 1;
         }
         return 0;
-      });
+      })
+      .slice(0, MAX_REVIEW_AMOUNT);
     }
 );

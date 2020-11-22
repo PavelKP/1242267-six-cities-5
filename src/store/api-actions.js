@@ -52,7 +52,7 @@ export const sendReview = (offerId, review) => (dispatch, _getState, api) => (
       dispatch(ActionCreator.loadReviews(data));
     })
     .catch((err) => {
-      throw err;
+      return Promise.reject(err);
     })
 );
 
