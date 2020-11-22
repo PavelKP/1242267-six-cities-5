@@ -17,6 +17,11 @@ export const createAPI = (onUnauthorized) => {
   const onSuccess = (response) => response;
 
   const onFail = (err) => {
+
+    if (err.message === `Network Error`) {
+      return Promise.reject(err.message);
+    }
+
     const {response} = err;
 
     if (response.status === HttpCode.UNAUTHORIZED) {
