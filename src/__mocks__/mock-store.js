@@ -84,6 +84,7 @@ export default {
   INTERFACE: {
     city,
     activeSorting: DEFAULT_SORTING,
+    hoveredCard: 0,
   },
   USER: {
     authorizationStatus: AuthorizationStatus.NO_AUTH,

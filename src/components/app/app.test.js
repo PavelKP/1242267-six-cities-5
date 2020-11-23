@@ -75,6 +75,10 @@ const offers = [
   }
 ];
 
+const mapElement = document.createElement('div')
+mapElement.setAttribute('id', 'map')
+document.body.appendChild(mapElement)
+
 describe(`<App /> render`, () => {
 
   let store;
