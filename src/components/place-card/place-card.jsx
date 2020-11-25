@@ -71,4 +71,5 @@ PlaceCard.propTypes = {
   imageHeight: PropTypes.number.isRequired
 };
 
+export {PlaceCard};
 export default PlaceCard;

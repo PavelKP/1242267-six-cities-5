@@ -43,5 +43,6 @@ OfferList.propTypes = {
   setHoveredCard: PropTypes.func,
 };
 
+export {OfferList};
 export default OfferList;
 
