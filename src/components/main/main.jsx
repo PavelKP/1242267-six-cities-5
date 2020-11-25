@@ -36,7 +36,7 @@ const Main = ({offers, city}) => {
             : ``}`}>
 
             {isEmpty
-              ? <MainEmpty city={city.name} />
+              ? <MainEmpty city={city} />
               : <React.Fragment>
                 <section className="cities__places places">
                   <h2 className="visually-hidden">Places</h2>

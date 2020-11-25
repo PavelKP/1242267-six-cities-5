@@ -7,7 +7,7 @@ export const AuthorizationStatus = {
   AUTH: `AUTH`,
 };
 
-const cities = [{
+export const cities = [{
   name: `Moscow`,
   coordinates: [11.1, 22.2],
   zoom: 12,
@@ -17,6 +17,11 @@ const cities = [{
   coordinates: [33.33, 11.551],
   zoom: 12,
 }];
+
+export const userData = {
+  avatarUrl: `https://assets.htmlacademy.ru/intensives/javascript-3/avatar/6.jpg`,
+  email: `test@test.ru`,
+};
 
 export default {
   DATA: {
@@ -30,9 +35,6 @@ export default {
   },
   USER: {
     authorizationStatus: AuthorizationStatus.NO_AUTH,
-    userData: {
-      avatarUrl: `https://assets.htmlacademy.ru/intensives/javascript-3/avatar/6.jpg`,
-      email: `test@test.ru`,
-    }
+    userData,
   }
 };

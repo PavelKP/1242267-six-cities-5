@@ -51,4 +51,5 @@ Login.propTypes = {
   isValid: PropTypes.bool.isRequired,
 };
 
+export {Login};
 export default withAuthorization(Login);
