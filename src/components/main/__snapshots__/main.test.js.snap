@@ -157,7 +157,7 @@ exports[`<Main /> render Should Main render correctly 1`] = `
             </span>
             <ul
               className="places__options places__options--custom
-        false"
+        "
               onClick={[Function]}
             >
               <li

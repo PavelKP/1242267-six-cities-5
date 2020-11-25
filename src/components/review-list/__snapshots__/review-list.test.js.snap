@@ -1,0 +1,134 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ReviewList /> render Should ReviewList with main cards render correctly 1`] = `
+Array [
+  <h2
+    className="reviews__title"
+  >
+    Reviews ·
+    <span
+      className="reviews__amount"
+    >
+      2
+    </span>
+  </h2>,
+  <ul
+    className="reviews__list"
+  >
+    <li
+      className="reviews__item"
+    >
+      <div
+        className="reviews__user user"
+      >
+        <div
+          className="reviews__avatar-wrapper user__avatar-wrapper"
+        >
+          <img
+            alt="Reviews avatar"
+            className="reviews__avatar user__avatar"
+            height="54"
+            src="https://assets.htmlacademy.ru/intensives/javascript-3/avatar/6.jpg"
+            width="54"
+          />
+        </div>
+        <span
+          className="reviews__user-name"
+        />
+      </div>
+      <div
+        className="reviews__info"
+      >
+        <div
+          className="reviews__rating rating"
+        >
+          <div
+            className="reviews__stars rating__stars"
+          >
+            <span
+              style={
+                Object {
+                  "width": "100%",
+                }
+              }
+            />
+            <span
+              className="visually-hidden"
+            >
+              Rating
+            </span>
+          </div>
+        </div>
+        <p
+          className="reviews__text"
+        >
+          The best hotel ever!
+        </p>
+        <time
+          className="reviews__time"
+          dateTime="2020-11-20"
+        >
+          November 2020
+        </time>
+      </div>
+    </li>
+    <li
+      className="reviews__item"
+    >
+      <div
+        className="reviews__user user"
+      >
+        <div
+          className="reviews__avatar-wrapper user__avatar-wrapper"
+        >
+          <img
+            alt="Reviews avatar"
+            className="reviews__avatar user__avatar"
+            height="54"
+            src="https://assets.htmlacademy.ru/intensives/javascript-3/avatar/3.jpg"
+            width="54"
+          />
+        </div>
+        <span
+          className="reviews__user-name"
+        />
+      </div>
+      <div
+        className="reviews__info"
+      >
+        <div
+          className="reviews__rating rating"
+        >
+          <div
+            className="reviews__stars rating__stars"
+          >
+            <span
+              style={
+                Object {
+                  "width": "80%",
+                }
+              }
+            />
+            <span
+              className="visually-hidden"
+            >
+              Rating
+            </span>
+          </div>
+        </div>
+        <p
+          className="reviews__text"
+        >
+          Home is amazing. It's like staying in a museum. The rooms, furnishings and artworks are incredible. The views of My Vesuvius,
+        </p>
+        <time
+          className="reviews__time"
+          dateTime="2020-11-04"
+        >
+          November 2020
+        </time>
+      </div>
+    </li>
+  </ul>,
+]
+`;

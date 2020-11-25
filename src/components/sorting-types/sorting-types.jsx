@@ -23,7 +23,7 @@ const SortingTypes = (props) => {
         </svg>
       </span>
       <ul className={`places__options places__options--custom
-        ${togglerState && `places__options--opened`}`}
+        ${togglerState ? `places__options--opened` : ``}`}
       onClick={(evt) => {
         const sorting = evt.target.dataset.sortingType;
         setActiveSorting(sorting);
