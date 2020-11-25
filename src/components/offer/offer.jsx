@@ -154,4 +154,5 @@ const mapStateToProps = ({USER}) => ({
   authorizationStatus: USER.authorizationStatus,
 });
 
+export {Offer};
 export default connect(mapStateToProps)(withOfferLoading(Offer));
