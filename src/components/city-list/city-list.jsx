@@ -27,5 +27,13 @@ CityList.propTypes = {
   activeCity: cityPropTypes.isRequired
 };
 
+CityList.defaultProps = {
+  cities: [{
+    name: `City it undefined`,
+    coordinates: [0.0, 0.0],
+    zoom: 12,
+  }]
+};
+
 export {CityList};
 export default connect(mapStateToProps)(CityList);

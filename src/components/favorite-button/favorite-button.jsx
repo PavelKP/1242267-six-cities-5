@@ -7,7 +7,8 @@ import {APIRoute, AuthorizationStatus} from '../../const';
 import PropTypes from 'prop-types';
 import {offersPropTypes} from '../../prop-types/prop-types';
 
-const FavoriteButton = ({offers,
+const FavoriteButton = ({
+  offers,
   offerId,
   setFavoriteStatusDispatch,
   redirectToRoute,
