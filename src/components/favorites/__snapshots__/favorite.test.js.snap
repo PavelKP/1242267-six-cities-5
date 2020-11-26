@@ -61,147 +61,33 @@ exports[`<Favorites /> render Should Favorites render correctly 1`] = `
     </div>
   </header>
   <main
-    className="page__main page__main--favorites"
+    className="page__main page__main--favorites page__main--favorites-empty"
   >
     <div
       className="page__favorites-container container"
     >
       <section
-        className="favorites"
+        className="favorites favorites--empty"
       >
         <h1
-          className="favorites__title"
+          className="visually-hidden"
         >
-          Saved listing
+          Favorites (empty)
         </h1>
-        <ul
-          className="favorites__list"
+        <div
+          className="favorites__status-wrapper"
         >
-          <li
-            className="favorites__locations-items"
+          <b
+            className="favorites__status"
           >
-            <div
-              className="favorites__locations locations locations--current"
-            >
-              <div
-                className="locations__item"
-              >
-                <a
-                  className="locations__item-link"
-                  href="#"
-                >
-                  <span>
-                    Moscow
-                  </span>
-                </a>
-              </div>
-            </div>
-            <div
-              className="favorites__places"
-            >
-              <article
-                className="favorites__card place-card"
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
-              >
-                <div
-                  className="favorites__image-wrapper place-card__image-wrapper"
-                >
-                  <a
-                    href="/offer/1"
-                    onClick={[Function]}
-                  >
-                    <img
-                      alt="https://assets.htmlacademy.ru/intensives/javascript-3/hotel/14.jpg"
-                      className="place-card__image"
-                      height={110}
-                      src="https://assets.htmlacademy.ru/intensives/javascript-3/hotel/14.jpg"
-                      width={150}
-                    />
-                  </a>
-                </div>
-                <div
-                  className="place-card__info"
-                >
-                  <div
-                    className="place-card__price-wrapper"
-                  >
-                    <div
-                      className="place-card__price"
-                    >
-                      <b
-                        className="place-card__price-value"
-                      >
-                        €
-                        493
-                      </b>
-                      <span
-                        className="place-card__price-text"
-                      >
-                        / night
-                      </span>
-                    </div>
-                    <button
-                      className="place-card__bookmark-button button place-card__bookmark-button--active"
-                      onClick={[Function]}
-                      type="button"
-                    >
-                      <svg
-                        className="place-card__bookmark-icon"
-                        height={19}
-                        width={18}
-                      >
-                        <use
-                          xlinkHref="#icon-bookmark"
-                        />
-                      </svg>
-                      <span
-                        className="visually-hidden"
-                      >
-                        In bookmarks
-                      </span>
-                    </button>
-                  </div>
-                  <div
-                    className="place-card__rating rating"
-                  >
-                    <div
-                      className="place-card__stars rating__stars"
-                    >
-                      <span
-                        style={
-                          Object {
-                            "width": "80%",
-                          }
-                        }
-                      />
-                      <span
-                        className="visually-hidden"
-                      >
-                        Rating
-                      </span>
-                    </div>
-                  </div>
-                  <h2
-                    className="place-card__name"
-                  >
-                    <a
-                      href="/offer/1"
-                      onClick={[Function]}
-                    >
-                      The house among olive 
-                    </a>
-                  </h2>
-                  <p
-                    className="place-card__type"
-                  >
-                    house
-                  </p>
-                </div>
-              </article>
-            </div>
-          </li>
-        </ul>
+            Nothing yet saved.
+          </b>
+          <p
+            className="favorites__status-description"
+          >
+            Save properties to narrow down search or plan yor future trips.
+          </p>
+        </div>
       </section>
     </div>
   </main>

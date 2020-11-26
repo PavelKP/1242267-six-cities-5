@@ -2,7 +2,7 @@
 
 exports[`<FavoriteButton /> render Should FavoriteButton render correctly 1`] = `
 <button
-  className="property__bookmark-button button property__bookmark-button--active"
+  className="property__bookmark-button button "
   onClick={[Function]}
   type="button"
 >

@@ -14,10 +14,10 @@ exports[`<PlaceCardNearby /> render Should PlaceCardNearby render correctly 1`] 
       onClick={[Function]}
     >
       <img
-        alt="https://assets.htmlacademy.ru/intensives/javascript-3/hotel/14.jpg"
+        alt="https://assets.htmlacademy.ru/intensives/javascript-3/hotel/16.jpg"
         className="place-card__image"
         height={200}
-        src="https://assets.htmlacademy.ru/intensives/javascript-3/hotel/14.jpg"
+        src="https://assets.htmlacademy.ru/intensives/javascript-3/hotel/16.jpg"
         width={260}
       />
     </a>
@@ -35,7 +35,7 @@ exports[`<PlaceCardNearby /> render Should PlaceCardNearby render correctly 1`] 
           className="place-card__price-value"
         >
           €
-          493
+          485
         </b>
         <span
           className="place-card__price-text"
@@ -44,7 +44,7 @@ exports[`<PlaceCardNearby /> render Should PlaceCardNearby render correctly 1`] 
         </span>
       </div>
       <button
-        className="place-card__bookmark-button button place-card__bookmark-button--active"
+        className="place-card__bookmark-button button "
         onClick={[Function]}
         type="button"
       >
@@ -73,7 +73,7 @@ exports[`<PlaceCardNearby /> render Should PlaceCardNearby render correctly 1`] 
         <span
           style={
             Object {
-              "width": "80%",
+              "width": "60%",
             }
           }
         />
@@ -91,7 +91,7 @@ exports[`<PlaceCardNearby /> render Should PlaceCardNearby render correctly 1`] 
         href="/offer/1"
         onClick={[Function]}
       >
-        The house among olive 
+        Nice, cozy, warm big bed apartment
       </a>
     </h2>
     <p

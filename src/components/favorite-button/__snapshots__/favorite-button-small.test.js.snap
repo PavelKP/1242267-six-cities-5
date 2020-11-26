@@ -2,7 +2,7 @@
 
 exports[`<FavoriteButtonSmall /> render Should FavoriteButton render correctly 1`] = `
 <button
-  className="place-card__bookmark-button button place-card__bookmark-button--active"
+  className="place-card__bookmark-button button "
   onClick={[Function]}
   type="button"
 >

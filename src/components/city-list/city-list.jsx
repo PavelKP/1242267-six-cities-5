@@ -29,7 +29,7 @@ CityList.propTypes = {
 
 CityList.defaultProps = {
   cities: [{
-    name: `City it undefined`,
+    name: `City is undefined`,
     coordinates: [0.0, 0.0],
     zoom: 12,
   }]

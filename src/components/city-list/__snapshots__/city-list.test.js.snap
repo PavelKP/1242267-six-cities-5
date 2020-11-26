@@ -53,7 +53,7 @@ exports[`<CityList /> render Should empty CityList render correctly 1`] = `
         onClick={[Function]}
       >
         <span>
-          City it undefined
+          City is undefined
         </span>
       </a>
     </li>

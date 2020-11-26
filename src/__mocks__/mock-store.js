@@ -58,6 +58,33 @@ export const serviceProp = {
   }
 };
 
+export const rawReviews = [
+  {
+    "id": 2,
+    "user": {
+      "id": 1,
+      "is_pro": false,
+      "name": `Igor`,
+      "avatar_url": `https://assets.htmlacademy.ru/intensives/javascript-3/avatar/6.jpg`
+    },
+    "rating": 5,
+    "comment": `The best hotel ever!`,
+    "date": `2020-11-20T14:37:45.031Z`
+  },
+  {
+    "id": 1,
+    "user": {
+      "id": 12,
+      "is_pro": true,
+      "name": `Isaac`,
+      "avatar_url": `https://assets.htmlacademy.ru/intensives/javascript-3/avatar/3.jpg`
+    },
+    "rating": 4,
+    "comment": `Home is amazing. It's like staying in a museum. The rooms, furnishings and artworks are incredible. The views of My Vesuvius,`,
+    "date": `2020-11-04T13:38:44.753Z`
+  }
+];
+
 export default {
   DATA: {
     offers,

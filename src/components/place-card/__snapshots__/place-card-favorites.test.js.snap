@@ -14,10 +14,10 @@ exports[`<PlaceCardFavorites /> render Should PlaceCardFavorites render correctl
       onClick={[Function]}
     >
       <img
-        alt="https://assets.htmlacademy.ru/intensives/javascript-3/hotel/14.jpg"
+        alt="https://assets.htmlacademy.ru/intensives/javascript-3/hotel/16.jpg"
         className="place-card__image"
         height={110}
-        src="https://assets.htmlacademy.ru/intensives/javascript-3/hotel/14.jpg"
+        src="https://assets.htmlacademy.ru/intensives/javascript-3/hotel/16.jpg"
         width={150}
       />
     </a>
@@ -35,7 +35,7 @@ exports[`<PlaceCardFavorites /> render Should PlaceCardFavorites render correctl
           className="place-card__price-value"
         >
           €
-          493
+          485
         </b>
         <span
           className="place-card__price-text"
@@ -44,7 +44,7 @@ exports[`<PlaceCardFavorites /> render Should PlaceCardFavorites render correctl
         </span>
       </div>
       <button
-        className="place-card__bookmark-button button place-card__bookmark-button--active"
+        className="place-card__bookmark-button button "
         onClick={[Function]}
         type="button"
       >
@@ -73,7 +73,7 @@ exports[`<PlaceCardFavorites /> render Should PlaceCardFavorites render correctl
         <span
           style={
             Object {
-              "width": "80%",
+              "width": "60%",
             }
           }
         />
@@ -91,7 +91,7 @@ exports[`<PlaceCardFavorites /> render Should PlaceCardFavorites render correctl
         href="/offer/1"
         onClick={[Function]}
       >
-        The house among olive 
+        Nice, cozy, warm big bed apartment
       </a>
     </h2>
     <p

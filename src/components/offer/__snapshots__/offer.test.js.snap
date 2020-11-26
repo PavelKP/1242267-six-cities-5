@@ -84,6 +84,78 @@ exports[`<Offer /> render Should Offer render correctly 1`] = `
             <img
               alt="Photo studio"
               className="property__image"
+              src="https://assets.htmlacademy.ru/intensives/javascript-3/hotel/1.jpg"
+            />
+          </div>
+          <div
+            className="property__image-wrapper"
+          >
+            <img
+              alt="Photo studio"
+              className="property__image"
+              src="https://assets.htmlacademy.ru/intensives/javascript-3/hotel/9.jpg"
+            />
+          </div>
+          <div
+            className="property__image-wrapper"
+          >
+            <img
+              alt="Photo studio"
+              className="property__image"
+              src="https://assets.htmlacademy.ru/intensives/javascript-3/hotel/2.jpg"
+            />
+          </div>
+          <div
+            className="property__image-wrapper"
+          >
+            <img
+              alt="Photo studio"
+              className="property__image"
+              src="https://assets.htmlacademy.ru/intensives/javascript-3/hotel/10.jpg"
+            />
+          </div>
+          <div
+            className="property__image-wrapper"
+          >
+            <img
+              alt="Photo studio"
+              className="property__image"
+              src="https://assets.htmlacademy.ru/intensives/javascript-3/hotel/5.jpg"
+            />
+          </div>
+          <div
+            className="property__image-wrapper"
+          >
+            <img
+              alt="Photo studio"
+              className="property__image"
+              src="https://assets.htmlacademy.ru/intensives/javascript-3/hotel/7.jpg"
+            />
+          </div>
+          <div
+            className="property__image-wrapper"
+          >
+            <img
+              alt="Photo studio"
+              className="property__image"
+              src="https://assets.htmlacademy.ru/intensives/javascript-3/hotel/6.jpg"
+            />
+          </div>
+          <div
+            className="property__image-wrapper"
+          >
+            <img
+              alt="Photo studio"
+              className="property__image"
+              src="https://assets.htmlacademy.ru/intensives/javascript-3/hotel/14.jpg"
+            />
+          </div>
+          <div
+            className="property__image-wrapper"
+          >
+            <img
+              alt="Photo studio"
+              className="property__image"
               src="https://assets.htmlacademy.ru/intensives/javascript-3/hotel/15.jpg"
             />
           </div>
@@ -102,16 +174,7 @@ exports[`<Offer /> render Should Offer render correctly 1`] = `
             <img
               alt="Photo studio"
               className="property__image"
-              src="https://assets.htmlacademy.ru/intensives/javascript-3/hotel/9.jpg"
-            />
-          </div>
-          <div
-            className="property__image-wrapper"
-          >
-            <img
-              alt="Photo studio"
-              className="property__image"
-              src="https://assets.htmlacademy.ru/intensives/javascript-3/hotel/10.jpg"
+              src="https://assets.htmlacademy.ru/intensives/javascript-3/hotel/3.jpg"
             />
           </div>
           <div
@@ -129,79 +192,16 @@ exports[`<Offer /> render Should Offer render correctly 1`] = `
             <img
               alt="Photo studio"
               className="property__image"
-              src="https://assets.htmlacademy.ru/intensives/javascript-3/hotel/19.jpg"
-            />
-          </div>
-          <div
-            className="property__image-wrapper"
-          >
-            <img
-              alt="Photo studio"
-              className="property__image"
-              src="https://assets.htmlacademy.ru/intensives/javascript-3/hotel/14.jpg"
-            />
-          </div>
-          <div
-            className="property__image-wrapper"
-          >
-            <img
-              alt="Photo studio"
-              className="property__image"
-              src="https://assets.htmlacademy.ru/intensives/javascript-3/hotel/3.jpg"
-            />
-          </div>
-          <div
-            className="property__image-wrapper"
-          >
-            <img
-              alt="Photo studio"
-              className="property__image"
-              src="https://assets.htmlacademy.ru/intensives/javascript-3/hotel/2.jpg"
-            />
-          </div>
-          <div
-            className="property__image-wrapper"
-          >
-            <img
-              alt="Photo studio"
-              className="property__image"
-              src="https://assets.htmlacademy.ru/intensives/javascript-3/hotel/11.jpg"
-            />
-          </div>
-          <div
-            className="property__image-wrapper"
-          >
-            <img
-              alt="Photo studio"
-              className="property__image"
-              src="https://assets.htmlacademy.ru/intensives/javascript-3/hotel/1.jpg"
-            />
-          </div>
-          <div
-            className="property__image-wrapper"
-          >
-            <img
-              alt="Photo studio"
-              className="property__image"
-              src="https://assets.htmlacademy.ru/intensives/javascript-3/hotel/17.jpg"
-            />
-          </div>
-          <div
-            className="property__image-wrapper"
-          >
-            <img
-              alt="Photo studio"
-              className="property__image"
-              src="https://assets.htmlacademy.ru/intensives/javascript-3/hotel/5.jpg"
-            />
-          </div>
-          <div
-            className="property__image-wrapper"
-          >
-            <img
-              alt="Photo studio"
-              className="property__image"
               src="https://assets.htmlacademy.ru/intensives/javascript-3/hotel/13.jpg"
+            />
+          </div>
+          <div
+            className="property__image-wrapper"
+          >
+            <img
+              alt="Photo studio"
+              className="property__image"
+              src="https://assets.htmlacademy.ru/intensives/javascript-3/hotel/18.jpg"
             />
           </div>
         </div>
@@ -218,10 +218,10 @@ exports[`<Offer /> render Should Offer render correctly 1`] = `
             <h1
               className="property__name"
             >
-              The house among olive 
+              Nice, cozy, warm big bed apartment
             </h1>
             <button
-              className="property__bookmark-button button property__bookmark-button--active"
+              className="property__bookmark-button button "
               onClick={[Function]}
               type="button"
             >
@@ -250,7 +250,7 @@ exports[`<Offer /> render Should Offer render correctly 1`] = `
               <span
                 style={
                   Object {
-                    "width": "80%",
+                    "width": "60%",
                   }
                 }
               />
@@ -263,7 +263,7 @@ exports[`<Offer /> render Should Offer render correctly 1`] = `
             <span
               className="property__rating-value rating__value"
             >
-              3.8
+              2.5
             </span>
           </div>
           <ul
@@ -277,12 +277,12 @@ exports[`<Offer /> render Should Offer render correctly 1`] = `
             <li
               className="property__feature property__feature--bedrooms"
             >
-              3 Bedrooms
+              2 Bedrooms
             </li>
             <li
               className="property__feature property__feature--adults"
             >
-              Max 4 adults
+              Max 6 adults
             </li>
           </ul>
           <div
@@ -292,7 +292,7 @@ exports[`<Offer /> render Should Offer render correctly 1`] = `
               className="property__price-value"
             >
               €
-              493
+              485
             </b>
             <span
               className="property__price-text"
@@ -314,7 +314,7 @@ exports[`<Offer /> render Should Offer render correctly 1`] = `
               <li
                 className="property__inside-item"
               >
-                Laptop friendly workspace
+                Breakfast
               </li>
               <li
                 className="property__inside-item"
@@ -324,27 +324,17 @@ exports[`<Offer /> render Should Offer render correctly 1`] = `
               <li
                 className="property__inside-item"
               >
-                Towels
-              </li>
-              <li
-                className="property__inside-item"
-              >
-                Fridge
-              </li>
-              <li
-                className="property__inside-item"
-              >
-                Air conditioning
-              </li>
-              <li
-                className="property__inside-item"
-              >
                 Baby seat
               </li>
               <li
                 className="property__inside-item"
               >
-                Breakfast
+                Laptop friendly workspace
+              </li>
+              <li
+                className="property__inside-item"
+              >
+                Air conditioning
               </li>
             </ul>
           </div>
@@ -382,7 +372,7 @@ exports[`<Offer /> render Should Offer render correctly 1`] = `
               <p
                 className="property__text"
               >
-                Discover daily local life in city center, friendly neighborhood, clandestine casino, karaoke, old-style artisans, art gallery and artist studio downstairs.
+                Peaceful studio in the most wanted area in town. Quiet house Near of everything. Completely renovated. Lovely neighbourhood, lot of trendy shops, restaurants and bars in a walking distance.
               </p>
             </div>
           </div>
