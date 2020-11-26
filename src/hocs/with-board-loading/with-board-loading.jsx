@@ -40,4 +40,5 @@ const withBoardLoading = (Component) => {
   return connect(mapStateToProps, mapDispatchToProps)(WithBoardLoading);
 };
 
+export {withBoardLoading};
 export default withBoardLoading;

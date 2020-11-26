@@ -101,4 +101,5 @@ const withReview = (Component) => {
   return connect(null, mapDispatchToProps)(WithReview);
 };
 
+export {withReview};
 export default withReview;

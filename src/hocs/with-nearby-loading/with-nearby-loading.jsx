@@ -67,4 +67,5 @@ const withNearbyLoading = (Component) => {
   return connect(mapStateToProps, mapDispatchToProps)(WithNearbyLoading);
 };
 
+export {withNearbyLoading};
 export default withNearbyLoading;
