@@ -13,8 +13,8 @@ it(`Should place card react on mouse enter/leave`, () => {
       <PlaceCard
         offer = {offers[0]}
         onCardMouseOver = {onCardMouseOver}
-        classArticle={`cities__place-card`}
-        classImageWrapper={`cities__image-wrapper`}
+        classArticle={`fake`}
+        classImageWrapper={`fake`}
         imageWidth={260}
         imageHeight={200}
       />);

@@ -10,7 +10,6 @@ const city = {
   coordinates: [111, 222],
   zoom: 12,
 };
-const activeClass = `tabs__item--active`;
 
 it(`Should city link be pressed`, () => {
   const setCity = jest.fn();
@@ -19,7 +18,7 @@ it(`Should city link be pressed`, () => {
   const wrapper = shallow(
       <CityItem
         city={city}
-        activeClass={activeClass}
+        activeClass={`fake`}
         setCity={setCity}
         setActiveSorting={setActiveSorting}
       />);

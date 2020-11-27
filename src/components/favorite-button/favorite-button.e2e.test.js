@@ -20,9 +20,9 @@ describe(`Favorite button interactive`, () => {
           setFavoriteStatusDispatch={setFavoriteStatusDispatch}
           redirectToRoute={redirectToRoute}
           authorizationStatus={AuthorizationStatus.AUTH}
-          buttonClass={`property__bookmark-button`}
-          iconClass={`property__bookmark-icon`}
-          activeClass={`property__bookmark-button--active`}
+          buttonClass={`fake`}
+          iconClass={`fake`}
+          activeClass={`fake`}
           imageWidth={31}
           imageHeight={33}
         />);
@@ -45,9 +45,9 @@ describe(`Favorite button interactive`, () => {
           setFavoriteStatusDispatch={setFavoriteStatusDispatch}
           redirectToRoute={redirectToRoute}
           authorizationStatus={AuthorizationStatus.NO_AUTH}
-          buttonClass={`property__bookmark-button`}
-          iconClass={`property__bookmark-icon`}
-          activeClass={`property__bookmark-button--active`}
+          buttonClass={`fake`}
+          iconClass={`fake`}
+          activeClass={`fake`}
           imageWidth={31}
           imageHeight={33}
         />);
