@@ -18,6 +18,15 @@ export const cities = [{
   zoom: 12,
 }];
 
+export const rawCity = {
+  name: `Moscow`,
+  location: {
+    latitude: 11.1,
+    longitude: 22.2,
+    zoom: 12
+  }
+};
+
 export const userData = {
   avatarUrl: `https://assets.htmlacademy.ru/intensives/javascript-3/avatar/6.jpg`,
   email: `test@test.ru`,
@@ -84,6 +93,11 @@ export const rawReviews = [
     "date": `2020-11-04T13:38:44.753Z`
   }
 ];
+
+export const SortingType = {
+  POPULAR: `popular`,
+  PRICE_TO_HIGH: `price-to-high`,
+};
 
 export default {
   DATA: {
