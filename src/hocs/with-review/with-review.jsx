@@ -21,6 +21,7 @@ const withReview = (Component) => {
         rating: ``,
         error: false,
         errorText: ``,
+        isLoading: false,
       };
     }
 
@@ -29,6 +30,7 @@ const withReview = (Component) => {
         state.text.trim().length >= 50
         && state.text.length <= 300
         && state.rating.length > 0
+        && this.state.isLoading === false
       )});
     }
 
@@ -56,7 +58,12 @@ const withReview = (Component) => {
 
     handleSubmit(evt) {
       evt.preventDefault();
-      this.setState({textAreaDisabled: true, startDisabled: true, buttonDisabled: true});
+      this.setState({
+        textAreaDisabled: true,
+        startDisabled: true,
+        buttonDisabled: true,
+        isLoading: true,
+      });
 
       this.props.sendReview(this.props.offerId, {
         rating: this.state.rating,
@@ -65,12 +72,14 @@ const withReview = (Component) => {
       .then(() => {
         this.unlock();
         this.reset();
+        this.setState({isLoading: false});
       })
       .catch((err) => {
         this.unlock();
         this.validate(this.state);
 
         this.setState({error: true, errorText: err.message});
+        this.setState({isLoading: false});
       });
     }
 
