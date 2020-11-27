@@ -32,6 +32,14 @@ export const userData = {
   email: `test@test.ru`,
 };
 
+export const rawUserData = {
+  "avatar_url": `https://assets.htmlacademy.ru/intensives/javascript-3/avatar/6.jpg`,
+  "email": `test@test.ru`,
+  "id": 1,
+  "is_pro": false,
+  "name": `Oliver.conner`
+};
+
 export const reviews = [
   {
     id: 2,
