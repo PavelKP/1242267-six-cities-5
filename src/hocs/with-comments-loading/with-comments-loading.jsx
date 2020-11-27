@@ -62,35 +62,5 @@ const withCommentsLoading = (Component) => {
   return connect(mapStateToProps, mapDispatchToProps)(WithCommentsLoading);
 };
 
-
-/*
-  SECOND SOLUTION - redux compose feature
-
-  https://ru.reactjs.org/docs/higher-order-components.html
-  https://medium.com/practo-engineering/connected-higher-order-component-hoc-93ee63c91526
-
-  import {compose} from 'redux';
-
-  ...
-
-const mapStateToProps = ({DATA}) => ({
-  reviews: DATA.reviews,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  loadReview(id) {
-    return dispatch(fetchCurrentReview(id));
-  }
-})
-
-const composedWithCommentsLoading = compose(
-    connect(mapStateToProps, mapDispatchToProps),
-    withCommentsLoading
-);
-
-export {withCommentsLoading};
-export default composedWithCommentsLoading;
-*/
-
 export {withCommentsLoading};
 export default withCommentsLoading;

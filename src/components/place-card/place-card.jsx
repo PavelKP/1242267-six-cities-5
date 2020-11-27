@@ -57,12 +57,6 @@ const PlaceCard = (
   );
 };
 
-PlaceCard.defaultProps = {
-  imageWidth: 260,
-  imageHeight: 200,
-  onCardMouseOver: ()=>{}, // empty handler
-};
-
 PlaceCard.propTypes = {
   offer: offerPropTypes.offer,
   onCardMouseOver: PropTypes.func.isRequired,
@@ -70,6 +64,12 @@ PlaceCard.propTypes = {
   classImageWrapper: PropTypes.string.isRequired,
   imageWidth: PropTypes.number.isRequired,
   imageHeight: PropTypes.number.isRequired
+};
+
+PlaceCard.defaultProps = {
+  imageWidth: 260,
+  imageHeight: 200,
+  onCardMouseOver: ()=>{}, // empty handler
 };
 
 export {PlaceCard};

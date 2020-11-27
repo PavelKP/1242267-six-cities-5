@@ -44,15 +44,15 @@ const App = ({offers, authorizationStatus}) => {
   );
 };
 
-const mapStateToProps = ({DATA, USER}) => ({
-  offers: DATA.offers,
-  authorizationStatus: USER.authorizationStatus,
-});
-
 App.propTypes = {
   offers: offersPropTypes.offers,
   authorizationStatus: PropTypes.string.isRequired,
 };
+
+const mapStateToProps = ({DATA, USER}) => ({
+  offers: DATA.offers,
+  authorizationStatus: USER.authorizationStatus,
+});
 
 export {App};
 export default connect(mapStateToProps)(App);

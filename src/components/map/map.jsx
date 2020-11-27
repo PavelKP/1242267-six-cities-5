@@ -103,14 +103,6 @@ class Map extends React.PureComponent {
   }
 }
 
-const mapStateToProps = (state) => ({
-  offers: getCurrentOffers(state),
-  hoveredCard: getHoveredCard(state),
-  activeCityName: getActiveCityName(state),
-  activeCityCoords: getActiveCityCoords(state),
-  activeNearby: state.INTERFACE.activeNearby,
-});
-
 Map.propTypes = {
   offers: offersPropTypes.offers,
   activeOffer: offerPropTypes.offer,
@@ -121,6 +113,14 @@ Map.propTypes = {
   activeNearby: offersPropTypes.offers,
   type: PropTypes.string,
 };
+
+const mapStateToProps = (state) => ({
+  offers: getCurrentOffers(state),
+  hoveredCard: getHoveredCard(state),
+  activeCityName: getActiveCityName(state),
+  activeCityCoords: getActiveCityCoords(state),
+  activeNearby: state.INTERFACE.activeNearby,
+});
 
 export {Map};
 export default connect(mapStateToProps)(Map);

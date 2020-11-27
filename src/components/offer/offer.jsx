@@ -16,10 +16,8 @@ import {connect} from 'react-redux';
 import {AuthorizationStatus} from "../../const";
 import FavoriteButtonBig from '../../components/favorite-button/favorite-button-big';
 
-
 const CommentFormWrapped = withReviewCommentForm(CommentForm);
 const OfferListWrapped = withNearbyLoading(OfferList);
-
 
 const Offer = ({loading, activeOffer, authorizationStatus}) => {
 

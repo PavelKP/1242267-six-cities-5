@@ -57,16 +57,16 @@ const Main = ({offers, city}) => {
   );
 };
 
+Main.propTypes = {
+  offers: offersPropTypes.offers,
+  city: PropTypes.string.isRequired,
+};
+
 const mapStateToProps = (state) => {
   return {
     offers: getCurrentOffers(state),
     city: getActiveCityName(state),
   };
-};
-
-Main.propTypes = {
-  offers: offersPropTypes.offers,
-  city: PropTypes.string.isRequired,
 };
 
 export {Main};

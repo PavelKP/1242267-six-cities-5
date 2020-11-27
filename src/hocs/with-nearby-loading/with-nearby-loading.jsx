@@ -40,6 +40,14 @@ const withNearbyLoading = (Component) => {
     }
   }
 
+  WithNearbyLoading.propTypes = {
+    type: PropTypes.string.isRequired,
+    sortedOffers: offersPropTypes.offers,
+    setHoveredCard: PropTypes.func.isRequired,
+    activeNearby: offersPropTypes.offers,
+    fetchNearbyById: PropTypes.func.isRequired,
+    offerId: PropTypes.number.isRequired,
+  };
 
   const mapStateToProps = (state) => ({
     sortedOffers: getCurrentOffers(state),
@@ -54,15 +62,6 @@ const withNearbyLoading = (Component) => {
       return dispatch(fetchNearbyById(id));
     }
   });
-
-  WithNearbyLoading.propTypes = {
-    type: PropTypes.string.isRequired,
-    sortedOffers: offersPropTypes.offers,
-    setHoveredCard: PropTypes.func.isRequired,
-    activeNearby: offersPropTypes.offers,
-    fetchNearbyById: PropTypes.func.isRequired,
-    offerId: PropTypes.number.isRequired,
-  };
 
   return connect(mapStateToProps, mapDispatchToProps)(WithNearbyLoading);
 };

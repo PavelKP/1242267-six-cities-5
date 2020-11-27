@@ -17,15 +17,15 @@ const CityList = ({cities, activeCity}) => {
   );
 };
 
-const mapStateToProps = ({DATA, INTERFACE}) => ({
-  activeCity: INTERFACE.city,
-  cities: DATA.cities
-});
-
 CityList.propTypes = {
   cities: arrayOf(cityPropTypes.isRequired).isRequired,
   activeCity: cityPropTypes.isRequired
 };
+
+const mapStateToProps = ({DATA, INTERFACE}) => ({
+  activeCity: INTERFACE.city,
+  cities: DATA.cities
+});
 
 CityList.defaultProps = {
   cities: [{

@@ -25,7 +25,7 @@ const withReview = (Component) => {
       };
     }
 
-    validate(state) {
+    _validate(state) {
       this.setState({buttonDisabled: !(
         state.text.trim().length >= 50
         && state.text.length <= 300
@@ -34,14 +34,14 @@ const withReview = (Component) => {
       )});
     }
 
-    unlock() {
+    _unlock() {
       this.setState({
         buttonDisabled: true,
         startDisabled: false,
         textAreaDisabled: false});
     }
 
-    reset() {
+    _reset() {
       this.setState({
         text: ``,
         rating: ``,
@@ -70,13 +70,13 @@ const withReview = (Component) => {
         comment: this.state.text,
       })
       .then(() => {
-        this.unlock();
-        this.reset();
+        this._unlock();
+        this._reset();
         this.setState({isLoading: false});
       })
       .catch((err) => {
-        this.unlock();
-        this.validate(this.state);
+        this._unlock();
+        this._validate(this.state);
 
         this.setState({error: true, errorText: err.message});
         this.setState({isLoading: false});
@@ -84,7 +84,7 @@ const withReview = (Component) => {
     }
 
     componentDidUpdate() {
-      this.validate(this.state);
+      this._validate(this.state);
     }
 
     render() {
@@ -96,16 +96,16 @@ const withReview = (Component) => {
     }
   }
 
+  WithReview.propTypes = {
+    sendReview: PropTypes.func.isRequired,
+    offerId: PropTypes.number.isRequired,
+  };
+
   const mapDispatchToProps = (dispatch) => ({
     sendReview(id, review) {
       return dispatch(sendReview(id, review));
     }
   });
-
-  WithReview.propTypes = {
-    sendReview: PropTypes.func.isRequired,
-    offerId: PropTypes.number.isRequired,
-  };
 
   return connect(null, mapDispatchToProps)(WithReview);
 };
