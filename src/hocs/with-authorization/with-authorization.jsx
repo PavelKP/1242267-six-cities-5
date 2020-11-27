@@ -17,7 +17,7 @@ const withAuthorization = (Component) => {
       this.formRef = React.createRef();
     }
 
-    validateEmail(email) {
+    _validateEmail(email) {
       const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(String(email).toLowerCase());
     }
@@ -27,7 +27,7 @@ const withAuthorization = (Component) => {
       const formData = new FormData(this.formRef.current);
       const email = formData.get(`email`);
 
-      if (this.validateEmail(email)) {
+      if (this._validateEmail(email)) {
         this.props.authorize({
           email,
           password: formData.get(`password`),

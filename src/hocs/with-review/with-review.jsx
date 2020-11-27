@@ -25,6 +25,10 @@ const withReview = (Component) => {
       };
     }
 
+    componentDidUpdate() {
+      this._validate(this.state);
+    }
+
     _validate(state) {
       this.setState({buttonDisabled: !(
         state.text.trim().length >= 50
@@ -81,10 +85,6 @@ const withReview = (Component) => {
         this.setState({error: true, errorText: err.message});
         this.setState({isLoading: false});
       });
-    }
-
-    componentDidUpdate() {
-      this._validate(this.state);
     }
 
     render() {

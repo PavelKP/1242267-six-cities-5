@@ -28,6 +28,15 @@ class Map extends React.PureComponent {
     this._iconActive = getIcon(`img/pin-active.svg`);
   }
 
+  componentDidMount() {
+    this._init();
+  }
+
+  componentDidUpdate() {
+    this._addPins();
+    this._map.setView(this._getCoordinates(), zoom);
+  }
+
   _init() {
     const coordinates = this._getCoordinates();
 
@@ -87,15 +96,6 @@ class Map extends React.PureComponent {
     } else {
       return this.props.offers;
     }
-  }
-
-  componentDidMount() {
-    this._init();
-  }
-
-  componentDidUpdate() {
-    this._addPins();
-    this._map.setView(this._getCoordinates(), zoom);
   }
 
   render() {
