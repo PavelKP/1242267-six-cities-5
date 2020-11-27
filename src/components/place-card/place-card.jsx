@@ -59,7 +59,8 @@ const PlaceCard = (
 
 PlaceCard.defaultProps = {
   imageWidth: 260,
-  imageHeight: 200
+  imageHeight: 200,
+  onCardMouseOver: ()=>{}, // empty handler
 };
 
 PlaceCard.propTypes = {

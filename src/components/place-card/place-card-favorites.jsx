@@ -10,8 +10,7 @@ const PlaceCardFavorites = (props) => {
       classImageWrapper={`favorites__image-wrapper`}
       imageWidth={150}
       imageHeight={110}
-      {...props}
-      onCardMouseOver={()=>{}}/> // empty handler
+      {...props}/>
   );
 };
 

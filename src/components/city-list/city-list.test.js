@@ -3,20 +3,9 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import {CityList} from './city-list';
 import {Provider} from 'react-redux';
-import mockStoreData from '../../__mocks__/mock-store';
+import mockStoreData, {cities} from '../../__mocks__/mock-store';
 
 const mockStore = configureStore([]);
-
-const cities = [{
-  name: `Moscow`,
-  coordinates: [11.1, 22.2],
-  zoom: 12,
-},
-{
-  name: `Odintsovo`,
-  coordinates: [33.33, 11.551],
-  zoom: 12,
-}];
 
 describe(`<CityList /> render`, () => {
 
