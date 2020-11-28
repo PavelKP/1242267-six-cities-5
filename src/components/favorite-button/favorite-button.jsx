@@ -19,7 +19,7 @@ const FavoriteButton = ({
   imageHeight,
   activeClass}) => {
 
-  const isBookmarked = offers.filter((offer) => offer.id === offerId)[0].isBookmarked;
+  const isBookmarked = offers.filter((offer) => +offer.id === +offerId)[0].isBookmarked;
   const bookmarked = isBookmarked ? activeClass : ``;
 
   const handleFavoriteClick = (evt) => {

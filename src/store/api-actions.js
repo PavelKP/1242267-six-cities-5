@@ -58,7 +58,10 @@ export const sendReview = (offerId, review) => (dispatch, _getState, api) => (
 
 export const setFavoriteStatus = (offerId, status) => (dispatch, _getState, api) => (
   api.post(`${APIRoute.FAVORITE}/${offerId}/${status}`)
-  .then(({data}) => dispatch(ActionCreator.updateOffer(data)))
+  .then(({data}) => {
+    dispatch(ActionCreator.updateOffer(data));
+    dispatch(ActionCreator.updateFavorite(data));
+  })
   .catch((err) => {
     throw err.response.data.error;
   })
@@ -68,5 +71,12 @@ export const fetchNearbyById = (id) => (dispatch, _getState, api) => (
   api.get(`${APIRoute.HOTELS}/${id}/nearby`)
     .then(({data}) => {
       dispatch(ActionCreator.loadActiveNearby(data));
+    })
+);
+
+export const fetchFavorites = () => (dispatch, _getState, api) => (
+  api.get(`${APIRoute.FAVORITE}`)
+    .then(({data}) => {
+      dispatch(ActionCreator.loadFavorites(data));
     })
 );

@@ -1,7 +1,7 @@
 import React from 'react';
 import {compose} from 'redux';
 import {connect} from 'react-redux';
-import {authorize} from '../../store/api-actions';
+import {authorize, fetchOfferList} from '../../store/api-actions';
 import PropTypes from 'prop-types';
 
 const withAuthorization = (Component) => {
@@ -31,11 +31,13 @@ const withAuthorization = (Component) => {
         this.props.authorize({
           email,
           password: formData.get(`password`),
+        })
+        .then(() => {
+          this.props.fetchOfferList();
         });
       } else {
         this.setState(({isValid: false}));
       }
-
     }
 
     render() {
@@ -53,6 +55,9 @@ const withAuthorization = (Component) => {
 const mapDispatchToProps = (dispatch) => ({
   authorize(userData) {
     return dispatch(authorize(userData));
+  },
+  fetchOfferList() {
+    return dispatch(fetchOfferList());
   }
 });
 
