@@ -9,6 +9,7 @@ describe(`applicationData reducer`, () =>{
       cities: [],
       offers: [],
       reviews: [],
+      favorites: [],
     });
   });
 
@@ -21,6 +22,7 @@ describe(`applicationData reducer`, () =>{
       cities: [],
       offers,
       reviews: [],
+      favorites: [],
     });
   });
 
@@ -33,6 +35,7 @@ describe(`applicationData reducer`, () =>{
       cities: [offers[0].city],
       offers: [],
       reviews: [],
+      favorites: [],
     });
   });
 
@@ -45,6 +48,7 @@ describe(`applicationData reducer`, () =>{
       cities: [],
       offers: [],
       reviews,
+      favorites: [],
     });
   });
 
@@ -57,6 +61,7 @@ describe(`applicationData reducer`, () =>{
       cities: [],
       offers: [offers[0]],
       reviews: [],
+      favorites: [],
     });
   });
 });

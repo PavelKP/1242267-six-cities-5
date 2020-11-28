@@ -61,7 +61,7 @@ exports[`<App /> render Should App render correctly 1`] = `
     </div>
   </header>
   <main
-    className="page__main page__main--index page__main--index-empty"
+    className="page__main page__main--index "
   >
     <h1
       className="visually-hidden"
@@ -86,7 +86,7 @@ exports[`<App /> render Should App render correctly 1`] = `
               onClick={[Function]}
             >
               <span>
-                Moscow
+                Cologne
               </span>
             </a>
           </li>
@@ -110,30 +110,203 @@ exports[`<App /> render Should App render correctly 1`] = `
       className="cities"
     >
       <div
-        className="cities__places-container container cities__places-container--empty"
+        className="cities__places-container container "
       >
         <section
-          className="cities__no-places"
+          className="cities__places places"
         >
-          <div
-            className="cities__status-wrapper tabs__content"
+          <h2
+            className="visually-hidden"
           >
-            <b
-              className="cities__status"
+            Places
+          </h2>
+          <b
+            className="places__found"
+          >
+            1
+             
+            place
+             to stay in 
+            Cologne
+          </b>
+          <form
+            action="#"
+            className="places__sorting"
+            method="get"
+          >
+            <span
+              className="places__sorting-caption"
             >
-              No places to stay available
-            </b>
-            <p
-              className="cities__status-description"
+              Sort by 
+            </span>
+            <span
+              className="places__sorting-type"
+              onClick={[Function]}
+              tabIndex="0"
             >
-              We could not find any property available at the moment in 
-              Moscow
-            </p>
+              Popular
+              <svg
+                className="places__sorting-arrow"
+                height="4"
+                width="7"
+              >
+                <use
+                  xlinkHref="#icon-arrow-select"
+                />
+              </svg>
+            </span>
+            <ul
+              className="places__options places__options--custom
+        "
+              onClick={[Function]}
+            >
+              <li
+                className="places__option
+              places__option--active"
+                data-sorting-type="popular"
+                tabIndex="0"
+              >
+                Popular
+              </li>
+              <li
+                className="places__option
+              "
+                data-sorting-type="price-to-high"
+                tabIndex="0"
+              >
+                Price: low to high
+              </li>
+              <li
+                className="places__option
+              "
+                data-sorting-type="price-to-low"
+                tabIndex="0"
+              >
+                Price: high to low
+              </li>
+              <li
+                className="places__option
+              "
+                data-sorting-type="top-rated-first"
+                tabIndex="0"
+              >
+                Top rated first
+              </li>
+            </ul>
+          </form>
+          <div
+            className="cities__places-list places__list tabs__content"
+          >
+            <article
+              className="cities__place-card place-card"
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+            >
+              <div
+                className="cities__image-wrapper place-card__image-wrapper"
+              >
+                <a
+                  href="/offer/1"
+                  onClick={[Function]}
+                >
+                  <img
+                    alt="https://assets.htmlacademy.ru/intensives/javascript-3/hotel/16.jpg"
+                    className="place-card__image"
+                    height={200}
+                    src="https://assets.htmlacademy.ru/intensives/javascript-3/hotel/16.jpg"
+                    width={260}
+                  />
+                </a>
+              </div>
+              <div
+                className="place-card__info"
+              >
+                <div
+                  className="place-card__price-wrapper"
+                >
+                  <div
+                    className="place-card__price"
+                  >
+                    <b
+                      className="place-card__price-value"
+                    >
+                      €
+                      485
+                    </b>
+                    <span
+                      className="place-card__price-text"
+                    >
+                      / night
+                    </span>
+                  </div>
+                  <button
+                    className="place-card__bookmark-button button "
+                    onClick={[Function]}
+                    type="button"
+                  >
+                    <svg
+                      className="place-card__bookmark-icon"
+                      height={19}
+                      width={18}
+                    >
+                      <use
+                        xlinkHref="#icon-bookmark"
+                      />
+                    </svg>
+                    <span
+                      className="visually-hidden"
+                    >
+                      In bookmarks
+                    </span>
+                  </button>
+                </div>
+                <div
+                  className="place-card__rating rating"
+                >
+                  <div
+                    className="place-card__stars rating__stars"
+                  >
+                    <span
+                      style={
+                        Object {
+                          "width": "60%",
+                        }
+                      }
+                    />
+                    <span
+                      className="visually-hidden"
+                    >
+                      Rating
+                    </span>
+                  </div>
+                </div>
+                <h2
+                  className="place-card__name"
+                >
+                  <a
+                    href="/offer/1"
+                    onClick={[Function]}
+                  >
+                    Nice, cozy, warm big bed apartment
+                  </a>
+                </h2>
+                <p
+                  className="place-card__type"
+                >
+                  house
+                </p>
+              </div>
+            </article>
           </div>
         </section>
         <div
           className="cities__right-section"
-        />
+        >
+          <section
+            className="cities__map map"
+            id="map"
+          />
+        </div>
       </div>
     </div>
   </main>

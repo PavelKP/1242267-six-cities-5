@@ -8,6 +8,6 @@ exports[`<PlacesCount /> render Should PlacesCount render correctly 1`] = `
    
   place
    to stay in 
-  Moscow
+  Cologne
 </b>
 `;

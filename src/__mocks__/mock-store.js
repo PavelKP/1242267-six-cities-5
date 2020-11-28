@@ -8,7 +8,7 @@ export const AuthorizationStatus = {
 };
 
 export const cities = [{
-  name: `Moscow`,
+  name: `Cologne`,
   coordinates: [11.1, 22.2],
   zoom: 12,
 },
@@ -19,7 +19,7 @@ export const cities = [{
 }];
 
 export const rawCity = {
-  name: `Moscow`,
+  name: `Cologne`,
   location: {
     latitude: 11.1,
     longitude: 22.2,

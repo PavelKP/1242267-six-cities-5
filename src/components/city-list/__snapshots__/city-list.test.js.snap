@@ -16,7 +16,7 @@ exports[`<CityList /> render Should CityList render correctly 1`] = `
         onClick={[Function]}
       >
         <span>
-          Moscow
+          Cologne
         </span>
       </a>
     </li>

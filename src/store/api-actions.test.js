@@ -183,9 +183,13 @@ describe(`Async operations work correctly`, () => {
 
     return setFavoriteStatusLoader(dispatch, ()=>{}, api)
       .then(() => {
-        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenCalledTimes(2);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
           type: ActionType.UPDATE_OFFER,
+          payload: serverResponseData
+        });
+        expect(dispatch).toHaveBeenNthCalledWith(2, {
+          type: ActionType.UPDATE_FAVORITE,
           payload: serverResponseData
         });
       });

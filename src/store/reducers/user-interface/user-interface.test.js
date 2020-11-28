@@ -24,7 +24,7 @@ describe(`userInterface reducer`, () => {
     }))
     .toEqual({
       city: {
-        name: `Moscow`,
+        name: `Cologne`,
         coordinates: [11.1, 22.2],
         zoom: 12,
       },

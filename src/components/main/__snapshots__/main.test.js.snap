@@ -86,7 +86,7 @@ exports[`<Main /> render Should Main render correctly 1`] = `
               onClick={[Function]}
             >
               <span>
-                Moscow
+                Cologne
               </span>
             </a>
           </li>
@@ -127,7 +127,7 @@ exports[`<Main /> render Should Main render correctly 1`] = `
              
             place
              to stay in 
-            Moscow
+            Cologne
           </b>
           <form
             action="#"
@@ -196,7 +196,108 @@ exports[`<Main /> render Should Main render correctly 1`] = `
           </form>
           <div
             className="cities__places-list places__list tabs__content"
-          />
+          >
+            <article
+              className="cities__place-card place-card"
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+            >
+              <div
+                className="cities__image-wrapper place-card__image-wrapper"
+              >
+                <a
+                  href="/offer/1"
+                  onClick={[Function]}
+                >
+                  <img
+                    alt="https://assets.htmlacademy.ru/intensives/javascript-3/hotel/16.jpg"
+                    className="place-card__image"
+                    height={200}
+                    src="https://assets.htmlacademy.ru/intensives/javascript-3/hotel/16.jpg"
+                    width={260}
+                  />
+                </a>
+              </div>
+              <div
+                className="place-card__info"
+              >
+                <div
+                  className="place-card__price-wrapper"
+                >
+                  <div
+                    className="place-card__price"
+                  >
+                    <b
+                      className="place-card__price-value"
+                    >
+                      €
+                      485
+                    </b>
+                    <span
+                      className="place-card__price-text"
+                    >
+                      / night
+                    </span>
+                  </div>
+                  <button
+                    className="place-card__bookmark-button button "
+                    onClick={[Function]}
+                    type="button"
+                  >
+                    <svg
+                      className="place-card__bookmark-icon"
+                      height={19}
+                      width={18}
+                    >
+                      <use
+                        xlinkHref="#icon-bookmark"
+                      />
+                    </svg>
+                    <span
+                      className="visually-hidden"
+                    >
+                      In bookmarks
+                    </span>
+                  </button>
+                </div>
+                <div
+                  className="place-card__rating rating"
+                >
+                  <div
+                    className="place-card__stars rating__stars"
+                  >
+                    <span
+                      style={
+                        Object {
+                          "width": "60%",
+                        }
+                      }
+                    />
+                    <span
+                      className="visually-hidden"
+                    >
+                      Rating
+                    </span>
+                  </div>
+                </div>
+                <h2
+                  className="place-card__name"
+                >
+                  <a
+                    href="/offer/1"
+                    onClick={[Function]}
+                  >
+                    Nice, cozy, warm big bed apartment
+                  </a>
+                </h2>
+                <p
+                  className="place-card__type"
+                >
+                  house
+                </p>
+              </div>
+            </article>
+          </div>
         </section>
         <div
           className="cities__right-section"
@@ -298,7 +399,7 @@ exports[`<Main /> render Should Main with empty offers render correctly 1`] = `
               onClick={[Function]}
             >
               <span>
-                Moscow
+                Cologne
               </span>
             </a>
           </li>
