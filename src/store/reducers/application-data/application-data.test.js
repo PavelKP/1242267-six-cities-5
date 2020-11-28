@@ -64,5 +64,31 @@ describe(`applicationData reducer`, () =>{
       favorites: [],
     });
   });
+
+  it(`applicationData reducer should update favorites by load from a server`, () => {
+    expect(applicationData(void 0, {
+      type: ActionType.LOAD_FAVORITES,
+      payload: rawOffers,
+    }))
+    .toEqual({
+      cities: [],
+      offers: [],
+      reviews: [],
+      favorites: offers,
+    });
+  });
+
+  it(`applicationData reducer should update favorite`, () => {
+    expect(applicationData(void 0, {
+      type: ActionType.UPDATE_FAVORITE,
+      payload: rawOffers[0],
+    }))
+    .toEqual({
+      cities: [],
+      offers: [],
+      reviews: [],
+      favorites: [offers[0]],
+    });
+  });
 });
 
