@@ -91,4 +91,18 @@ describe(`Action creators work correctly`, () => {
       payload: `fake`
     });
   });
+
+  it(`loadFavorites() returns correct action`, () => {
+    expect(ActionCreator.loadFavorites(`fake`)).toEqual({
+      type: ActionType.LOAD_FAVORITES,
+      payload: `fake`
+    });
+  });
+
+  it(`updateFavorite() returns correct action`, () => {
+    expect(ActionCreator.updateFavorite(`fake`)).toEqual({
+      type: ActionType.UPDATE_FAVORITE,
+      payload: `fake`
+    });
+  });
 });

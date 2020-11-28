@@ -10,7 +10,8 @@ import {
   fetchOfferById,
   sendReview,
   setFavoriteStatus,
-  fetchNearbyById
+  fetchNearbyById,
+  fetchFavorites
 } from './api-actions';
 
 const api = createAPI(()=>{});
@@ -212,6 +213,27 @@ describe(`Async operations work correctly`, () => {
         expect(dispatch).toHaveBeenCalledTimes(1);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
           type: ActionType.LOAD_NEARBY,
+          payload: serverResponseData
+        });
+      });
+  });
+
+  it(`Should make a correct API call to /favorite`, () => {
+    const serverResponseData = [{fake: true}];
+
+    const apiMock = new MockAdapter(api);
+    const dispatch = jest.fn();
+    const fetchFavoritesLoader = fetchFavorites();
+
+    apiMock
+    .onGet(`${APIRoute.FAVORITE}`)
+    .reply(200, serverResponseData);
+
+    return fetchFavoritesLoader(dispatch, ()=>{}, api)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+          type: ActionType.LOAD_FAVORITES,
           payload: serverResponseData
         });
       });
