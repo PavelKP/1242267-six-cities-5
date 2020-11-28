@@ -3,6 +3,8 @@ import {fetchCurrentReview} from '../../store/api-actions';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {reviewsPropTypes} from '../../prop-types/prop-types';
+import {getSortedReviews} from '../../store/reducers/application-data/selectors';
+
 
 const withCommentsLoading = (Component) => {
   class WithCommentsLoading extends React.PureComponent {
@@ -46,8 +48,8 @@ const withCommentsLoading = (Component) => {
     loadReview: PropTypes.func.isRequired,
   };
 
-  const mapStateToProps = ({DATA}) => ({
-    reviews: DATA.reviews,
+  const mapStateToProps = (state) => ({
+    reviews: getSortedReviews(state),
   });
 
   const mapDispatchToProps = (dispatch) => ({
@@ -59,36 +61,6 @@ const withCommentsLoading = (Component) => {
   // End of function - connect is HOC and returns wrapped WithCommentsLoading
   return connect(mapStateToProps, mapDispatchToProps)(WithCommentsLoading);
 };
-
-
-/*
-  SECOND SOLUTION - redux compose feature
-
-  https://ru.reactjs.org/docs/higher-order-components.html
-  https://medium.com/practo-engineering/connected-higher-order-component-hoc-93ee63c91526
-
-  import {compose} from 'redux';
-
-  ...
-
-const mapStateToProps = ({DATA}) => ({
-  reviews: DATA.reviews,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  loadReview(id) {
-    return dispatch(fetchCurrentReview(id));
-  }
-})
-
-const composedWithCommentsLoading = compose(
-    connect(mapStateToProps, mapDispatchToProps),
-    withCommentsLoading
-);
-
-export {withCommentsLoading};
-export default composedWithCommentsLoading;
-*/
 
 export {withCommentsLoading};
 export default withCommentsLoading;

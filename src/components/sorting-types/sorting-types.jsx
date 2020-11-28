@@ -23,7 +23,7 @@ const SortingTypes = (props) => {
         </svg>
       </span>
       <ul className={`places__options places__options--custom
-        ${togglerState && `places__options--opened`}`}
+        ${togglerState ? `places__options--opened` : ``}`}
       onClick={(evt) => {
         const sorting = evt.target.dataset.sortingType;
         setActiveSorting(sorting);
@@ -46,6 +46,13 @@ const SortingTypes = (props) => {
   );
 };
 
+SortingTypes.propTypes = {
+  setActiveSorting: PropTypes.func.isRequired,
+  activeSorting: PropTypes.string.isRequired,
+  togglerState: PropTypes.bool.isRequired,
+  onTogglerClick: PropTypes.func.isRequired,
+};
+
 const mapStateToProps = ({INTERFACE}) => ({
   activeSorting: INTERFACE.activeSorting
 });
@@ -55,13 +62,6 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(ActionCreator.setActiveSorting(sortingName));
   }
 });
-
-SortingTypes.propTypes = {
-  setActiveSorting: PropTypes.func.isRequired,
-  activeSorting: PropTypes.string.isRequired,
-  togglerState: PropTypes.bool.isRequired,
-  onTogglerClick: PropTypes.func.isRequired,
-};
 
 export {SortingTypes};
 export default connect(mapStateToProps, mapDispatchToProps)(SortingTypes);

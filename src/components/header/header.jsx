@@ -49,4 +49,5 @@ const mapStateTopProps = ({USER}) => ({
   userData: USER.userData,
 });
 
+export {Header};
 export default React.memo(connect(mapStateTopProps)(Header));

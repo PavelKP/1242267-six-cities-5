@@ -1,7 +1,7 @@
 import React from 'react';
 import {compose} from 'redux';
 import {connect} from 'react-redux';
-import {authorize} from '../../store/api-actions';
+import {authorize, fetchOfferList} from '../../store/api-actions';
 import PropTypes from 'prop-types';
 
 const withAuthorization = (Component) => {
@@ -9,21 +9,41 @@ const withAuthorization = (Component) => {
     constructor(props) {
       super(props);
 
-      this._handleFromSubmit = this._handleFromSubmit.bind(this);
-      this._formRef = React.createRef();
+      this.state = {
+        isValid: true,
+      };
+
+      this.handleFromSubmit = this.handleFromSubmit.bind(this);
+      this.formRef = React.createRef();
     }
 
-    _handleFromSubmit(evt) {
+    _validateEmail(email) {
+      const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(String(email).toLowerCase());
+    }
+
+    handleFromSubmit(evt) {
       evt.preventDefault();
-      const formData = new FormData(this._formRef.current);
-      this.props.authorize({
-        email: formData.get(`email`),
-        password: formData.get(`password`),
-      });
+      const formData = new FormData(this.formRef.current);
+      const email = formData.get(`email`);
+
+      if (this._validateEmail(email)) {
+        this.props.authorize({
+          email,
+          password: formData.get(`password`),
+        })
+        .then(() => {
+          this.props.fetchOfferList();
+        });
+      } else {
+        this.setState(({isValid: false}));
+      }
     }
 
     render() {
-      return <Component onFormSubmit={this._handleFromSubmit} formRef={this._formRef}/>;
+      return <Component onFormSubmit={this.handleFromSubmit}
+        formRef={this.formRef}
+        isValid={this.state.isValid}/>;
     }
   }
 
@@ -35,6 +55,9 @@ const withAuthorization = (Component) => {
 const mapDispatchToProps = (dispatch) => ({
   authorize(userData) {
     return dispatch(authorize(userData));
+  },
+  fetchOfferList() {
+    return dispatch(fetchOfferList());
   }
 });
 

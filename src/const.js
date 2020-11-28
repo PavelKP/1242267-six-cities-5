@@ -22,3 +22,5 @@ export const APIRoute = {
   LOGIN: `/login`,
   FAVORITE: `/favorite`,
 };
+
+export const MAX_REVIEW_AMOUNT = 10;

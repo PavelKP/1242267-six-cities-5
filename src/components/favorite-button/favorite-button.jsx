@@ -7,7 +7,8 @@ import {APIRoute, AuthorizationStatus} from '../../const';
 import PropTypes from 'prop-types';
 import {offersPropTypes} from '../../prop-types/prop-types';
 
-const FavoriteButton = ({offers,
+const FavoriteButton = ({
+  offers,
   offerId,
   setFavoriteStatusDispatch,
   redirectToRoute,
@@ -18,7 +19,7 @@ const FavoriteButton = ({offers,
   imageHeight,
   activeClass}) => {
 
-  const isBookmarked = offers.filter((offer) => offer.id === offerId)[0].isBookmarked;
+  const isBookmarked = offers.filter((offer) => +offer.id === +offerId)[0].isBookmarked;
   const bookmarked = isBookmarked ? activeClass : ``;
 
   const handleFavoriteClick = (evt) => {
@@ -48,11 +49,10 @@ FavoriteButton.propTypes = {
   setFavoriteStatusDispatch: PropTypes.func.isRequired,
   redirectToRoute: PropTypes.func.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
   buttonClass: PropTypes.string.isRequired,
   iconClass: PropTypes.string.isRequired,
-  imageWidth: PropTypes.string.isRequired,
-  imageHeight: PropTypes.string.isRequired,
+  imageWidth: PropTypes.number.isRequired,
+  imageHeight: PropTypes.number.isRequired,
   activeClass: PropTypes.string.isRequired,
 };
 

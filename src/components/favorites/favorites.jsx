@@ -5,26 +5,27 @@ import Header from '../header/header';
 import FavoritesEmpty from '../favorites-empty/favorites-empty';
 import {offersPropTypes} from '../../prop-types/prop-types';
 import {CardType} from '../../const';
+import {withFavoritesLoading} from '../../hocs/with-favorites-loading/with-favorites-loading';
 
 
-const Favorites = (props) => {
+const Favorites = ({offers, cities, loading}) => {
+
+  if (loading) {
+    return <h3>Loading...please wait</h3>;
+  }
+
   const locations = new Set();
-  const bookmarked = props.offers.filter((offer) => {
-    if (offer.isBookmarked) {
-      locations.add(offer.city.name);
-    }
-    return offer.isBookmarked;
+  offers.slice().forEach((offer) => locations.add(offer.city.name));
+
+  const orderedLocations = cities.filter((city) => {
+    return ([...locations].includes(city.name));
   });
 
-  const isEmpty = bookmarked.length === 0;
+  const isEmpty = offers.length === 0;
 
   return (
     <div className="page">
-      <Header>
-        <Link to={`/`} className="header__logo-link" href="main.html">
-          <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width="81" height="41" />
-        </Link>
-      </Header>
+      <Header/>
 
       {isEmpty
         ? <FavoritesEmpty />
@@ -34,17 +35,17 @@ const Favorites = (props) => {
               <section className="favorites">
                 <h1 className="favorites__title">Saved listing</h1>
                 <ul className="favorites__list">
-                  {[...locations].map((city, i) => (
+                  {orderedLocations.map((city, i) => (
                     <li className="favorites__locations-items" key={`favorites-location-${i}`}>
                       <div className="favorites__locations locations locations--current">
                         <div className="locations__item">
                           <a className="locations__item-link" href="#">
-                            <span>{city}</span>
+                            <span>{city.name}</span>
                           </a>
                         </div>
                       </div>
                       <div className="favorites__places">
-                        <OfferList type={CardType.FAVORITES} offers={bookmarked.filter((offer) => offer.city.name === city)} />
+                        <OfferList type={CardType.FAVORITES} offers={offers.filter((offer) => offer.city.name === city.name)} />
                       </div>
                     </li>
                   ))}
@@ -67,4 +68,5 @@ const Favorites = (props) => {
 
 Favorites.propTypes = offersPropTypes;
 
-export default Favorites;
+export {Favorites};
+export default withFavoritesLoading(Favorites);

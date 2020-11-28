@@ -10,8 +10,9 @@ const PlaceCardFavorites = (props) => {
       classImageWrapper={`favorites__image-wrapper`}
       imageWidth={150}
       imageHeight={110}
-      {...props} />
+      {...props}/>
   );
 };
 
+export {PlaceCardFavorites};
 export default React.memo(PlaceCardFavorites);

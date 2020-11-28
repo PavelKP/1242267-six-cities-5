@@ -17,14 +17,22 @@ const CityList = ({cities, activeCity}) => {
   );
 };
 
+CityList.propTypes = {
+  cities: arrayOf(cityPropTypes.isRequired).isRequired,
+  activeCity: cityPropTypes.isRequired
+};
+
 const mapStateToProps = ({DATA, INTERFACE}) => ({
   activeCity: INTERFACE.city,
   cities: DATA.cities
 });
 
-CityList.propTypes = {
-  cities: arrayOf(cityPropTypes.isRequired).isRequired,
-  activeCity: cityPropTypes.isRequired
+CityList.defaultProps = {
+  cities: [{
+    name: `City is undefined`,
+    coordinates: [0.0, 0.0],
+    zoom: 12,
+  }]
 };
 
 export {CityList};

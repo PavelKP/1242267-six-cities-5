@@ -36,6 +36,9 @@ Promise.all([
   );
 })
 .catch((err) => {
-  throw new Error(err);
+  ReactDOM.render(
+      <h1>{err}</h1>,
+      document.querySelector(`#root`)
+  );
 });
 

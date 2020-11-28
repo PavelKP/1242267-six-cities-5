@@ -6,6 +6,7 @@ const initialState = {
   cities: [],
   offers: [],
   reviews: [],
+  favorites: [],
 };
 
 const applicationData = (state = initialState, action) => {
@@ -36,6 +37,24 @@ const applicationData = (state = initialState, action) => {
       return extend(state, {
         offers: [...state.offers.slice(0, index), Adapter.offerSingleToClient(action.payload), ...state.offers.slice(index + 1)],
       });
+    case ActionType.LOAD_FAVORITES:
+      return extend(state, {
+        favorites: Adapter.offersToClient(action.payload),
+      });
+    case ActionType.UPDATE_FAVORITE:
+      const i = state.favorites.findIndex((offer) => offer.id === action.payload.id);
+      if (i === -1) {
+        return extend(state, {
+          favorites: [...state.favorites, Adapter.offerSingleToClient(action.payload)]
+        });
+      } else {
+        const contractedFavorites = state.favorites.slice();
+        contractedFavorites.splice(i, 1);
+
+        return extend(state, {
+          favorites: contractedFavorites,
+        });
+      }
     default:
       return state;
   }

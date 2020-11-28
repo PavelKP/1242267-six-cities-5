@@ -25,4 +25,5 @@ const withToggler = (Component) => {
   };
 };
 
+export {withToggler};
 export default withToggler;

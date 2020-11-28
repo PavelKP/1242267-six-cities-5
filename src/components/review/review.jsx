@@ -3,7 +3,7 @@ import moment from 'moment';
 import {oneReviewPropTypes} from '../../prop-types/prop-types';
 import {getStarsStyle} from '../../utils';
 
-const ReviewList = ({review}) => {
+const Review = ({review}) => {
   const dateShort = moment(review.date).format(`MMMM YYYY`);
   const dateFull = moment(review.date).format(`YYYY-MM-DD`);
 
@@ -33,8 +33,9 @@ const ReviewList = ({review}) => {
   );
 };
 
-ReviewList.propTypes = {
+Review.propTypes = {
   review: oneReviewPropTypes.review,
 };
 
-export default ReviewList;
+export {Review};
+export default Review;

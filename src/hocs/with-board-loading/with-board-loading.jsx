@@ -20,6 +20,13 @@ const withBoardLoading = (Component) => {
     }
   }
 
+  WithBoardLoading.propTypes = {
+    type: PropTypes.string.isRequired,
+    sortedOffers: offersPropTypes.offers,
+    setHoveredCard: PropTypes.func.isRequired,
+    activeNearby: offersPropTypes.offers,
+  };
+
   const mapStateToProps = (state) => ({
     sortedOffers: getCurrentOffers(state),
   });
@@ -30,16 +37,8 @@ const withBoardLoading = (Component) => {
     }
   });
 
-  WithBoardLoading.propTypes = {
-    type: PropTypes.string.isRequired,
-    sortedOffers: offersPropTypes.offers,
-    setHoveredCard: PropTypes.func.isRequired,
-    activeNearby: offersPropTypes.offers,
-    fetchNearbyById: PropTypes.func.isRequired,
-    offerId: PropTypes.number.isRequired,
-  };
-
   return connect(mapStateToProps, mapDispatchToProps)(WithBoardLoading);
 };
 
+export {withBoardLoading};
 export default withBoardLoading;

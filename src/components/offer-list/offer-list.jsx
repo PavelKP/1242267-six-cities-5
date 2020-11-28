@@ -14,12 +14,10 @@ const getComponentByType = (type, offer, handler) => {
         onCardMouseOver={handler}/>;
     case CardType.NEARBY:
       return <PlaceCardNearby
-        key={offer.id} offer={offer}
-        onCardMouseOver={handler}/>;
+        key={offer.id} offer={offer}/>;
     case CardType.FAVORITES:
       return <PlaceCardFavorites
-        key={offer.id} offer={offer}
-        onCardMouseOver={handler}/>;
+        key={offer.id} offer={offer}/>;
     default:
       return ``;
   }
@@ -42,8 +40,9 @@ const OfferList = (props) => {
 OfferList.propTypes = {
   type: PropTypes.string.isRequired,
   offers: offersPropTypes.offers,
-  setHoveredCard: PropTypes.func.isRequired,
+  setHoveredCard: PropTypes.func,
 };
 
+export {OfferList};
 export default OfferList;
 

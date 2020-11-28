@@ -4,7 +4,11 @@ import withAuthorization from '../../hocs/with-authorization/with-authorization'
 import PropTypes from 'prop-types';
 
 
-const Login = ({onFormSubmit, formRef}) => {
+const Login = ({onFormSubmit, formRef, isValid}) => {
+
+  const errorStyle = {
+    color: `red`,
+  };
 
   return (
     <div className="page page--gray page--login">
@@ -25,6 +29,7 @@ const Login = ({onFormSubmit, formRef}) => {
                 <input className="login__input form__input" type="password" name="password" placeholder="Password" required="" defaultValue="" autoComplete="off"/>
               </div>
               <button className="login__submit form__submit button" type="submit">Sign in</button>
+              {!isValid && <h3 style={errorStyle}>Email is invalid</h3>}
             </form>
           </section>
           <section className="locations locations--login locations--current">
@@ -43,6 +48,8 @@ const Login = ({onFormSubmit, formRef}) => {
 Login.propTypes = {
   onFormSubmit: PropTypes.func.isRequired,
   formRef: PropTypes.object.isRequired,
+  isValid: PropTypes.bool.isRequired,
 };
 
+export {Login};
 export default withAuthorization(Login);

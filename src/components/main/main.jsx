@@ -36,7 +36,7 @@ const Main = ({offers, city}) => {
             : ``}`}>
 
             {isEmpty
-              ? <MainEmpty city={city.name} />
+              ? <MainEmpty city={city} />
               : <React.Fragment>
                 <section className="cities__places places">
                   <h2 className="visually-hidden">Places</h2>
@@ -57,16 +57,16 @@ const Main = ({offers, city}) => {
   );
 };
 
+Main.propTypes = {
+  offers: offersPropTypes.offers,
+  city: PropTypes.string.isRequired,
+};
+
 const mapStateToProps = (state) => {
   return {
     offers: getCurrentOffers(state),
     city: getActiveCityName(state),
   };
-};
-
-Main.propTypes = {
-  offers: offersPropTypes.offers,
-  city: PropTypes.string.isRequired,
 };
 
 export {Main};

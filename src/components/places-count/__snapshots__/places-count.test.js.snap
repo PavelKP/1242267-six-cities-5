@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PlacesCount /> render Should PlacesCount render correctly 1`] = `
+<b
+  className="places__found"
+>
+  1
+   
+  place
+   to stay in 
+  Cologne
+</b>
+`;

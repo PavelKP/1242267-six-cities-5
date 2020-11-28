@@ -9,26 +9,97 @@ const withReview = (Component) => {
     constructor() {
       super();
 
-      this._handleSubmit = this._handleSubmit.bind(this);
+      this.handleSubmit = this.handleSubmit.bind(this);
+      this.handleTextInput = this.handleTextInput.bind(this);
+      this.handleRatingChange = this.handleRatingChange.bind(this);
+
+      this.state = {
+        buttonDisabled: true,
+        textAreaDisabled: false,
+        startDisabled: false,
+        text: ``,
+        rating: ``,
+        error: false,
+        errorText: ``,
+        isLoading: false,
+      };
     }
 
-    _handleSubmit(evt, form) {
-      const formData = new FormData(form);
+    componentDidUpdate() {
+      this._validate(this.state);
+    }
 
-      this.props.sendReview(this.props.offerId, {
-        rating: formData.get(`rating`),
-        comment: formData.get(`review`),
+    _validate(state) {
+      this.setState({buttonDisabled: !(
+        state.text.trim().length >= 50
+        && state.text.length <= 300
+        && state.rating.length > 0
+        && this.state.isLoading === false
+      )});
+    }
+
+    _unlock() {
+      this.setState({
+        buttonDisabled: true,
+        startDisabled: false,
+        textAreaDisabled: false});
+    }
+
+    _reset() {
+      this.setState({
+        text: ``,
+        rating: ``,
+        buttonDisabled: true});
+    }
+
+    handleTextInput(evt) {
+      this.setState({text: evt.target.value});
+    }
+
+    handleRatingChange(evt) {
+      this.setState({rating: evt.target.value});
+    }
+
+    handleSubmit(evt) {
+      evt.preventDefault();
+      this.setState({
+        textAreaDisabled: true,
+        startDisabled: true,
+        buttonDisabled: true,
+        isLoading: true,
       });
 
-      evt.target.reset(); // reset form
+      this.props.sendReview(this.props.offerId, {
+        rating: this.state.rating,
+        comment: this.state.text,
+      })
+      .then(() => {
+        this._unlock();
+        this._reset();
+        this.setState({isLoading: false});
+      })
+      .catch((err) => {
+        this._unlock();
+        this._validate(this.state);
+
+        this.setState({error: true, errorText: err.message});
+        this.setState({isLoading: false});
+      });
     }
 
     render() {
-      return <Component onSubmit={this._handleSubmit}/>;
+      return <Component
+        state={this.state}
+        onTextInputChange={this.handleTextInput}
+        onRatingChange={this.handleRatingChange}
+        onSubmit={this.handleSubmit}/>;
     }
   }
 
-  WithReview.propTypes = PropTypes.func.isRequired;
+  WithReview.propTypes = {
+    sendReview: PropTypes.func.isRequired,
+    offerId: PropTypes.number.isRequired,
+  };
 
   const mapDispatchToProps = (dispatch) => ({
     sendReview(id, review) {
@@ -39,4 +110,5 @@ const withReview = (Component) => {
   return connect(null, mapDispatchToProps)(WithReview);
 };
 
+export {withReview};
 export default withReview;

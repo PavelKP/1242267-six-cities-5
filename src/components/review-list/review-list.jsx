@@ -28,4 +28,5 @@ ReviewList.propTypes = {
   loading: PropTypes.bool.isRequired,
 };
 
+export {ReviewList};
 export default withCommentsLoading(ReviewList);

@@ -12,6 +12,8 @@ export const ActionType = {
   SET_USER_DATA: `SET_USER_DATA`,
   UPDATE_OFFER: `UPDATE_OFFER`,
   LOAD_NEARBY: `LOAD_NEARBY`,
+  LOAD_FAVORITES: `LOAD_FAVORITES`,
+  UPDATE_FAVORITE: `UPDATE_FAVORITES`,
 };
 
 export const ActionCreator = {
@@ -92,5 +94,17 @@ export const ActionCreator = {
       type: ActionType.LOAD_NEARBY,
       payload: nearbyOffers,
     };
-  }
+  },
+  loadFavorites(favorites) {
+    return {
+      type: ActionType.LOAD_FAVORITES,
+      payload: favorites,
+    };
+  },
+  updateFavorite(favorite) {
+    return {
+      type: ActionType.UPDATE_FAVORITE,
+      payload: favorite,
+    };
+  },
 };

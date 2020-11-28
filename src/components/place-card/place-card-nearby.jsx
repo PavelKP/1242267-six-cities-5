@@ -8,9 +8,9 @@ const PlaceCardNearby = (props) => {
     <PlaceCard
       classArticle={`near-places__card`}
       classImageWrapper={`near-places__image-wrapper`}
-      {...props}
-      onCardMouseOver={{}}/> // empty handler
+      {...props}/>
   );
 };
 
+export {PlaceCardNearby};
 export default React.memo(PlaceCardNearby);

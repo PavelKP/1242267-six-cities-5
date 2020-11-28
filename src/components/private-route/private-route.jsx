@@ -22,16 +22,16 @@ const PrivateRoute = ({exact, path, renderFavorites, authorizationStatus}) => {
   );
 };
 
-const mapStateToProps = ({USER}) => ({
-  authorizationStatus: USER.authorizationStatus,
-});
-
 PrivateRoute.propTypes = {
   authorizationStatus: PropTypes.string.isRequired,
   exact: PropTypes.bool.isRequired,
   path: PropTypes.string.isRequired,
   renderFavorites: PropTypes.func.isRequired,
 };
+
+const mapStateToProps = ({USER}) => ({
+  authorizationStatus: USER.authorizationStatus,
+});
 
 export {PrivateRoute};
 export default connect(mapStateToProps)(PrivateRoute);

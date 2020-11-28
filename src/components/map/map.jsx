@@ -28,6 +28,15 @@ class Map extends React.PureComponent {
     this._iconActive = getIcon(`img/pin-active.svg`);
   }
 
+  componentDidMount() {
+    this._init();
+  }
+
+  componentDidUpdate() {
+    this._addPins();
+    this._map.setView(this._getCoordinates(), zoom);
+  }
+
   _init() {
     const coordinates = this._getCoordinates();
 
@@ -89,27 +98,10 @@ class Map extends React.PureComponent {
     }
   }
 
-  componentDidMount() {
-    this._init();
-  }
-
-  componentDidUpdate() {
-    this._addPins();
-    this._map.setView(this._getCoordinates(), zoom);
-  }
-
   render() {
     return <section id="map" className={`${this.props.className} map`}></section>;
   }
 }
-
-const mapStateToProps = (state) => ({
-  offers: getCurrentOffers(state),
-  hoveredCard: getHoveredCard(state),
-  activeCityName: getActiveCityName(state),
-  activeCityCoords: getActiveCityCoords(state),
-  activeNearby: state.INTERFACE.activeNearby,
-});
 
 Map.propTypes = {
   offers: offersPropTypes.offers,
@@ -119,8 +111,16 @@ Map.propTypes = {
   className: PropTypes.string.isRequired,
   hoveredCard: PropTypes.number.isRequired,
   activeNearby: offersPropTypes.offers,
-  type: PropTypes.string.isRequired,
+  type: PropTypes.string,
 };
+
+const mapStateToProps = (state) => ({
+  offers: getCurrentOffers(state),
+  hoveredCard: getHoveredCard(state),
+  activeCityName: getActiveCityName(state),
+  activeCityCoords: getActiveCityCoords(state),
+  activeNearby: state.INTERFACE.activeNearby,
+});
 
 export {Map};
 export default connect(mapStateToProps)(Map);
