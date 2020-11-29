@@ -3,6 +3,7 @@ import {compose} from 'redux';
 import {connect} from 'react-redux';
 import {authorize, fetchOfferList} from '../../store/api-actions';
 import PropTypes from 'prop-types';
+import {FormField} from '../../const';
 
 const withAuthorization = (Component) => {
   class WithAuthorization extends React.PureComponent {
@@ -25,12 +26,12 @@ const withAuthorization = (Component) => {
     handleFromSubmit(evt) {
       evt.preventDefault();
       const formData = new FormData(this.formRef.current);
-      const email = formData.get(`email`);
+      const email = formData.get(FormField.EMAIL);
 
       if (this._validateEmail(email)) {
         this.props.authorize({
           email,
-          password: formData.get(`password`),
+          password: formData.get(FormField.PASSWORD),
         })
         .then(() => {
           this.props.fetchOfferList();

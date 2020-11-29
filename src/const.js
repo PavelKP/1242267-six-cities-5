@@ -23,4 +23,18 @@ export const APIRoute = {
   FAVORITE: `/favorite`,
 };
 
+export const FormField = {
+  EMAIL: `email`,
+  PASSWORD: `password`,
+};
+
+export const CommentLength = {
+  MAX: 300,
+  MIN: 50,
+};
+
+export const RatingLength = {
+  EMPTY: 0,
+};
+
 export const MAX_REVIEW_AMOUNT = 10;

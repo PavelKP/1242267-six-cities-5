@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Map /> render Should Map render correctly 1`] = `
+exports[`<WorldMap /> render Should WorldMap render correctly 1`] = `
 <section
   className="cities__map map"
   id="map"

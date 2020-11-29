@@ -2,6 +2,7 @@ import React from 'react';
 import {sendReview} from '../../store/api-actions';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
+import {CommentLength, RatingLength} from '../../const';
 
 
 const withReview = (Component) => {
@@ -31,9 +32,9 @@ const withReview = (Component) => {
 
     _validate(state) {
       this.setState({buttonDisabled: !(
-        state.text.trim().length >= 50
-        && state.text.length <= 300
-        && state.rating.length > 0
+        state.text.trim().length >= CommentLength.MIN
+        && state.text.length <= CommentLength.MAX
+        && state.rating.length > RatingLength.EMPTY
         && this.state.isLoading === false
       )});
     }

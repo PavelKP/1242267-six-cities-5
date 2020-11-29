@@ -4,6 +4,8 @@ import {arrayOf} from 'prop-types';
 import {connect} from 'react-redux';
 import {cityPropTypes} from '../../prop-types/prop-types';
 
+const UNDEFINED_CITY = `City is undefined`;
+
 const CityList = ({cities, activeCity}) => {
   return (
     <section className="locations container">
@@ -29,7 +31,7 @@ const mapStateToProps = ({DATA, INTERFACE}) => ({
 
 CityList.defaultProps = {
   cities: [{
-    name: `City is undefined`,
+    name: UNDEFINED_CITY,
     coordinates: [0.0, 0.0],
     zoom: 12,
   }]

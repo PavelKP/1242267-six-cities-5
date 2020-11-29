@@ -3,11 +3,12 @@ import {Link} from 'react-router-dom';
 import {AuthorizationStatus} from '../../const';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
+import {AppRoute} from '../../const';
 
 const Header = (props) => {
   const {authorizationStatus, userData} = props;
   const isAuth = authorizationStatus === AuthorizationStatus.AUTH;
-  const link = isAuth ? `/favorites` : `/login`;
+  const link = isAuth ? AppRoute.FAVORITES : AppRoute.LOGIN;
 
   const avatarStyle = {
     backgroundImage: `url(${userData.avatarUrl})`,
