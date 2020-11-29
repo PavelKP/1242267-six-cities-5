@@ -48,7 +48,11 @@ const withAuthorization = (Component) => {
     }
   }
 
-  WithAuthorization.propTypes = PropTypes.func.isRequired;
+  WithAuthorization.propTypes = {
+    authorize: PropTypes.func.isRequired,
+    fetchOfferList: PropTypes.func.isRequired,
+  };
+
   return WithAuthorization;
 
 };

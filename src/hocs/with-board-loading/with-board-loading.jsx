@@ -6,19 +6,15 @@ import {getCurrentOffers} from '../../store/combined-selectors';
 import {ActionCreator} from '../../store/action';
 
 const withBoardLoading = (Component) => {
-  class WithBoardLoading extends React.PureComponent {
-    constructor(props) {
-      super(props);
-    }
-
-    render() {
-      return <Component
-        offers={this.props.sortedOffers}
+  const WithBoardLoading = ({sortedOffers, setHoveredCard, type}) => {
+    return (
+      <Component
+        offers={sortedOffers}
         loading={false}
-        setHoveredCard={this.props.setHoveredCard}
-        type={this.props.type}/>;
-    }
-  }
+        setHoveredCard={setHoveredCard}
+        type={type}/>
+    );
+  };
 
   WithBoardLoading.propTypes = {
     type: PropTypes.string.isRequired,
