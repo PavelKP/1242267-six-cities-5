@@ -17,7 +17,7 @@ const getIcon = (path) => {
   }));
 };
 
-class Map extends React.PureComponent {
+class WorldMap extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -103,7 +103,7 @@ class Map extends React.PureComponent {
   }
 }
 
-Map.propTypes = {
+WorldMap.propTypes = {
   offers: offersPropTypes.offers,
   activeOffer: offerPropTypes.offer,
   activeCityName: PropTypes.string.isRequired,
@@ -122,5 +122,5 @@ const mapStateToProps = (state) => ({
   activeNearby: state.INTERFACE.activeNearby,
 });
 
-export {Map};
-export default connect(mapStateToProps)(Map);
+export {WorldMap};
+export default connect(mapStateToProps)(WorldMap);

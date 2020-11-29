@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Map from './map';
+import WorldMap from './world-map';
 import configureStore from 'redux-mock-store';
 import {offers} from '../../__mocks__/mock-offers';
 import {Provider} from 'react-redux';
@@ -12,7 +12,7 @@ const mapElement = document.createElement(`div`);
 mapElement.setAttribute(`id`, `map`);
 document.body.appendChild(mapElement);
 
-describe(`<Map /> render`, () => {
+describe(`<WorldMap /> render`, () => {
 
   let store;
 
@@ -21,10 +21,10 @@ describe(`<Map /> render`, () => {
   });
 
 
-  it(`Should Map render correctly`, ()=> {
+  it(`Should WorldMap render correctly`, ()=> {
     const tree = renderer.create(
         <Provider store={store}>
-          <Map
+          <WorldMap
             offers={offers}
             hoveredCard={1}
             activeCityName={`Moscow`}

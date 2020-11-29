@@ -1,6 +1,6 @@
 import React from 'react';
 import OfferList from '../offer-list/offer-list';
-import Map from '../map/map';
+import WorldMap from '../world-map/world-map';
 import Header from '../header/header';
 import CityList from '../city-list/city-list';
 import PlacesCount from '../places-count/places-count';
@@ -47,7 +47,7 @@ const Main = ({offers, city}) => {
                   </div>
                 </section>
                 <div className="cities__right-section">
-                  <Map className="cities__map" />
+                  <WorldMap className="cities__map" />
                 </div>
               </React.Fragment>}
           </div>

@@ -7,7 +7,7 @@ import withOfferLoading from '../../hocs/with-offer-loading/with-offer-loading';
 import withNearbyLoading from '../../hocs/with-nearby-loading/with-nearby-loading';
 import OfferList from '../offer-list/offer-list';
 import Header from '../header/header';
-import Map from '../map/map';
+import WorldMap from '../world-map/world-map';
 import {offerPropTypes} from '../../prop-types/prop-types';
 import ReviewList from '../review-list/review-list';
 import {CardType} from '../../const';
@@ -126,7 +126,7 @@ const Offer = ({loading, activeOffer, authorizationStatus}) => {
               </section>
             </div>
           </div>
-          <Map className="property__map map" activeOffer={activeOffer} type={CardType.NEARBY}/>
+          <WorldMap className="property__map map" activeOffer={activeOffer} type={CardType.NEARBY}/>
         </section>
         <div className="container">
           <section className="near-places places">
