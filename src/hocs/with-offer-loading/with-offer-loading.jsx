@@ -20,7 +20,8 @@ const withOfferLoading = (Component) => {
       this.props.fetchOfferById(this._offerId)
       .then(() => {
         this.setState((state) => ({loading: !state.loading}));
-      });
+      })
+      .catch(()=> {});
     }
 
     componentDidUpdate(prevProps) {

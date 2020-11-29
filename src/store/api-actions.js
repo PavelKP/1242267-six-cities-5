@@ -40,7 +40,10 @@ export const fetchOfferById = (id) => (dispatch, _getState, api) => (
     .then(({data}) => {
       dispatch(ActionCreator.loadSingleOffer(data));
     })
-    .catch(() => dispatch(ActionCreator.redirectToRoute(AppRoute.ROOT)))
+    .catch(() => {
+      dispatch(ActionCreator.redirectToRoute(AppRoute.ROOT));
+      return Promise.reject();
+    })
 );
 
 export const sendReview = (offerId, review) => (dispatch, _getState, api) => (
